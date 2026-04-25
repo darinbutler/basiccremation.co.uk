@@ -7,11 +7,16 @@ import type { LocationData } from "@/lib/location-types";
 const HERO_IMAGE =
   "https://images.unsplash.com/photo-1518173946687-a4c8892bbd9f?auto=format&fit=crop&w=2400&q=75";
 
-const PRICING_IMAGE =
+// Generic fallback if a location doesn't supply its own city image
+const PRICING_IMAGE_FALLBACK =
   "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1800&q=75";
 
 const ADVICE_IMAGE =
   "https://images.unsplash.com/photo-1499002238440-d264edd596ec?auto=format&fit=crop&w=2000&q=75";
+
+// Background image for the crematoria section — soft, atmospheric
+const CREMATORIA_BG =
+  "https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&w=2400&q=75";
 
 interface LocationPageProps {
   data: LocationData;
@@ -24,6 +29,12 @@ export function LocationPage({ data }: LocationPageProps) {
       : "/help-and-advice/registering-a-death-england-wales";
 
   const coronerLink = "/help-and-advice/coroner-and-procurator-fiscal";
+
+  // Pricing image: prefer the city-specific image, fall back to generic
+  const pricingImage = data.cityImage || PRICING_IMAGE_FALLBACK;
+  const pricingImageAlt =
+    data.cityImageAlt ||
+    `A bright sunlit garden — celebration of life ${data.city}`;
 
   return (
     <>
@@ -90,56 +101,75 @@ export function LocationPage({ data }: LocationPageProps) {
         </div>
       </section>
 
-      {/* IN-PAGE NAV — anchors for long-format scannability */}
-      <nav className="container-page py-5 md:py-6 border-b border-ink-100" aria-label="On this page">
-        <div className="max-w-page mx-auto">
-          <p className="text-xs uppercase tracking-wider text-ink-500 mb-3 font-medium">On this page</p>
-          <ul className="flex flex-wrap gap-x-5 gap-y-2 text-sm">
-            {[
-              ["#about", `About in ${data.city}`],
-              ["#pricing", "Pricing"],
-              ["#crematoria", "Crematoria"],
-              ["#areas", "Areas covered"],
-              ["#process", "What happens"],
-              ["#registering", "Registering a death"],
-              ["#coroner", "When the coroner is involved"],
-              ["#support", "Bereavement support"],
-              ["#funding", "Help with costs"],
-              ["#faqs", "FAQs"]
-            ].map(([href, label]) => (
-              <li key={href}>
-                <a href={href} className="text-ink-700 no-underline hover:text-cta hover:underline transition-colors">
-                  {label}
-                </a>
-              </li>
-            ))}
-          </ul>
+      {/* IN-PAGE NAV — refined card-style with proper hierarchy */}
+      <nav className="bg-paper border-b border-ink-100" aria-label="On this page">
+        <div className="container-page py-4 md:py-5">
+          <div className="flex flex-col md:flex-row md:items-center gap-3 md:gap-6">
+            <div className="flex items-center gap-2 flex-shrink-0">
+              <svg className="w-4 h-4 text-cta" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" aria-hidden>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h7" />
+              </svg>
+              <p className="text-xs uppercase tracking-wider text-ink-500 font-semibold">
+                On this page
+              </p>
+            </div>
+            <ul className="flex flex-wrap items-center gap-x-1 gap-y-1.5 text-[13px] md:text-sm">
+              {[
+                ["#about", "About"],
+                ["#pricing", "Pricing"],
+                ["#crematoria", "Crematoria"],
+                ["#areas", "Areas covered"],
+                ["#process", "Process"],
+                ["#registering", "Registering a death"],
+                ["#coroner", "Coroner"],
+                ["#support", "Support"],
+                ["#funding", "Help with costs"],
+                ["#faqs", "FAQs"]
+              ].map(([href, label], idx, arr) => (
+                <li key={href} className="flex items-center gap-1">
+                  <a
+                    href={href}
+                    className="text-ink-700 no-underline hover:text-cta hover:bg-sage-50 rounded-md px-2 py-1 transition-all"
+                  >
+                    {label}
+                  </a>
+                  {idx < arr.length - 1 && (
+                    <span className="text-ink-300 select-none" aria-hidden>·</span>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </nav>
 
-      {/* LOCAL INTRO */}
+      {/* LOCAL INTRO — wider layout (12-column grid, content spans 8) */}
       <section id="about" className="container-page py-14 md:py-20 scroll-mt-24">
-        <div className="max-w-prose mx-auto">
-          <p className="text-sm uppercase tracking-[0.2em] text-cta mb-4 font-semibold">
-            About our service in {data.city}
-          </p>
-          <h2 className="mb-6 balance">A local cremation, arranged with care.</h2>
-          <div className="prose-content">
-            {data.localIntro.map((para, i) => (
-              <p key={i}>{para}</p>
-            ))}
+        <div className="grid md:grid-cols-12 gap-6 md:gap-12">
+          <div className="md:col-span-4">
+            <p className="text-sm uppercase tracking-[0.2em] text-cta mb-4 font-semibold">
+              About our service in {data.city}
+            </p>
+            <h2 className="mb-0 balance">A local cremation, arranged with care.</h2>
+          </div>
+          <div className="md:col-span-8">
+            <div className="prose-content text-[17px] md:text-lg">
+              {data.localIntro.map((para, i) => (
+                <p key={i}>{para}</p>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
-      {/* PRICING */}
+      {/* PRICING — uses cityImage if provided */}
       <section id="pricing" className="bg-paper-warm border-y border-ink-100 scroll-mt-24">
         <div className="container-page py-14 md:py-20">
           <div className="grid md:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-center">
             <div className="relative aspect-[4/3] md:aspect-[3/4] rounded-2xl overflow-hidden shadow-card order-2 md:order-1">
               <Image
-                src={PRICING_IMAGE}
-                alt={`A bright sunlit garden — celebration of life ${data.city}`}
+                src={pricingImage}
+                alt={pricingImageAlt}
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-cover"
@@ -190,36 +220,52 @@ export function LocationPage({ data }: LocationPageProps) {
         </div>
       </section>
 
-      {/* LOCAL CREMATORIA — substantive named-with-detail content */}
-      <section id="crematoria" className="container-page py-14 md:py-20 scroll-mt-24">
-        <div className="max-w-prose mb-10">
-          <p className="text-sm uppercase tracking-[0.2em] text-cta mb-4 font-semibold">
-            Local crematoria
+      {/* LOCAL CREMATORIA — animated cards, lifted, with bg image */}
+      <section id="crematoria" className="relative scroll-mt-24 overflow-hidden border-b border-ink-100">
+        {/* Background image */}
+        <div className="absolute inset-0 z-0">
+          <Image src={CREMATORIA_BG} alt="" fill sizes="100vw" className="object-cover" />
+          <div className="absolute inset-0 bg-paper/88"></div>
+        </div>
+
+        <div className="relative z-10 container-page py-14 md:py-20">
+          <div className="max-w-narrow mb-10 md:mb-12">
+            <p className="text-sm uppercase tracking-[0.2em] text-cta mb-4 font-semibold">
+              Local crematoria
+            </p>
+            <h2 className="mb-4 balance">The crematoria we use across {data.region}</h2>
+            {data.crematoriaIntro && (
+              <p className="text-lg text-ink-700 leading-relaxed pretty">{data.crematoriaIntro}</p>
+            )}
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
+            {data.crematoria.map((crem, idx) => (
+              <article
+                key={crem.name}
+                className="crematorium-card bg-paper border border-sage-200 rounded-2xl p-6 md:p-7 shadow-card hover:shadow-cardHover hover:-translate-y-1 hover:border-sage-300 transition-all duration-300 ease-out group"
+                style={{ animationDelay: `${idx * 0.08}s` }}
+              >
+                {/* Marker icon */}
+                <div className="w-11 h-11 rounded-xl bg-sage-100 group-hover:bg-sage-200 transition-colors flex items-center justify-center mb-4">
+                  <svg className="w-5 h-5 text-cta" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" aria-hidden>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M17.7 14.7A8 8 0 1 0 6.3 14.7l5.7 6.3 5.7-6.3z" />
+                    <circle cx="12" cy="11" r="2.5" />
+                  </svg>
+                </div>
+                <h3 className="text-xl mb-2 leading-snug font-medium">{crem.name}</h3>
+                <p className="text-sm text-ink-500 mb-3 leading-snug">{crem.address}</p>
+                <p className="text-ink-700 leading-relaxed text-[15px]">{crem.note}</p>
+              </article>
+            ))}
+          </div>
+
+          <p className="text-sm text-ink-500 mt-8 italic max-w-prose">
+            The exact crematorium used depends on the area of {data.region} you&rsquo;re in, and on
+            availability. The local funeral director arranges this directly and tells you the date and
+            time in advance.
           </p>
-          <h2 className="mb-4 balance">The crematoria we use across {data.region}</h2>
-          {data.crematoriaIntro && (
-            <p className="text-lg text-ink-700 leading-relaxed pretty">{data.crematoriaIntro}</p>
-          )}
         </div>
-
-        <div className="grid md:grid-cols-2 gap-5 md:gap-6">
-          {data.crematoria.map((crem) => (
-            <div
-              key={crem.name}
-              className="bg-paper border border-sage-200 rounded-xl p-6 md:p-7 shadow-soft hover:shadow-card transition-shadow"
-            >
-              <h3 className="text-xl md:text-2xl mb-2">{crem.name}</h3>
-              <p className="text-sm text-ink-500 mb-3">{crem.address}</p>
-              <p className="text-ink-700 leading-relaxed text-[15px]">{crem.note}</p>
-            </div>
-          ))}
-        </div>
-
-        <p className="text-sm text-ink-500 mt-8 italic max-w-prose">
-          The exact crematorium used depends on the area of {data.region} you&rsquo;re in, and on
-          availability. The local funeral director arranges this directly and tells you the date and
-          time in advance.
-        </p>
       </section>
 
       {/* AREAS COVERED */}
@@ -333,7 +379,6 @@ export function LocationPage({ data }: LocationPageProps) {
             </div>
           </div>
 
-          {/* Hospital bereavement contacts */}
           {data.hospitalBereavement && data.hospitalBereavement.length > 0 && (
             <div className="mt-12 pt-12 border-t border-ink-200">
               <h3 className="mb-4">Hospital bereavement offices in {data.region}</h3>
@@ -375,7 +420,7 @@ export function LocationPage({ data }: LocationPageProps) {
         </div>
       </section>
 
-      {/* BEREAVEMENT SUPPORT — image background */}
+      {/* BEREAVEMENT SUPPORT */}
       <section id="support" className="relative overflow-hidden border-y border-ink-100 scroll-mt-24">
         <div className="absolute inset-0 z-0">
           <Image src={ADVICE_IMAGE} alt="" fill sizes="100vw" className="object-cover" />
@@ -489,7 +534,7 @@ export function LocationPage({ data }: LocationPageProps) {
         </div>
       </section>
 
-      {/* JSON-LD: LocalBusiness / FuneralHome schema */}
+      {/* JSON-LD: FuneralHome schema */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{

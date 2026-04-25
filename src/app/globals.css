@@ -80,6 +80,11 @@
     @apply bg-coral-500 text-paper rounded-xl p-6 shadow-card transition-all duration-300;
     @apply hover:shadow-cardHover hover:-translate-y-0.5;
   }
+
+  /* Crematorium card — staggered fade-up on load */
+  .crematorium-card {
+    animation: fadeUp 0.55s ease-out backwards;
+  }
 }
 
 @layer utilities {

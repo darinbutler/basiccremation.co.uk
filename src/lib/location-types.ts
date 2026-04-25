@@ -72,6 +72,10 @@ export interface LocationData {
   faqs: { question: string; answer: string }[];
   /** Approximate transit/collection note */
   transitNote: string;
+  /** Optional city-specific Unsplash photo URL for the pricing block. Falls back to the generic if not set. */
+  cityImage?: string;
+  /** Optional alt text for the city image */
+  cityImageAlt?: string;
   /** Whether to include the optional "What is a basic cremation?" reassurance block */
   showWhatIsBlock?: boolean;
 }
