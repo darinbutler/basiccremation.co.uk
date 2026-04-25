@@ -439,7 +439,8 @@ export function LocationPage({ data }: LocationPageProps) {
       <section id="support" className="relative overflow-hidden border-y border-ink-100 scroll-mt-24">
         <div className="absolute inset-0 z-0">
           <Image src={ADVICE_IMAGE} alt="" fill sizes="100vw" className="object-cover" />
-          <div className="absolute inset-0 bg-paper/85"></div>
+          {/* Lighter overlay so the bright image actually reads through; gradient on the left side preserves text legibility */}
+          <div className="absolute inset-0 bg-gradient-to-r from-paper/92 via-paper/72 to-paper/55"></div>
         </div>
         <div className="relative z-10 container-page py-14 md:py-20">
           <div className="max-w-prose mb-10">
