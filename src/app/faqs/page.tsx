@@ -1,7 +1,11 @@
 import Link from "next/link";
+import Image from "next/image";
 import type { Metadata } from "next";
 import { siteConfig } from "@/lib/site-config";
 import { PhoneCTA } from "@/components/phone-cta";
+
+const HERO_IMAGE =
+  "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=2400&q=75";
 
 export const metadata: Metadata = {
   title: "Basic Cremation FAQs | Common questions answered",
@@ -44,12 +48,17 @@ const FAQS: { q: string; a: string }[] = [
 export default function FaqsPage() {
   return (
     <>
-      <section className="bg-paper-warm border-b border-ink-100">
-        <div className="container-page py-14 md:py-20">
+      <section className="relative bg-hero-fallback">
+        <div className="absolute inset-0 z-0">
+          <Image src={HERO_IMAGE} alt="" fill sizes="100vw" priority className="object-cover" />
+          <div className="absolute inset-0 scrim-down-dark"></div>
+          <div className="absolute inset-0 scrim-left-light md:bg-gradient-to-r md:from-paper/90 md:via-paper/60 md:to-transparent"></div>
+        </div>
+        <div className="relative z-10 container-page py-16 md:py-24">
           <div className="max-w-2xl">
-            <p className="text-sm uppercase tracking-[0.2em] text-cta mb-4 font-semibold">Frequently asked questions</p>
+            <p className="text-sm uppercase tracking-[0.2em] text-cta mb-5 font-semibold">Frequently asked questions</p>
             <h1 className="mb-6 balance">Common questions, plainly answered.</h1>
-            <p className="text-lg text-ink-700 leading-relaxed pretty">
+            <p className="text-lg md:text-xl text-ink-700 leading-relaxed pretty">
               The questions families most often ask before arranging a basic cremation. If yours
               isn&rsquo;t here, call us on{" "}
               <a href={`tel:${siteConfig.phoneTel}`} className="font-semibold">{siteConfig.phone}</a>{" "}

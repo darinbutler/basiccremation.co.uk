@@ -12,11 +12,15 @@ const PRICING_IMAGE_FALLBACK =
   "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1800&q=75";
 
 const ADVICE_IMAGE =
-  "https://images.unsplash.com/photo-1499002238440-d264edd596ec?auto=format&fit=crop&w=2000&q=75";
+  "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=2400&q=75";
 
 // Background image for the crematoria section — soft, atmospheric
 const CREMATORIA_BG =
   "https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&w=2400&q=75";
+
+// Background image for the Useful Guides section — bright English countryside
+const USEFUL_GUIDES_BG =
+  "https://images.unsplash.com/photo-1500964757637-c85e8a162699?auto=format&fit=crop&w=2400&q=75";
 
 interface LocationPageProps {
   data: LocationData;
@@ -229,20 +233,20 @@ export function LocationPage({ data }: LocationPageProps) {
 
       {/* LOCAL CREMATORIA — animated cards, lifted, with bg image */}
       <section id="crematoria" className="relative scroll-mt-24 overflow-hidden border-b border-ink-100">
-        {/* Background image */}
+        {/* Background image — DARK overlay so headings read as white */}
         <div className="absolute inset-0 z-0">
           <Image src={CREMATORIA_BG} alt="" fill sizes="100vw" className="object-cover" />
-          <div className="absolute inset-0 bg-paper/88"></div>
+          <div className="absolute inset-0 bg-sage-900/80"></div>
         </div>
 
         <div className="relative z-10 container-page py-14 md:py-20">
           <div className="max-w-narrow mb-10 md:mb-12">
-            <p className="text-sm uppercase tracking-[0.2em] text-cta mb-4 font-semibold">
+            <p className="text-sm uppercase tracking-[0.2em] text-coral-300 mb-4 font-semibold">
               Local crematoria
             </p>
-            <h2 className="mb-4 balance">The crematoria we use across {data.region}</h2>
+            <h2 className="text-paper mb-4 balance">The crematoria we use across {data.region}</h2>
             {data.crematoriaIntro && (
-              <p className="text-lg text-ink-700 leading-relaxed pretty">{data.crematoriaIntro}</p>
+              <p className="text-lg text-paper/85 leading-relaxed pretty">{data.crematoriaIntro}</p>
             )}
           </div>
 
@@ -267,7 +271,7 @@ export function LocationPage({ data }: LocationPageProps) {
             ))}
           </div>
 
-          <p className="text-sm text-ink-500 mt-8 italic max-w-prose">
+          <p className="text-sm text-paper/70 mt-8 italic max-w-prose">
             The exact crematorium used depends on the area of {data.region} you&rsquo;re in, and on
             availability. The local funeral director arranges this directly and tells you the date and
             time in advance.
@@ -409,20 +413,24 @@ export function LocationPage({ data }: LocationPageProps) {
 
       {/* CORONER */}
       <section id="coroner" className="container-page py-14 md:py-20 scroll-mt-24">
-        <div className="max-w-prose mx-auto">
-          <p className="text-sm uppercase tracking-[0.2em] text-cta mb-4 font-semibold">
-            When the coroner is involved
-          </p>
-          <h2 className="mb-6 balance">If the death has been referred to the coroner</h2>
-          <div className="prose-content">
-            {data.coronerNotes.map((para, i) => (
-              <p key={i}>{para}</p>
-            ))}
-            <p>
-              <Link href={coronerLink} className="font-medium">
-                Read more about the coroner&rsquo;s role &rarr;
-              </Link>
+        <div className="grid md:grid-cols-12 gap-6 md:gap-12">
+          <div className="md:col-span-4">
+            <p className="text-sm uppercase tracking-[0.2em] text-cta mb-4 font-semibold">
+              When the coroner is involved
             </p>
+            <h2 className="mb-0 balance">If the death has been referred to the coroner</h2>
+          </div>
+          <div className="md:col-span-8">
+            <div className="prose-content text-[17px] md:text-lg">
+              {data.coronerNotes.map((para, i) => (
+                <p key={i}>{para}</p>
+              ))}
+              <p>
+                <Link href={coronerLink} className="font-medium">
+                  Read more about the coroner&rsquo;s role &rarr;
+                </Link>
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -481,20 +489,24 @@ export function LocationPage({ data }: LocationPageProps) {
 
       {/* HELP WITH FUNERAL COSTS */}
       <section id="funding" className="container-page py-14 md:py-20 scroll-mt-24">
-        <div className="max-w-prose mx-auto">
-          <p className="text-sm uppercase tracking-[0.2em] text-cta mb-4 font-semibold">
-            Help with funeral costs
-          </p>
-          <h2 className="mb-6 balance">If you&rsquo;re worried about the cost</h2>
-          <div className="prose-content">
-            {data.fundingHelp.map((para, i) => (
-              <p key={i}>{para}</p>
-            ))}
-            <p className="text-sm text-ink-500 italic">
-              We&rsquo;re not financial advisors and can&rsquo;t make benefit applications on your
-              behalf, but the team is happy to talk you through what&rsquo;s available before you commit
-              to anything.
+        <div className="grid md:grid-cols-12 gap-6 md:gap-12">
+          <div className="md:col-span-4">
+            <p className="text-sm uppercase tracking-[0.2em] text-cta mb-4 font-semibold">
+              Help with funeral costs
             </p>
+            <h2 className="mb-0 balance">If you&rsquo;re worried about the cost</h2>
+          </div>
+          <div className="md:col-span-8">
+            <div className="prose-content text-[17px] md:text-lg">
+              {data.fundingHelp.map((para, i) => (
+                <p key={i}>{para}</p>
+              ))}
+              <p className="text-sm text-ink-500 italic">
+                We&rsquo;re not financial advisors and can&rsquo;t make benefit applications on your
+                behalf, but the team is happy to talk you through what&rsquo;s available before you commit
+                to anything.
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -530,9 +542,13 @@ export function LocationPage({ data }: LocationPageProps) {
         </div>
       </section>
 
-      {/* USEFUL GUIDES — cross-links into core content */}
-      <section className="container-page py-14 md:py-20">
-        <div className="max-w-page mx-auto">
+      {/* USEFUL GUIDES — cross-links into core content, image background */}
+      <section className="relative scroll-mt-24 overflow-hidden border-y border-ink-100">
+        <div className="absolute inset-0 z-0">
+          <Image src={USEFUL_GUIDES_BG} alt="" fill sizes="100vw" className="object-cover" />
+          <div className="absolute inset-0 bg-paper-warm/92"></div>
+        </div>
+        <div className="relative z-10 container-page py-14 md:py-20">
           <div className="max-w-narrow mb-10">
             <p className="text-sm uppercase tracking-[0.2em] text-cta mb-4 font-semibold">
               Read more
