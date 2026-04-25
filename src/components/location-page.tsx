@@ -212,9 +212,14 @@ export function LocationPage({ data }: LocationPageProps) {
                 your loved one is at home, in a care home or hospice in {data.city} or anywhere in {data.region}.
                 This is always explained clearly before anything happens.
               </p>
-              <Link href="/prices" className="font-medium">
-                See full price list &rarr;
-              </Link>
+              <div className="flex flex-wrap gap-x-6 gap-y-2">
+                <Link href="/prices" className="font-medium">
+                  See full price list &rarr;
+                </Link>
+                <Link href="/whats-included" className="font-medium">
+                  What&rsquo;s included &rarr;
+                </Link>
+              </div>
             </div>
           </div>
         </div>
@@ -519,6 +524,103 @@ export function LocationPage({ data }: LocationPageProps) {
                 </details>
               ))}
             </dl>
+          </div>
+        </div>
+      </section>
+
+      {/* USEFUL GUIDES — cross-links into core content */}
+      <section className="container-page py-14 md:py-20">
+        <div className="max-w-page mx-auto">
+          <div className="max-w-narrow mb-10">
+            <p className="text-sm uppercase tracking-[0.2em] text-cta mb-4 font-semibold">
+              Read more
+            </p>
+            <h2 className="mb-4 balance">Useful guides</h2>
+            <p className="text-lg text-ink-700 leading-relaxed pretty">
+              If you&rsquo;d like to read more about how a basic cremation works, what your price
+              covers, or what to do in the days after someone has died, these guides are written in
+              plain English.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
+            <Link
+              href="/what-is-a-basic-cremation"
+              className="bg-paper border border-sage-200 rounded-xl p-6 md:p-7 hover:shadow-card hover:-translate-y-0.5 hover:border-sage-300 transition-all no-underline"
+            >
+              <h3 className="text-xl font-serif text-ink-900 mb-2 leading-snug">
+                What is a basic cremation?
+              </h3>
+              <p className="text-ink-700 text-[15px] leading-relaxed">
+                How it works, why families choose it, and how it differs from a traditional funeral.
+              </p>
+              <p className="mt-4 text-cta text-sm font-semibold">Read more &rarr;</p>
+            </Link>
+
+            <Link
+              href="/whats-included"
+              className="bg-paper border border-sage-200 rounded-xl p-6 md:p-7 hover:shadow-card hover:-translate-y-0.5 hover:border-sage-300 transition-all no-underline"
+            >
+              <h3 className="text-xl font-serif text-ink-900 mb-2 leading-snug">
+                What&rsquo;s included
+              </h3>
+              <p className="text-ink-700 text-[15px] leading-relaxed">
+                Every item your &pound;{siteConfig.basePrice.toLocaleString()} price covers &mdash; and what it doesn&rsquo;t.
+              </p>
+              <p className="mt-4 text-cta text-sm font-semibold">Read more &rarr;</p>
+            </Link>
+
+            <Link
+              href="/prices"
+              className="bg-paper border border-sage-200 rounded-xl p-6 md:p-7 hover:shadow-card hover:-translate-y-0.5 hover:border-sage-300 transition-all no-underline"
+            >
+              <h3 className="text-xl font-serif text-ink-900 mb-2 leading-snug">
+                Prices
+              </h3>
+              <p className="text-ink-700 text-[15px] leading-relaxed">
+                The full all-inclusive price, optional priority care, and help with costs.
+              </p>
+              <p className="mt-4 text-cta text-sm font-semibold">Read more &rarr;</p>
+            </Link>
+
+            <Link
+              href="/help-and-advice/what-to-do-when-someone-dies"
+              className="bg-paper border border-sage-200 rounded-xl p-6 md:p-7 hover:shadow-card hover:-translate-y-0.5 hover:border-sage-300 transition-all no-underline"
+            >
+              <h3 className="text-xl font-serif text-ink-900 mb-2 leading-snug">
+                When someone dies
+              </h3>
+              <p className="text-ink-700 text-[15px] leading-relaxed">
+                The practical first steps in the first 24 to 72 hours, depending on where the death took place.
+              </p>
+              <p className="mt-4 text-cta text-sm font-semibold">Read the guide &rarr;</p>
+            </Link>
+
+            <Link
+              href="/help-and-advice"
+              className="bg-paper border border-sage-200 rounded-xl p-6 md:p-7 hover:shadow-card hover:-translate-y-0.5 hover:border-sage-300 transition-all no-underline"
+            >
+              <h3 className="text-xl font-serif text-ink-900 mb-2 leading-snug">
+                Help &amp; advice
+              </h3>
+              <p className="text-ink-700 text-[15px] leading-relaxed">
+                Registering a death, when the coroner is involved, and other practical guides.
+              </p>
+              <p className="mt-4 text-cta text-sm font-semibold">All guides &rarr;</p>
+            </Link>
+
+            <Link
+              href="/faqs"
+              className="bg-paper border border-sage-200 rounded-xl p-6 md:p-7 hover:shadow-card hover:-translate-y-0.5 hover:border-sage-300 transition-all no-underline"
+            >
+              <h3 className="text-xl font-serif text-ink-900 mb-2 leading-snug">
+                Common questions
+              </h3>
+              <p className="text-ink-700 text-[15px] leading-relaxed">
+                The questions families most often ask before arranging a basic cremation.
+              </p>
+              <p className="mt-4 text-cta text-sm font-semibold">FAQs &rarr;</p>
+            </Link>
           </div>
         </div>
       </section>
