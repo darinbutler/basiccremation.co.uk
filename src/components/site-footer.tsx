@@ -31,7 +31,7 @@ export function SiteFooter() {
 
       {/* Main footer columns */}
       <div className="container-page py-12 md:py-14">
-        <div className="grid md:grid-cols-4 gap-8 md:gap-10 mb-10">
+        <div className="grid md:grid-cols-4 gap-8 md:gap-10 mb-12">
           <div className="md:col-span-1">
             <div className="mb-3">
               <Logo variant="light" size="md" />
@@ -87,8 +87,8 @@ export function SiteFooter() {
           ))}
         </div>
 
-        {/* Disclaimer block */}
-        <div className="border-t border-sage-700 pt-8 space-y-4 text-xs text-paper/60 leading-relaxed max-w-prose">
+        {/* Disclaimer block — full width within container */}
+        <div className="border-t border-sage-700 pt-8 grid md:grid-cols-3 gap-6 md:gap-10 text-xs text-paper/60 leading-relaxed">
           <div>
             <p className="font-semibold text-paper/90 mb-2 uppercase tracking-wider text-[11px]">
               How this site works
@@ -101,14 +101,27 @@ export function SiteFooter() {
               the prices you pay or the information presented on this site.
             </p>
           </div>
-          <p>
-            The information on this site is intended as general guidance for families arranging a cremation in England,
-            Scotland or Wales. Prices and inclusions are accurate at the time of publication; please confirm the latest
-            details with the team by phone. We do not provide regulated financial or legal advice and we do not sell
-            pre-paid funeral plans.
-          </p>
-          <p className="pt-2">&copy; {new Date().getFullYear()} Basic Cremation. All rights reserved.</p>
+          <div>
+            <p className="font-semibold text-paper/90 mb-2 uppercase tracking-wider text-[11px]">
+              Information accuracy
+            </p>
+            <p>
+              The information on this site is intended as general guidance for families arranging a cremation in England,
+              Scotland or Wales. Prices and inclusions are accurate at the time of publication; please confirm the latest
+              details with the team by phone.
+            </p>
+          </div>
+          <div>
+            <p className="font-semibold text-paper/90 mb-2 uppercase tracking-wider text-[11px]">
+              What we don&rsquo;t do
+            </p>
+            <p>
+              We do not provide regulated financial or legal advice. We do not sell pre-paid funeral plans. Any contract
+              for cremation services is between you and the service provider you reach by phone.
+            </p>
+          </div>
         </div>
+        <p className="text-xs text-paper/50 mt-8 pt-4 border-t border-sage-700/50">&copy; {new Date().getFullYear()} Basic Cremation. All rights reserved.</p>
       </div>
     </footer>
   );

@@ -5,20 +5,15 @@ import { Logo } from "@/components/logo";
 export function SiteHeader() {
   return (
     <>
-      {/* Trust strip — quiet reassurance, no phone duplication */}
-      <div className="bg-sage-800 text-paper py-2.5 text-[13px]">
-        <div className="container-page flex items-center justify-between gap-4 flex-wrap">
-          <div className="flex items-center gap-5 text-paper/85">
-            <span className="inline-flex items-center gap-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-coral-300 animate-pulse" aria-hidden></span>
-              <span>Available 24 hours, 7 days a week</span>
-            </span>
-            <span className="hidden md:inline opacity-70">|</span>
-            <span className="hidden md:inline">Trusted local funeral directors</span>
-          </div>
-          <span className="hidden lg:inline text-paper/70 text-[12px]">
-            England · Scotland · Wales
+      {/* Trust strip — centred, prominent, just availability + accreditation */}
+      <div className="bg-sage-800 text-paper py-3 text-sm md:text-[15px]">
+        <div className="container-page flex items-center justify-center gap-3 md:gap-6 flex-wrap text-center">
+          <span className="inline-flex items-center gap-2 font-medium">
+            <span className="w-1.5 h-1.5 rounded-full bg-coral-300 animate-pulse" aria-hidden></span>
+            <span>Available 24 hours, 7 days a week</span>
           </span>
+          <span className="hidden md:inline opacity-50" aria-hidden>·</span>
+          <span className="font-medium">Trusted local funeral directors</span>
         </div>
       </div>
 
@@ -28,28 +23,16 @@ export function SiteHeader() {
           <Logo size="md" />
 
           <nav className="hidden lg:flex items-center gap-7 text-[15px]">
-            <Link
-              href="/what-is-a-basic-cremation"
-              className="text-ink-700 no-underline hover:text-cta transition-colors"
-            >
+            <Link href="/what-is-a-basic-cremation" className="text-ink-700 no-underline hover:text-cta transition-colors">
               What is a basic cremation
             </Link>
-            <Link
-              href="/prices"
-              className="text-ink-700 no-underline hover:text-cta transition-colors"
-            >
+            <Link href="/prices" className="text-ink-700 no-underline hover:text-cta transition-colors">
               Prices
             </Link>
-            <Link
-              href="/help-and-advice"
-              className="text-ink-700 no-underline hover:text-cta transition-colors"
-            >
+            <Link href="/help-and-advice" className="text-ink-700 no-underline hover:text-cta transition-colors">
               Help &amp; advice
             </Link>
-            <Link
-              href="/locations"
-              className="text-ink-700 no-underline hover:text-cta transition-colors"
-            >
+            <Link href="/locations" className="text-ink-700 no-underline hover:text-cta transition-colors">
               Locations
             </Link>
           </nav>
