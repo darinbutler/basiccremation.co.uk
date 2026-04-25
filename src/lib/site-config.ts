@@ -8,7 +8,9 @@ export const siteConfig = {
     "Information and arrangement help for families needing a basic cremation in England, Scotland and Wales. Available 24 hours a day.",
   basePrice: 1499,
   priorityCarePrice: 250,
-  // The Tier 1 location set used in nav, sitemap, and location index pages
+  // The Tier 1 location set used in nav, sitemap, and location index pages.
+  // Top 10 by population first, then remainder. Welsh additions (Cardiff,
+  // Swansea, Newport, Wrexham) added 2026-04-26.
   tier1Locations: [
     "london",
     "birmingham",
@@ -17,6 +19,7 @@ export const siteConfig = {
     "liverpool",
     "sheffield",
     "bristol",
+    "cardiff",
     "newcastle",
     "nottingham",
     "leicester",
@@ -42,6 +45,9 @@ export const siteConfig = {
     "bournemouth",
     "southend",
     "oxford",
-    "cambridge"
+    "cambridge",
+    "swansea",
+    "newport",
+    "wrexham"
   ]
 };
