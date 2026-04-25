@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 const INCLUDED = [
   { title: "A local funeral director", body: "An independent, NAFD- or SAIF-accredited funeral director near you takes care of every step. They look after your loved one in their own funeral home — not in a central facility hours away." },
-  { title: "Collection from the place of death", body: "We collect from a hospital, hospice, nursing home, or your home, anywhere in mainland England and Wales. Collection within one to two working days is included; faster collection is available with our optional priority care." },
+  { title: "Collection from the place of death", body: "Collection from a hospital or coroner&rsquo;s mortuary is included in the £1,499 price. Collection from a home, hospice, or care/nursing home requires a £250 Priority Care fee on top of the base price &mdash; total £1,749 in those cases. Either way, this is explained on the phone, never added at the door." },
   { title: "Care and preparation", body: "Your loved one is washed, dressed in their own clothes if you wish, and looked after with dignity until the day of the cremation. Embalming is not included and not normally needed for a basic cremation." },
   { title: "A simple, dignified coffin", body: "A coffin suitable for cremation, with the necessary handles and lining. There is no &lsquo;upgrade&rsquo; charge — the coffin we use is the coffin in your price." },
   { title: "Transport to the crematorium", body: "Transport in a private ambulance from the funeral home to the crematorium on the day of the cremation. There is no procession, no hearse cortège — this is a direct, unattended cremation." },

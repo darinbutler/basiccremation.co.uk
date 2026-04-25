@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import type { Metadata } from "next";
 import { siteConfig } from "@/lib/site-config";
 import { PhoneCTA } from "@/components/phone-cta";
@@ -8,19 +9,48 @@ export const metadata: Metadata = {
   description: "Step-by-step guide to registering a death in England or Wales — who registers, when, what to bring, and what documents you receive."
 };
 
+const HERO_IMAGE =
+  "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=2400&q=75";
+
 export default function RegisterEWPage() {
   return (
     <>
-      <section className="bg-paper-warm border-b border-ink-100">
-        <div className="container-page py-14 md:py-20">
-          <div className="max-w-3xl">
-            <p className="text-sm uppercase tracking-[0.2em] text-cta mb-4 font-semibold">Help &amp; advice</p>
-            <h1 className="mb-5 balance">Registering a death in England or Wales.</h1>
-            <p className="text-lg text-ink-700 leading-relaxed pretty">
+      {/* HERO */}
+      <section className="relative bg-hero-fallback">
+        <div className="absolute inset-0 z-0">
+          <Image src={HERO_IMAGE} alt="" fill sizes="100vw" priority className="object-cover" />
+          <div className="absolute inset-0 scrim-down-dark"></div>
+          <div className="absolute inset-0 scrim-left-light md:bg-gradient-to-r md:from-paper/90 md:via-paper/60 md:to-transparent"></div>
+        </div>
+        <div className="relative z-10 container-page py-16 md:py-24">
+          <div className="max-w-2xl">
+            <p className="text-sm uppercase tracking-[0.2em] text-cta mb-5 font-semibold">Help &amp; advice</p>
+            <h1 className="mb-6 balance">Registering a death in England or Wales.</h1>
+            <p className="text-lg md:text-xl text-ink-700 leading-relaxed pretty">
               The death must be registered with the local register office within five days
               (eight days in some cases). This guide walks through who registers, where, what
               to bring, and the documents you&rsquo;ll receive.
             </p>
+          </div>
+        </div>
+      </section>
+
+      {/* AT-A-GLANCE strip */}
+      <section className="bg-paper-warm border-b border-ink-100">
+        <div className="container-page py-5 md:py-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8 text-sm md:text-[15px]">
+            <div className="flex items-center gap-2.5 text-ink-700">
+              <svg className="w-4 h-4 text-cta flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24" aria-hidden><path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+              <span>Within <strong>5 days</strong> (8 if a coroner&rsquo;s involved)</span>
+            </div>
+            <div className="flex items-center gap-2.5 text-ink-700">
+              <svg className="w-4 h-4 text-cta flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24" aria-hidden><path strokeLinecap="round" strokeLinejoin="round" d="M17.7 14.7A8 8 0 1 0 6.3 14.7l5.7 6.3 5.7-6.3z" /><circle cx="12" cy="11" r="2.5" /></svg>
+              <span>Local register office &mdash; <strong>book online</strong></span>
+            </div>
+            <div className="flex items-center gap-2.5 text-ink-700">
+              <svg className="w-4 h-4 text-cta flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24" aria-hidden><path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.6 4a8 8 0 11-16 0 8 8 0 0116 0z" /></svg>
+              <span>Bring no MCCD &mdash; <strong>sent electronically</strong> by the doctor</span>
+            </div>
           </div>
         </div>
       </section>

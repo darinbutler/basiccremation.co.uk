@@ -65,19 +65,22 @@ export default function PricesPage() {
           </div>
 
           <div className="bg-sage-50 border border-sage-200 rounded-2xl p-7 md:p-8">
-            <h3 className="mb-4">Optional priority care</h3>
+            <h3 className="mb-4">Priority Care collection</h3>
             <p className="prose-content mb-5">
-              If you would like your loved one to be collected within hours rather than within
-              one to two working days, we offer a priority care service.
+              The £{siteConfig.basePrice.toLocaleString()} price covers collection from a hospital or
+              coroner&rsquo;s mortuary. Collection from a home, hospice or care/nursing home
+              requires a Priority Care fee on top.
             </p>
             <div className="flex items-baseline justify-between border-t border-sage-200 pt-4">
-              <span className="text-base text-ink-700">Priority care</span>
+              <span className="text-base text-ink-700">Priority Care</span>
               <span className="text-2xl font-serif text-ink-900">
                 +£{siteConfig.priorityCarePrice}
               </span>
             </div>
             <p className="text-sm text-ink-500 mt-2">
-              Added to the £{siteConfig.basePrice.toLocaleString()} base price. Optional &mdash; not required.
+              Required when collection is not from a hospital or coroner&rsquo;s mortuary.
+              Total in those cases: £{(siteConfig.basePrice + siteConfig.priorityCarePrice).toLocaleString()}.
+              Always explained on the phone, never added at the door.
             </p>
           </div>
         </div>
@@ -100,7 +103,7 @@ export default function PricesPage() {
           <div className="grid md:grid-cols-2 gap-4 max-w-3xl">
             {[
               "Hidden funeral director fees",
-              "Collection charges within mainland England and Wales",
+              "Collection from hospital or coroner&rsquo;s mortuary (Priority Care fee applies for home/care home/hospice)",
               "Coffin upgrade or &lsquo;premium&rsquo; coffin fees",
               "Embalming or preparation charges",
               "Chapel of rest, viewing or service fees",

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import type { Metadata } from "next";
 import { siteConfig } from "@/lib/site-config";
 import { PhoneCTA } from "@/components/phone-cta";
@@ -8,20 +9,49 @@ export const metadata: Metadata = {
   description: "What it means when a death is referred to the coroner (England, Wales, NI) or Procurator Fiscal (Scotland), how long it takes, and how it affects the cremation."
 };
 
+const HERO_IMAGE =
+  "https://images.unsplash.com/photo-1499002238440-d264edd596ec?auto=format&fit=crop&w=2400&q=75";
+
 export default function CoronerPFPage() {
   return (
     <>
-      <section className="bg-paper-warm border-b border-ink-100">
-        <div className="container-page py-14 md:py-20">
-          <div className="max-w-3xl">
-            <p className="text-sm uppercase tracking-[0.2em] text-cta mb-4 font-semibold">Help &amp; advice</p>
-            <h1 className="mb-5 balance">When the coroner or Procurator Fiscal is involved.</h1>
-            <p className="text-lg text-ink-700 leading-relaxed pretty">
+      {/* HERO */}
+      <section className="relative bg-hero-fallback">
+        <div className="absolute inset-0 z-0">
+          <Image src={HERO_IMAGE} alt="" fill sizes="100vw" priority className="object-cover" />
+          <div className="absolute inset-0 scrim-down-dark"></div>
+          <div className="absolute inset-0 scrim-left-light md:bg-gradient-to-r md:from-paper/90 md:via-paper/60 md:to-transparent"></div>
+        </div>
+        <div className="relative z-10 container-page py-16 md:py-24">
+          <div className="max-w-2xl">
+            <p className="text-sm uppercase tracking-[0.2em] text-cta mb-5 font-semibold">Help &amp; advice</p>
+            <h1 className="mb-6 balance">When the coroner or Procurator Fiscal is involved.</h1>
+            <p className="text-lg md:text-xl text-ink-700 leading-relaxed pretty">
               Some deaths must be reported to the coroner (in England and Wales) or the Procurator
               Fiscal (in Scotland) before the family can take any next step. This is normal &mdash;
               it doesn&rsquo;t mean anyone has done anything wrong &mdash; but it does change the
               timing of the cremation.
             </p>
+          </div>
+        </div>
+      </section>
+
+      {/* AT-A-GLANCE strip */}
+      <section className="bg-paper-warm border-b border-ink-100">
+        <div className="container-page py-5 md:py-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8 text-sm md:text-[15px]">
+            <div className="flex items-center gap-2.5 text-ink-700">
+              <svg className="w-4 h-4 text-cta flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24" aria-hidden><path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+              <span>Most cases resolved in <strong>1&ndash;3 days</strong></span>
+            </div>
+            <div className="flex items-center gap-2.5 text-ink-700">
+              <svg className="w-4 h-4 text-cta flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24" aria-hidden><path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.6 4a8 8 0 11-16 0 8 8 0 0116 0z" /></svg>
+              <span><strong>No change</strong> to the £{siteConfig.basePrice.toLocaleString()} cremation price</span>
+            </div>
+            <div className="flex items-center gap-2.5 text-ink-700">
+              <svg className="w-4 h-4 text-cta flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24" aria-hidden><path strokeLinecap="round" strokeLinejoin="round" d="M9 7h6m-6 5h6m-6 5h4M5 5a2 2 0 012-2h10a2 2 0 012 2v14a2 2 0 01-2 2H7a2 2 0 01-2-2V5z" /></svg>
+              <span>We <strong>handle the paperwork</strong> with the coroner&rsquo;s office</span>
+            </div>
           </div>
         </div>
       </section>
@@ -77,7 +107,7 @@ export default function CoronerPFPage() {
               The funeral director cannot collect from the place of death until the coroner&rsquo;s
               office (or Procurator Fiscal&rsquo;s office) releases your loved one. Once they do,
               everything proceeds as normal &mdash; the £{siteConfig.basePrice.toLocaleString()}{" "}
-              price doesn&rsquo;t change because of coroner involvement.
+              base price doesn&rsquo;t change because of coroner involvement.
             </p>
             <p>
               In some cases, the coroner may require additional cremation paperwork (a coroner&rsquo;s

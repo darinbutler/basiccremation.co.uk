@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import type { Metadata } from "next";
 import { siteConfig } from "@/lib/site-config";
 import { PhoneCTA } from "@/components/phone-cta";
@@ -8,19 +9,48 @@ export const metadata: Metadata = {
   description: "Step-by-step guidance for the first 24 to 72 hours after someone has died — at home, in hospital, in a care home, or unexpectedly."
 };
 
+const HERO_IMAGE =
+  "https://images.unsplash.com/photo-1500964757637-c85e8a162699?auto=format&fit=crop&w=2400&q=75";
+
 export default function WhatToDoPage() {
   return (
     <>
-      <section className="bg-paper-warm border-b border-ink-100">
-        <div className="container-page py-14 md:py-20">
-          <div className="max-w-3xl">
-            <p className="text-sm uppercase tracking-[0.2em] text-cta mb-4 font-semibold">Help &amp; advice</p>
-            <h1 className="mb-5 balance">What to do when someone has died.</h1>
-            <p className="text-lg text-ink-700 leading-relaxed pretty">
+      {/* HERO */}
+      <section className="relative bg-hero-fallback">
+        <div className="absolute inset-0 z-0">
+          <Image src={HERO_IMAGE} alt="" fill sizes="100vw" priority className="object-cover" />
+          <div className="absolute inset-0 scrim-down-dark"></div>
+          <div className="absolute inset-0 scrim-left-light md:bg-gradient-to-r md:from-paper/90 md:via-paper/60 md:to-transparent"></div>
+        </div>
+        <div className="relative z-10 container-page py-16 md:py-24">
+          <div className="max-w-2xl">
+            <p className="text-sm uppercase tracking-[0.2em] text-cta mb-5 font-semibold">Help &amp; advice</p>
+            <h1 className="mb-6 balance">What to do when someone has died.</h1>
+            <p className="text-lg md:text-xl text-ink-700 leading-relaxed pretty">
               The first few hours and days after a death are practical as much as emotional. This
               guide walks through what needs to happen and roughly when &mdash; depending on where
               the death took place.
             </p>
+          </div>
+        </div>
+      </section>
+
+      {/* AT-A-GLANCE strip */}
+      <section className="bg-paper-warm border-b border-ink-100">
+        <div className="container-page py-5 md:py-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8 text-sm md:text-[15px]">
+            <div className="flex items-center gap-2.5 text-ink-700">
+              <svg className="w-4 h-4 text-cta flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24" aria-hidden><path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+              <span><strong>Stop.</strong> Most things can wait the first few hours</span>
+            </div>
+            <div className="flex items-center gap-2.5 text-ink-700">
+              <svg className="w-4 h-4 text-cta flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24" aria-hidden><path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.6 4a8 8 0 11-16 0 8 8 0 0116 0z" /></svg>
+              <span>If unexpected, call <strong>999</strong>; otherwise the GP or hospice</span>
+            </div>
+            <div className="flex items-center gap-2.5 text-ink-700">
+              <svg className="w-4 h-4 text-cta flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24" aria-hidden><path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 0 1 2-2h2.28a2 2 0 0 1 1.94 1.515l.7 2.808a2 2 0 0 1-.45 1.9L8.09 10.91a16 16 0 0 0 6 6l1.687-1.38a2 2 0 0 1 1.9-.45l2.808.7A2 2 0 0 1 22 17.72V20a2 2 0 0 1-2 2h-1C9.954 22 2 14.046 2 4V3z" /></svg>
+              <span>Then call us &mdash; we coordinate the rest</span>
+            </div>
           </div>
         </div>
       </section>

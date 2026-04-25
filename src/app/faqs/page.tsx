@@ -16,7 +16,7 @@ const FAQS: { q: string; a: string }[] = [
   { q: "Can family attend the cremation?",
     a: `A basic cremation is unattended — there is no service at the crematorium and no procession. Most families instead hold a separate gathering or memorial in their own time, often weeks or months later, somewhere meaningful to them.` },
   { q: "How quickly can you collect my loved one?",
-    a: `We collect within one to two working days as standard. If you would like collection within hours, our optional priority care service is +£${siteConfig.priorityCarePrice}. Either way, until we collect, your loved one is being looked after by the hospital, hospice, or care home where they died.` },
+    a: `We collect within one to two working days as standard. If your loved one is at a hospital or coroner's mortuary, collection is included in the £${siteConfig.basePrice.toLocaleString()} price. If they are at a home, hospice, or care/nursing home, a £${siteConfig.priorityCarePrice} Priority Care collection fee applies (because home collections are arranged on shorter notice) — total £${(siteConfig.basePrice + siteConfig.priorityCarePrice).toLocaleString()}. Either way, this is explained when you call, never added retrospectively.` },
   { q: "How long does the whole process take?",
     a: `Most basic cremations are completed within one to three weeks of the call, depending on how quickly the death is registered, whether a coroner is involved, and the local crematorium&rsquo;s availability. We keep you informed at each step.` },
   { q: "Do you cover my area?",

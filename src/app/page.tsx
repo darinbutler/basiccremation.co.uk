@@ -118,7 +118,7 @@ export default function HomePage() {
             },
             {
               title: "One clear price",
-              body: `£${siteConfig.basePrice.toLocaleString()} covers everything you need. The only optional fee is £${siteConfig.priorityCarePrice} for collection from a home, care home or hospice — explained upfront.`,
+              body: `£${siteConfig.basePrice.toLocaleString()} covers everything you need. Collection from a hospital or coroner's mortuary is included. Collection from a home, hospice or care home requires a £${siteConfig.priorityCarePrice} Priority Care fee, explained upfront.`,
               icon: (
                 <svg fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 48 48">
                   <circle cx="24" cy="24" r="18" strokeLinecap="round"/>
@@ -230,10 +230,11 @@ export default function HomePage() {
               </ul>
             </div>
             <p className="text-ink-700 mb-4">
-              The only additional fee that may apply is a{" "}
-              <strong>&pound;{siteConfig.priorityCarePrice} Priority Care collection</strong> charge
-              if your loved one is at home, in a care home or hospice. This is always explained clearly
-              before anything happens.
+              The £{siteConfig.basePrice.toLocaleString()} price covers collection from a hospital or coroner&rsquo;s mortuary.
+              Collection from a home, hospice or care home requires a{" "}
+              <strong>&pound;{siteConfig.priorityCarePrice} Priority Care collection</strong> fee &mdash; making
+              the total £{(siteConfig.basePrice + siteConfig.priorityCarePrice).toLocaleString()}. This is always explained clearly
+              before anything happens, never added retrospectively.
             </p>
             <Link href="/prices" className="font-medium">
               See full price list &rarr;

@@ -13,7 +13,10 @@ export function SiteHeader() {
             <span>Available 24 hours, 7 days a week</span>
           </span>
           <span className="hidden md:inline opacity-50" aria-hidden>·</span>
-          <span className="font-medium">Trusted local funeral directors</span>
+          <span className="inline-flex items-center gap-2 font-medium">
+            <span className="w-1.5 h-1.5 rounded-full bg-coral-300 animate-pulse" aria-hidden></span>
+            <span>Trusted local funeral directors</span>
+          </span>
         </div>
       </div>
 

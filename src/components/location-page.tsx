@@ -207,10 +207,12 @@ export function LocationPage({ data }: LocationPageProps) {
                 </ul>
               </div>
               <p className="text-ink-700 mb-4">
-                The only additional fee that may apply is a{" "}
-                <strong>&pound;{siteConfig.priorityCarePrice} Priority Care collection</strong> charge if
-                your loved one is at home, in a care home or hospice in {data.city} or anywhere in {data.region}.
-                This is always explained clearly before anything happens.
+                The £{siteConfig.basePrice.toLocaleString()} price covers collection from a hospital or
+                coroner&rsquo;s mortuary. Collection from a home, care home or hospice in {data.city} or
+                anywhere in {data.region} requires a{" "}
+                <strong>&pound;{siteConfig.priorityCarePrice} Priority Care collection</strong> fee &mdash;
+                making the total £{(siteConfig.basePrice + siteConfig.priorityCarePrice).toLocaleString()}.
+                Always explained on the phone before anything happens, never added afterwards.
               </p>
               <div className="flex flex-wrap gap-x-6 gap-y-2">
                 <Link href="/prices" className="font-medium">
@@ -578,7 +580,7 @@ export function LocationPage({ data }: LocationPageProps) {
                 Prices
               </h3>
               <p className="text-ink-700 text-[15px] leading-relaxed">
-                The full all-inclusive price, optional priority care, and help with costs.
+                The full price, Priority Care collection fee, and help with funeral costs.
               </p>
               <p className="mt-4 text-cta text-sm font-semibold">Read more &rarr;</p>
             </Link>
