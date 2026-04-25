@@ -1,12 +1,13 @@
 import Link from "next/link";
 import { siteConfig } from "@/lib/site-config";
+import { Logo } from "@/components/logo";
 
 export function SiteFooter() {
   return (
     <footer className="bg-sage-800 text-paper mt-20">
       {/* Top CTA strip */}
       <div className="border-b border-sage-700">
-        <div className="container-page py-12 md:py-16 grid md:grid-cols-2 gap-8 md:items-center">
+        <div className="container-page py-12 md:py-14 grid md:grid-cols-2 gap-8 md:items-center">
           <div>
             <h3 className="text-paper mb-2">Need help arranging a cremation?</h3>
             <p className="text-paper/80 leading-relaxed">
@@ -18,7 +19,7 @@ export function SiteFooter() {
               href={`tel:${siteConfig.phoneTel}`}
               className="inline-flex items-center gap-3 bg-paper hover:bg-paper-warm text-cta px-6 py-4 rounded-md no-underline hover:no-underline font-medium transition-colors"
             >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" aria-hidden>
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24" aria-hidden>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 0 1 2-2h2.28a2 2 0 0 1 1.94 1.515l.7 2.808a2 2 0 0 1-.45 1.9L8.09 10.91a16 16 0 0 0 6 6l1.687-1.38a2 2 0 0 1 1.9-.45l2.808.7A2 2 0 0 1 22 17.72V20a2 2 0 0 1-2 2h-1C9.954 22 2 14.046 2 4V3z"/>
               </svg>
               <span className="font-serif text-2xl">{siteConfig.phone}</span>
@@ -29,79 +30,61 @@ export function SiteFooter() {
       </div>
 
       {/* Main footer columns */}
-      <div className="container-page py-12 md:py-16">
-        <div className="grid md:grid-cols-4 gap-8 md:gap-12 mb-12">
+      <div className="container-page py-12 md:py-14">
+        <div className="grid md:grid-cols-4 gap-8 md:gap-10 mb-10">
           <div className="md:col-span-1">
-            <Link
-              href="/"
-              className="font-serif text-2xl text-paper no-underline hover:no-underline tracking-tight inline-block mb-3"
-            >
-              Basic <span className="text-sage-300">Cremation</span>
-            </Link>
+            <div className="mb-3">
+              <Logo variant="light" size="md" />
+            </div>
             <p className="text-sm text-paper/70 leading-relaxed">
               Help arranging a simple, dignified cremation across England, Scotland and Wales.
             </p>
           </div>
 
-          <div>
-            <p className="text-sm font-semibold text-paper mb-4 uppercase tracking-wider">
-              Information
-            </p>
-            <ul className="space-y-2.5 text-sm">
-              {[
+          {[
+            {
+              heading: "Information",
+              links: [
                 ["What is a basic cremation", "/what-is-a-basic-cremation"],
                 ["Prices", "/prices"],
                 ["What's included", "/whats-included"],
                 ["FAQs", "/faqs"]
-              ].map(([label, href]) => (
-                <li key={href}>
-                  <Link href={href} className="text-paper/75 no-underline hover:text-paper hover:underline transition-colors">
-                    {label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <p className="text-sm font-semibold text-paper mb-4 uppercase tracking-wider">
-              Help &amp; advice
-            </p>
-            <ul className="space-y-2.5 text-sm">
-              {[
+              ]
+            },
+            {
+              heading: "Help & advice",
+              links: [
                 ["When someone dies", "/help-and-advice/what-to-do-when-someone-dies"],
                 ["Registering a death (E&W)", "/help-and-advice/registering-a-death-england-wales"],
                 ["Registering a death (Scotland)", "/help-and-advice/registering-a-death-scotland"],
                 ["Coroner & Procurator Fiscal", "/help-and-advice/coroner-and-procurator-fiscal"]
-              ].map(([label, href]) => (
-                <li key={href}>
-                  <Link href={href} className="text-paper/75 no-underline hover:text-paper hover:underline transition-colors">
-                    {label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <p className="text-sm font-semibold text-paper mb-4 uppercase tracking-wider">
-              Site
-            </p>
-            <ul className="space-y-2.5 text-sm">
-              {[
+              ]
+            },
+            {
+              heading: "Site",
+              links: [
                 ["All locations", "/locations"],
                 ["Contact", "/contact"],
                 ["Privacy", "/privacy"],
                 ["Terms", "/terms"]
-              ].map(([label, href]) => (
-                <li key={href}>
-                  <Link href={href} className="text-paper/75 no-underline hover:text-paper hover:underline transition-colors">
-                    {label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+              ]
+            }
+          ].map((column) => (
+            <div key={column.heading}>
+              <p className="text-sm font-semibold text-paper mb-4 uppercase tracking-wider">
+                {column.heading}
+              </p>
+              <ul className="space-y-2.5 text-sm">
+                {column.links.map(([label, href]) => (
+                  <li key={href}>
+                    <Link href={href} className="text-paper/75 no-underline hover:text-paper hover:underline transition-colors">
+                      {label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
 
         {/* Disclaimer block */}
