@@ -112,7 +112,7 @@ export default function WhatsIncludedPage() {
           <p className="text-paper/85 text-lg mb-7 max-w-xl mx-auto pretty">
             We&rsquo;re happy to walk through any of this on the phone before you commit. 24 hours a day.
           </p>
-          <PhoneCTA variant="light-on-dark" />
+          <PhoneCTA variant="light-on-image" />
         </div>
       </section>
     </>

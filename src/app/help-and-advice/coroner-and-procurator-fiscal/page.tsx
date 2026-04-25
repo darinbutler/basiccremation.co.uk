@@ -135,7 +135,7 @@ export default function CoronerPFPage() {
           <p className="text-paper/85 text-lg mb-7 max-w-xl mx-auto pretty">
             We deal with coroner and Procurator Fiscal cases regularly. Call us and we&rsquo;ll explain what to expect for your specific situation.
           </p>
-          <PhoneCTA variant="light-on-dark" />
+          <PhoneCTA variant="light-on-image" />
         </div>
       </section>
     </>

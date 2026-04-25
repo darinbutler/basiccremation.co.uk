@@ -155,7 +155,7 @@ export default function PricesPage() {
             We&rsquo;re available 24 hours a day. There&rsquo;s no obligation when you call &mdash;
             just an honest conversation about what you need.
           </p>
-          <PhoneCTA variant="light-on-dark" />
+          <PhoneCTA variant="light-on-image" />
         </div>
       </section>
     </>

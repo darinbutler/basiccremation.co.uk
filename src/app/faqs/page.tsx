@@ -83,7 +83,7 @@ export default function FaqsPage() {
           <p className="text-paper/85 text-lg mb-7 max-w-xl mx-auto pretty">
             Call any time, day or night. There&rsquo;s no obligation &mdash; we&rsquo;re happy to explain anything before you commit.
           </p>
-          <PhoneCTA variant="light-on-dark" />
+          <PhoneCTA variant="light-on-image" />
         </div>
       </section>
     </>

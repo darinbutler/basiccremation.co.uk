@@ -104,7 +104,7 @@ export default function ContactPage() {
 
       <section className="bg-sage-700 text-paper">
         <div className="container-page py-12 md:py-16 text-center">
-          <PhoneCTA variant="light-on-dark" />
+          <PhoneCTA variant="light-on-image" />
         </div>
       </section>
     </>

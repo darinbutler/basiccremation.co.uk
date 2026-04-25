@@ -164,7 +164,7 @@ export default function WhatIsBasicCremationPage() {
             If you&rsquo;re weighing up whether a basic cremation is the right choice, a five-minute
             phone call usually settles it. We&rsquo;re here 24 hours a day.
           </p>
-          <PhoneCTA variant="light-on-dark" />
+          <PhoneCTA variant="light-on-image" />
         </div>
       </section>
     </>

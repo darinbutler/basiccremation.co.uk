@@ -132,7 +132,7 @@ export default function WhatToDoPage() {
           <p className="text-paper/85 text-lg mb-7 max-w-xl mx-auto pretty">
             Every situation is different. We&rsquo;re happy to talk you through what to do next for your specific circumstances.
           </p>
-          <PhoneCTA variant="light-on-dark" />
+          <PhoneCTA variant="light-on-image" />
         </div>
       </section>
     </>

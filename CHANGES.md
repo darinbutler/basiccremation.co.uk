@@ -1,41 +1,34 @@
-# Batch 2 — Phase A: Core Content + Cross-link wiring
+# Batch 2 v3 — Phase A core content + variant fix (FULL BUNDLE)
 
-## Files in this bundle
+## What this bundle is
+Full project sync. Drops in over the entire repo. After this bundle the working tree should match the bundle exactly (apart from .git, .env.local, node_modules).
 
-### Modified
-- `src/lib/site-config.ts` — added cardiff, swansea, newport, wrexham to `tier1Locations` (now 37 cities). Cardiff promoted into Top 10 by population.
-- `src/components/location-page.tsx` — added cross-links from city pages into the new core content:
-  - In pricing section: now links to both `/prices` AND `/whats-included`
-  - New "Useful guides" section before the final CTA: 6 cross-link cards covering `/what-is-a-basic-cremation`, `/whats-included`, `/prices`, `/help-and-advice/what-to-do-when-someone-dies`, `/help-and-advice`, `/faqs`
-  - Existing `registerLink` (E&W or Scotland) and `coronerLink` already in place — preserved
+## Why a full bundle
+Following the failed v1/v2 deploys, going forward each batch ships as a full project sync so the local working tree never drifts from what Claude has type-checked. Earlier per-file overlays risked exactly the kind of subtle inconsistency that broke v2.
 
-### New pages
-- `src/app/prices/page.tsx` — full pricing page with all-inclusive £1,499, optional £250 priority care, no-surprise-charges block, funeral cost help section
-- `src/app/whats-included/page.tsx` — 8 included items + 5 not-included with full justifications
-- `src/app/what-is-a-basic-cremation/page.tsx` — long-form educational/SEO anchor (~170 lines)
-- `src/app/faqs/page.tsx` — 15 collapsible site-wide FAQs (city pages keep their own local ones)
-- `src/app/contact/page.tsx` — phone-only, no form (deferred); covers what-to-expect, coroner cases, overseas
-- `src/app/help-and-advice/page.tsx` — index with 4 child cards
-- `src/app/help-and-advice/what-to-do-when-someone-dies/page.tsx` — first 24-72h, split by location of death
-- `src/app/help-and-advice/registering-a-death-england-wales/page.tsx` — 5-day rule, Tell Us Once
-- `src/app/help-and-advice/registering-a-death-scotland/page.tsx` — 8-day rule, Form 14, NRS process
-- `src/app/help-and-advice/coroner-and-procurator-fiscal/page.tsx` — referral triggers, three outcomes, timing impact
+## Fix in this bundle
+**Build break in v2 (commit 679bcd1):** the 9 new core content pages used `<PhoneCTA variant="light-on-dark" />`, which is not a valid variant. The component only accepts `"default" | "compact" | "dark" | "light-on-image"`. TypeScript strict mode caught it, `npm run build` exited 1, Vercel logged "Command 'npm run build' exited with 1" and aborted.
 
-## Where the new pages are linked from
+**Fix:** all 9 occurrences switched to `variant="light-on-image"` — the existing variant designed for phone CTAs sitting on top of a dark/image background, which is exactly what those pages need (the surrounding `<section>` already supplies the dark sage-700 background).
 
-- **Footer** (already wired in `src/components/site-footer.tsx`, no changes needed):
-  - Information column → /what-is-a-basic-cremation, /prices, /whats-included, /faqs
-  - Help & advice column → /help-and-advice/what-to-do-when-someone-dies, /help-and-advice/registering-a-death-england-wales, /help-and-advice/registering-a-death-scotland, /help-and-advice/coroner-and-procurator-fiscal
-  - Site column → /locations, /contact, /privacy, /terms
-- **Header** (intentionally minimal, 4 items — left as-is per design decision):
-  - /what-is-a-basic-cremation, /prices, /help-and-advice, /locations
-  - /whats-included, /faqs, /contact reachable from footer only
-- **Location pages (Manchester and all future cities)** via the modified `location-page.tsx`:
-  - Pricing section → /prices, /whats-included
-  - Register-of-deaths section → /help-and-advice/registering-a-death-{england-wales | scotland}
-  - Coroner section → /help-and-advice/coroner-and-procurator-fiscal
-  - "Useful guides" section (new) → all 6 core pages
+Affected files (variant fix):
+- src/app/prices/page.tsx
+- src/app/whats-included/page.tsx
+- src/app/what-is-a-basic-cremation/page.tsx
+- src/app/faqs/page.tsx
+- src/app/contact/page.tsx
+- src/app/help-and-advice/what-to-do-when-someone-dies/page.tsx
+- src/app/help-and-advice/registering-a-death-england-wales/page.tsx
+- src/app/help-and-advice/registering-a-death-scotland/page.tsx
+- src/app/help-and-advice/coroner-and-procurator-fiscal/page.tsx
 
-## Deferred (not in this bundle)
-- Resend callback form — phone-only conversion model decided 2026-04-26
-- Custom domain pointing — held until full site complete
+## Other contents (unchanged from v2 intent)
+- `src/lib/site-config.ts` — Welsh cities (cardiff/swansea/newport/wrexham) added to `tier1Locations`, Cardiff promoted into Top 10
+- `src/components/location-page.tsx` — pricing section now links to `/prices` AND `/whats-included`; new "Useful guides" section before Final CTA links into all 6 core content pages
+- 10 new content pages (prices, whats-included, what-is, faqs, contact, help-and-advice index + 4 children)
+- All other existing files unchanged from main HEAD `679bcd1`
+
+## Where new pages are linked from after deploy
+- Footer (every page) — all 10 new pages
+- Header (4 items, intentionally minimal) — what-is, prices, help-and-advice, locations
+- Manchester / future city pages — pricing block + Useful guides grid + register/coroner subpages
