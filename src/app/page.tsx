@@ -11,16 +11,15 @@ const HERO_IMAGE =
 // ^ Misty country path at dawn — peaceful, contemplative
 
 const ABOUT_IMAGE =
-  "https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?auto=format&fit=crop&w=2000&q=75";
-// ^ Sunlight through trees in woodland — bright, hopeful
+  "https://images.unsplash.com/photo-1500964757637-c85e8a162699?auto=format&fit=crop&w=2000&q=75";
+// ^ Bright English countryside hillside — open, hopeful
 
-const PRICING_IMAGE =
-  "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1800&q=75";
-// ^ Bright sunlit garden — celebration of life feel without people
+const PRICING_IMAGE = "/images/pricing-memorial.jpg";
+// ^ Locally hosted — provided memorial scene (Image 4)
 
 const ADVICE_IMAGE =
-  "https://images.unsplash.com/photo-1499002238440-d264edd596ec?auto=format&fit=crop&w=2000&q=75";
-// ^ Bright country lane with sunlight — warm, optimistic
+  "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=2000&q=75";
+// ^ Bright sunlit lake and mountains — open, light, optimistic
 
 export default function HomePage() {
   return (
@@ -152,7 +151,7 @@ export default function HomePage() {
       <section className="relative border-y border-ink-100 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image src={ABOUT_IMAGE} alt="" fill sizes="100vw" className="object-cover" />
-          <div className="absolute inset-0 bg-paper/82"></div>
+          <div className="absolute inset-0 bg-paper/75"></div>
         </div>
 
         <div className="relative z-10 container-page py-16 md:py-20">
@@ -193,7 +192,7 @@ export default function HomePage() {
           <div className="relative aspect-[4/3] md:aspect-[3/4] rounded-2xl overflow-hidden shadow-card order-2 md:order-1">
             <Image
               src={PRICING_IMAGE}
-              alt="A bright sunlit garden — a place for celebration of life"
+              alt="A family gathering in remembrance"
               fill
               sizes="(max-width: 768px) 100vw, 50vw"
               className="object-cover"
@@ -280,7 +279,7 @@ export default function HomePage() {
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image src={ADVICE_IMAGE} alt="" fill sizes="100vw" className="object-cover" />
-          <div className="absolute inset-0 bg-paper/85"></div>
+          <div className="absolute inset-0 bg-paper/72"></div>
         </div>
 
         <div className="relative z-10 container-page py-16 md:py-20">

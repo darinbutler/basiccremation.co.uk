@@ -1,63 +1,58 @@
-# Swapping the placeholder images
+# Image setup
 
-The site currently uses Unsplash placeholder images. They're calm, age-agnostic, free to use, and load via Next.js's image optimisation. They look professional out of the box but you'll want to replace them with your own imagery eventually.
+## Current image sources
 
-## Where the image URLs are defined
+The homepage uses four images, defined at the top of `src/app/page.tsx`:
 
-All four homepage image URLs are at the top of `src/app/page.tsx`:
+| Section | Image | Source |
+|---|---|---|
+| Hero | Misty country path at dawn | Unsplash |
+| What is a basic cremation | Bright English countryside | Unsplash |
+| Pricing block | Memorial scene | Local: `/public/images/pricing-memorial.jpg` |
+| If you've just lost someone | Sunlit lake & mountains | Unsplash |
+
+## Local images
+
+`/public/images/pricing-memorial.jpg` — provided memorial scene, watermark cropped, optimised for web (~290 KB at 1800×954). This is committed to the repo so it'll deploy with the site.
+
+## To swap any image
+
+For an Unsplash image, just change the URL constant:
 
 ```tsx
-const HERO_IMAGE = "https://images.unsplash.com/...";
-const PRICING_IMAGE = "https://images.unsplash.com/...";
-const ADVICE_IMAGE = "https://images.unsplash.com/...";
-const INCLUDED_IMAGE = "https://images.unsplash.com/...";
+const HERO_IMAGE = "https://images.unsplash.com/photo-XXXX?auto=format&fit=crop&w=2400&q=75";
 ```
 
-## To swap to your own images
-
-Drop your own images into `/public/images/` and change the URLs:
+For a locally hosted image, drop it into `public/images/` and reference it with a leading slash:
 
 ```tsx
-const HERO_IMAGE = "/images/your-hero.jpg";
-const PRICING_IMAGE = "/images/your-pricing.jpg";
-// ...
+const PRICING_IMAGE = "/images/your-filename.jpg";
 ```
 
-Recommended dimensions:
-- **Hero:** 2400×1400 minimum (4:3 wide crop), shown full-width across the top
-- **Pricing:** 1600×1200 (4:3 portrait works well), shown alongside text
-- **Advice background:** 1800×1000 (very subtle, 25% opacity)
-- **Included background:** 1600×900 (subtle, 40% opacity)
+## Image specs
 
-Format: `.jpg` or `.webp`. Compress before uploading via [tinypng.com](https://tinypng.com) or [squoosh.app](https://squoosh.app). Aim for hero under 250 KB, others under 150 KB.
+| Use case | Recommended size | Format | Target file size |
+|---|---|---|---|
+| Hero background | 2400×1400 | JPG/WebP | < 250 KB |
+| Section background (subtle) | 1800×1000 | JPG/WebP | < 150 KB |
+| Side-by-side pricing image | 1600×1200 | JPG/WebP | < 200 KB |
+| Open Graph (social card) | 1200×630 | JPG | < 200 KB |
 
-## What kind of imagery works in this category
+Compress before uploading via [tinypng.com](https://tinypng.com) or [squoosh.app](https://squoosh.app).
 
-**Yes:**
-- Calm landscapes (countryside, coast, woodland)
-- Soft domestic scenes (window light, a teacup, a notebook)
-- Atmospheric weather (mist, soft sunlight, autumn light)
-- Close-up textures (paper, fabric, wood, leaves)
+## Adjusting overlay opacity
 
-**No:**
-- Coffins, urns, hearses, crematoria (the things people are trying to escape)
-- Crying or distressed faces (amplifies the visitor's distress)
-- Doves, candles, religious iconography (overdone, dates fast)
-- Stock funeral imagery generally
-- AI-generated people (uncanny, dates fast, Google penalises)
+Each section image has a `bg-paper/XX` overlay div underneath the content. The number is the opacity percentage:
 
-## To add additional Unsplash images
+- `bg-paper/72` — image shows through clearly (use for brighter, more atmospheric images)
+- `bg-paper/85` — image is very subtle (use for dark or busy images that would compete with text)
+- `bg-paper/95` — image is barely visible (use only if you're keeping it for texture only)
 
-If you want to test other Unsplash images, the URL pattern is:
-```
-https://images.unsplash.com/photo-XXXXXXX?auto=format&fit=crop&w=2400&q=75
-```
-
-Get the photo ID from the Unsplash URL (the `photo-XXXXXXX` part). Browse at [unsplash.com](https://unsplash.com) — search for "misty path", "morning light kitchen", "quiet bookshelf", etc.
+Find these in the section JSX and adjust as needed.
 
 ## Adding more domains
 
-If you use other image hosts (e.g., Cloudinary, your own CDN), add them to `next.config.js`:
+If you use other image hosts (Cloudinary, your own CDN), add them to `next.config.js`:
 
 ```js
 images: {

@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { siteConfig } from "@/lib/site-config";
+import { getAllLocationSlugs } from "@/lib/locations";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes = [
@@ -19,12 +20,22 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/terms"
   ];
 
+  const locationRoutes = getAllLocationSlugs().map(
+    (slug) => `/locations/${slug}`
+  );
+
+  const allRoutes = [...staticRoutes, ...locationRoutes];
   const now = new Date();
 
-  return staticRoutes.map((route) => ({
+  return allRoutes.map((route) => ({
     url: `${siteConfig.url}${route}`,
     lastModified: now,
     changeFrequency: "weekly" as const,
-    priority: route === "" ? 1.0 : 0.7
+    priority:
+      route === ""
+        ? 1.0
+        : route.startsWith("/locations/")
+        ? 0.85
+        : 0.7
   }));
 }
