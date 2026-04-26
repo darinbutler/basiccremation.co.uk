@@ -75,20 +75,35 @@ export default function HelpAndAdvicePage() {
         </div>
       </section>
 
-      <section className="container-page py-14 md:py-20">
-        <div className="max-w-3xl mb-10">
-          <p className="text-sm uppercase tracking-[0.2em] text-cta mb-4 font-semibold">The four guides</p>
-          <h2 className="mb-4 balance">Where would you like to start?</h2>
+      <section className="relative overflow-hidden border-y border-ink-100">
+        <div className="absolute inset-0 z-0">
+          <Image src="https://images.unsplash.com/photo-1500964757637-c85e8a162699?auto=format&fit=crop&w=2400&q=75" alt="" fill sizes="100vw" className="object-cover" />
+          <div className="absolute inset-0 bg-gradient-to-b from-paper-warm/96 via-paper-warm/92 to-paper-warm/96"></div>
         </div>
+        <div className="relative z-10 container-page py-14 md:py-20">
+          <div className="max-w-3xl mb-10">
+            <p className="text-sm uppercase tracking-[0.2em] text-cta mb-4 font-semibold">The four guides</p>
+            <h2 className="mb-4 balance">Where would you like to start?</h2>
+          </div>
 
-        <div className="grid md:grid-cols-2 gap-5 md:gap-6 max-w-5xl">
-          {SECTIONS.map((s) => (
-            <Link key={s.href} href={s.href} className="bg-paper border border-sage-200 rounded-xl p-7 md:p-8 hover:shadow-card hover:-translate-y-0.5 hover:border-sage-300 transition-all no-underline">
-              <h3 className="text-2xl font-serif text-ink-900 mb-3 leading-snug">{s.title}</h3>
-              <p className="text-ink-700 leading-relaxed" dangerouslySetInnerHTML={{ __html: s.body }} />
-              <p className="mt-4 text-cta text-sm font-semibold">Read the guide &rarr;</p>
-            </Link>
-          ))}
+          <div className="grid md:grid-cols-2 gap-5 md:gap-6 max-w-5xl">
+            {SECTIONS.map((s, i) => (
+              <Link
+                key={s.href}
+                href={s.href}
+                className="bg-paper border-2 border-sage-200 rounded-xl p-7 md:p-8 shadow-card hover:shadow-cardHover hover:-translate-y-1 hover:border-sage-300 transition-all duration-300 no-underline group flex gap-4 items-start"
+              >
+                <div className="w-11 h-11 rounded-xl bg-sage-100 group-hover:bg-sage-200 transition-colors flex items-center justify-center flex-shrink-0 mt-1">
+                  <span className="font-serif text-lg font-semibold text-cta">{i + 1}</span>
+                </div>
+                <div>
+                  <h3 className="text-xl md:text-2xl font-serif text-ink-900 mb-2 leading-snug group-hover:text-cta transition-colors">{s.title}</h3>
+                  <p className="text-ink-700 leading-relaxed text-[15px] md:text-base" dangerouslySetInnerHTML={{ __html: s.body }} />
+                  <p className="mt-3 text-cta text-sm font-semibold">Read the guide &rarr;</p>
+                </div>
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
 

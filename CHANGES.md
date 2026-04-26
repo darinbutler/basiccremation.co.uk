@@ -1,40 +1,50 @@
-# Batch 9 — /locations bg image + thematic city image mapping
+# Batch 10 — Design polish + memory commit
 
-## 1) /locations page — image background on city listing
-Was a flat paper-warm header + plain card grid on white. Now matches the rest of the site's visual rhythm:
+## What's in this bundle
 
-- **Hero with image background** — bright sunlit countryside photo with the standard scrim overlay (matches homepage / Manchester / help-and-advice heros)
-- **City listing on image bg** — paper-warm gradient overlay over a UK city skyline image, so cards remain crisply readable but the section no longer feels flat
-- **Card layout upgrade** — each city now has a marker-pin icon + city name + region in a tighter 2/3/4-column grid (mobile/tablet/desktop)
-- Centered intro copy with "73 cities & growing" eyebrow
+### 1) Homepage 'Why families choose us' — high-contrast dark cards on image bg
+The 3 trust cards were `bg-paper border-2 border-sage-200` (white on paper) — visually flat against the surrounding paper page. Now:
+- Wrapped section in image background (using ABOUT_IMAGE) with paper-warm/92 overlay
+- Cards changed to `bg-sage-700 text-paper` (dark forest green with white text)
+- Icon container: sage-800 rounded circle with coral-300 icon (warm accent)
+- Cards lift on hover, `shadow-cardHover`
+Visual impact: the 3 cards now POP off the page. Strong contrast, brand-aligned.
 
-Affected file: `src/app/locations/page.tsx`
+### 2) /prices — added a 5-stat USP badges strip + image bg on 'No surprise charges' section
+- **NEW: dark sage-700 USP strip** between the pricing tiers and the no-surprise list, with 5 prominent stats:
+  - £1,499 — All-inclusive price
+  - 24/7 — Phone support
+  - NAFD & SAIF — Accredited network
+  - 0 — Hidden fees ever
+  - Local — Funeral directors
+- "What you won't be asked to pay" section now has misty-path image bg with paper-warm gradient overlay
+- Each "no charges" card upgraded: `bg-paper border-2 border-sage-200` (was border-1), with `font-medium` darker text + hover lift
 
-## 2) Per-city image mapping — thematic regional groups
-Was rotating through 18 generic landscape Unsplash IDs by index. Many cities ended up with photos that didn't match their character.
+### 3) /help-and-advice — 'The four guides' on image bg with numbered cards
+- Section wrapped in English-hillside image bg with paper-warm gradient overlay
+- Each guide card now has a numbered icon (1, 2, 3, 4) in a sage-100 rounded square
+- `border-2` thicker borders, `shadow-card` baseline + `shadow-cardHover` on hover, `-translate-y-1` lift
+- Card title becomes coral on hover (was just CTA underline)
 
-New strategy — hand-picked iconic shots for the biggest cities, themed groups for the rest. Verified Unsplash IDs only.
+### 4) /whats-included — 'Included in the price' on image bg with boxed-icon cards
+- Section wrapped in image bg with paper-warm gradient overlay
+- "EVERYTHING COVERED" eyebrow added above the H2
+- Each included-item card: icon now sits in a sage-100 rounded box (instead of bare icon)
+- `border-2` thicker borders, stronger shadow, hover lift
 
-| Image | Used for |
-|---|---|
-| **Tower Bridge** | London (unique) |
-| **Manchester rooftops** | Manchester (unique) |
-| **Liverpool Liver Building** | Liverpool (unique) |
-| **Leeds skyline** | Leeds (unique) |
-| **Newcastle Tyne** | Newcastle + Sunderland |
-| **Cardiff city** | Cardiff (unique) |
-| **York Minster** | York + 8 other cathedral/historic cities (Cambridge, Worcester, Lincoln, Norwich, Chester, Gloucester, Exeter, Durham, Canterbury) |
-| **Oxford spires** | Oxford (unique) |
-| **Bath stone arches** | Bath + Salisbury |
-| **Blackpool seafront** | Blackpool + 6 South Coast cities (Brighton, Bournemouth, Eastbourne, Worthing, Hastings, Southend) |
-| **UK city skyline** | 16 mid-major urban centres (Birmingham, Bristol, Sheffield, Nottingham, Leicester, Coventry, etc.) |
-| **Pennine misty mountains** | 9 northern industrial cities (Bradford, Halifax, Huddersfield, Barnsley, Burnley, Blackburn, Carlisle, Rotherham, Doncaster) |
-| **English hillside** | 7 SE/SW countryside cities (Reading, Slough, Watford, Guildford, Crawley, Maidstone, Luton, Swindon, Milton Keynes, Chelmsford) |
-| **Welsh atmospheric mountains** | Swansea, Newport, Wrexham |
-| **Eastern fenland sunrise** | Colchester, Ipswich, Peterborough |
-| **Countryside** | NW countryside cities (Preston, Warrington, Bolton, Oldham, Wakefield) + Cheltenham/Northampton |
+## Memory committed
+All current state captured in 9 memory files:
+- MEMORY.md (index)
+- project_basiccremation_overview.md (state, paths, stack)
+- project_basiccremation_progress.md (Batches 1-10)
+- project_basiccremation_design_patterns.md (visual rhythm, build pitfalls)
+- project_basiccremation_location_schema.md (LocationData fields)
+- project_basiccremation_tier1_cities.md (37 Tier 1)
+- project_basiccremation_tier2_tier3_cities.md (NEW — 21 + 15 cities)
+- project_basiccremation_clusters.md (NEW — 13 geographic clusters)
+- project_basiccremation_legacy_redirects.md (NEW — migration system)
+- project_basiccremation_image_strategy.md (NEW — Unsplash IDs in use)
+- project_basiccremation_open_work.md (current backlog)
 
-73 cities × thematic-fit photos. Some sharing where appropriate (you can't have 73 unique city-specific photos without a Getty Images budget) but tonally far more accurate than before.
-
-## After deploy
-Visit a few city pages to confirm — Manchester, Liverpool, Cardiff, York, Oxford, Bath, Salisbury, Blackpool should all show their iconic shots.
+## Notes
+The Vercel build failure you noticed was Batch 5 (`11a34e0` — Tier 2 imports missing). It was resolved by Batch 5.1 (`bfe23a2`). All deploys since then (Batches 6, 7, 8, 8.1, 9) have been Ready. Current deploy is Batch 9 (`cc22976`).

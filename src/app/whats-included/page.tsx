@@ -59,27 +59,39 @@ export default function WhatsIncludedPage() {
         </div>
       </section>
 
-      <section className="container-page py-16 md:py-20">
-        <div className="max-w-3xl mb-10">
-          <h2 className="mb-4 balance">Included in the price</h2>
-          <p className="prose-content">
-            All of the items below are included in the £{siteConfig.basePrice.toLocaleString()}{" "}
-            price. Nothing is added later, and nothing in this list is upsold at the funeral home.
-          </p>
+      <section className="relative overflow-hidden border-y border-ink-100">
+        <div className="absolute inset-0 z-0">
+          <Image src="https://images.unsplash.com/photo-1500964757637-c85e8a162699?auto=format&fit=crop&w=2400&q=75" alt="" fill sizes="100vw" className="object-cover" />
+          <div className="absolute inset-0 bg-gradient-to-b from-paper-warm/96 via-paper-warm/93 to-paper-warm/96"></div>
         </div>
+        <div className="relative z-10 container-page py-16 md:py-20">
+          <div className="max-w-3xl mb-10">
+            <p className="text-sm uppercase tracking-[0.2em] text-cta mb-4 font-semibold">Everything covered</p>
+            <h2 className="mb-4 balance">Included in the price</h2>
+            <p className="prose-content">
+              All of the items below are included in the £{siteConfig.basePrice.toLocaleString()}{" "}
+              price. Nothing is added later, and nothing in this list is upsold at the funeral home.
+            </p>
+          </div>
 
-        <div className="grid md:grid-cols-2 gap-5 md:gap-6">
-          {INCLUDED.map((item) => (
-            <div key={item.title} className="bg-paper border border-sage-200 rounded-xl p-6 md:p-7 transition-all duration-300 hover:shadow-card hover:-translate-y-0.5">
-              <div className="flex items-start gap-3 mb-3">
-                <svg className="w-5 h-5 mt-1 text-cta flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24" aria-hidden>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.6 4a8 8 0 11-16 0 8 8 0 0116 0z" />
-                </svg>
-                <h3 className="text-xl font-serif text-ink-900 leading-snug">{item.title}</h3>
+          <div className="grid md:grid-cols-2 gap-5 md:gap-6">
+            {INCLUDED.map((item) => (
+              <div
+                key={item.title}
+                className="bg-paper border-2 border-sage-200 rounded-xl p-6 md:p-7 shadow-card hover:shadow-cardHover hover:-translate-y-1 hover:border-sage-300 transition-all duration-300"
+              >
+                <div className="flex items-start gap-3 mb-3">
+                  <div className="w-10 h-10 rounded-xl bg-sage-100 flex items-center justify-center flex-shrink-0">
+                    <svg className="w-5 h-5 text-cta" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24" aria-hidden>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.6 4a8 8 0 11-16 0 8 8 0 0116 0z" />
+                    </svg>
+                  </div>
+                  <h3 className="text-xl font-serif text-ink-900 leading-snug pt-1">{item.title}</h3>
+                </div>
+                <p className="text-ink-700 leading-relaxed" dangerouslySetInnerHTML={{ __html: item.body }} />
               </div>
-              <p className="text-ink-700 leading-relaxed" dangerouslySetInnerHTML={{ __html: item.body }} />
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </section>
 

@@ -91,20 +91,25 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* WHY FAMILIES CHOOSE US — bordered, animated, lifted cards */}
-      <section className="container-page py-16 md:py-20">
-        <div className="max-w-2xl mx-auto text-center mb-12 md:mb-16">
-          <p className="text-sm uppercase tracking-[0.2em] text-cta mb-4 font-semibold">
-            Why families choose us
-          </p>
-          <h2 className="mb-4 balance">A cremation handled locally, not centrally.</h2>
-          <p className="text-lg text-ink-700 leading-relaxed pretty">
-            Most direct-cremation companies move loved ones across the country to one central facility.
-            We don&rsquo;t. The whole process happens close to home.
-          </p>
+      {/* WHY FAMILIES CHOOSE US — image bg + dark sage-700 cards for contrast */}
+      <section className="relative overflow-hidden border-y border-ink-100">
+        <div className="absolute inset-0 z-0">
+          <Image src={ABOUT_IMAGE} alt="" fill sizes="100vw" className="object-cover" />
+          <div className="absolute inset-0 bg-paper-warm/92"></div>
         </div>
+        <div className="relative z-10 container-page py-16 md:py-20">
+          <div className="max-w-2xl mx-auto text-center mb-12 md:mb-16">
+            <p className="text-sm uppercase tracking-[0.2em] text-cta mb-4 font-semibold">
+              Why families choose us
+            </p>
+            <h2 className="mb-4 balance">A cremation handled locally, not centrally.</h2>
+            <p className="text-lg text-ink-700 leading-relaxed pretty">
+              Most direct-cremation companies move loved ones across the country to one central facility.
+              We don&rsquo;t. The whole process happens close to home.
+            </p>
+          </div>
 
-        <div className="grid md:grid-cols-3 gap-6 md:gap-8">
+          <div className="grid md:grid-cols-3 gap-6 md:gap-8">
           {[
             {
               title: "Local funeral directors",
@@ -136,14 +141,18 @@ export default function HomePage() {
               )
             }
           ].map((item) => (
-            <div key={item.title} className="trust-card">
-              <div className="w-16 h-16 mx-auto mb-5 text-cta">
+            <div
+              key={item.title}
+              className="bg-sage-700 text-paper rounded-2xl p-7 md:p-8 text-center shadow-card hover:shadow-cardHover hover:-translate-y-1 transition-all duration-300"
+            >
+              <div className="w-16 h-16 mx-auto mb-5 inline-flex items-center justify-center rounded-full bg-sage-800 text-coral-300 p-3">
                 {item.icon}
               </div>
-              <h3 className="mb-3 text-xl md:text-2xl">{item.title}</h3>
-              <p className="text-ink-700 leading-relaxed">{item.body}</p>
+              <h3 className="text-paper mb-3 text-xl md:text-2xl">{item.title}</h3>
+              <p className="text-paper/85 leading-relaxed">{item.body}</p>
             </div>
           ))}
+          </div>
         </div>
       </section>
 

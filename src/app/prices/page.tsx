@@ -161,36 +161,68 @@ export default function PricesPage() {
         </div>
       </section>
 
-      {/* WHAT'S INCLUDED IN BOTH — quick visual breakdown */}
-      <section className="container-page py-12 md:py-20">
-        <div className="max-w-2xl mb-8 md:mb-10">
-          <p className="text-sm uppercase tracking-[0.2em] text-cta mb-3 font-semibold">
-            What you won&rsquo;t be asked to pay
-          </p>
-          <h2 className="mb-4 balance">No surprise charges. No upselling.</h2>
-          <p className="prose-content">
-            When families call us, they often ask what gets added on later. Here&rsquo;s the honest answer: nothing. There is no &ldquo;coffin upgrade&rdquo;, no embalming charge, no chapel fee, no documentation surcharge.
-          </p>
+      {/* TRUST BADGES — prominent USPs in a sage-700 strip */}
+      <section className="bg-sage-700 text-paper">
+        <div className="container-page py-10 md:py-14">
+          <div className="max-w-2xl mx-auto text-center mb-8 md:mb-10">
+            <p className="text-xs uppercase tracking-[0.2em] text-coral-300 mb-3 font-semibold">
+              Why families trust us
+            </p>
+            <h2 className="text-paper mb-3 balance text-2xl md:text-3xl">Five reasons families call us, day or night.</h2>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-4 md:gap-6">
+            {[
+              { stat: `£${siteConfig.basePrice.toLocaleString()}`, label: "All-inclusive price" },
+              { stat: "24/7", label: "Phone support" },
+              { stat: "NAFD & SAIF", label: "Accredited network" },
+              { stat: "0", label: "Hidden fees ever" },
+              { stat: "Local", label: "Funeral directors" }
+            ].map((b) => (
+              <div key={b.label} className="text-center">
+                <p className="font-serif text-2xl md:text-3xl text-paper leading-tight mb-1">{b.stat}</p>
+                <p className="text-xs md:text-sm text-paper/80 uppercase tracking-wider font-medium">{b.label}</p>
+              </div>
+            ))}
+          </div>
         </div>
+      </section>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4 max-w-3xl">
-          {[
-            "Hidden funeral director fees",
-            "Collection from hospital or coroner&rsquo;s mortuary",
-            "Coffin upgrade or &lsquo;premium&rsquo; coffin fees",
-            "Embalming or preparation charges",
-            "Chapel of rest, viewing or service fees",
-            "Cremation authority fees or paperwork charges",
-            "Doctors&rsquo; medical certificate fees",
-            "Ashes return delivery (UK mainland)"
-          ].map((item) => (
-            <div key={item} className="flex items-start gap-3 bg-paper-warm border border-sage-200 rounded-lg px-4 py-3">
-              <svg className="w-5 h-5 mt-0.5 text-cta flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24" aria-hidden>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.6 4a8 8 0 11-16 0 8 8 0 0116 0z" />
-              </svg>
-              <span className="text-ink-700 text-[15px] leading-snug" dangerouslySetInnerHTML={{ __html: item }} />
-            </div>
-          ))}
+      {/* NO SURPRISE CHARGES — image bg + prominent paper-warm cards on a peaceful overlay */}
+      <section className="relative overflow-hidden border-y border-ink-100">
+        <div className="absolute inset-0 z-0">
+          <Image src="https://images.unsplash.com/photo-1518173946687-a4c8892bbd9f?auto=format&fit=crop&w=2400&q=75" alt="" fill sizes="100vw" className="object-cover" />
+          <div className="absolute inset-0 bg-gradient-to-b from-paper-warm/96 via-paper-warm/93 to-paper-warm/96"></div>
+        </div>
+        <div className="relative z-10 container-page py-12 md:py-20">
+          <div className="max-w-2xl mb-8 md:mb-10">
+            <p className="text-sm uppercase tracking-[0.2em] text-cta mb-3 font-semibold">
+              What you won&rsquo;t be asked to pay
+            </p>
+            <h2 className="mb-4 balance">No surprise charges. No upselling.</h2>
+            <p className="prose-content">
+              When families call us, they often ask what gets added on later. Here&rsquo;s the honest answer: nothing. There is no &ldquo;coffin upgrade&rdquo;, no embalming charge, no chapel fee, no documentation surcharge.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4 max-w-3xl">
+            {[
+              "Hidden funeral director fees",
+              "Collection from hospital or coroner&rsquo;s mortuary",
+              "Coffin upgrade or &lsquo;premium&rsquo; coffin fees",
+              "Embalming or preparation charges",
+              "Chapel of rest, viewing or service fees",
+              "Cremation authority fees or paperwork charges",
+              "Doctors&rsquo; medical certificate fees",
+              "Ashes return delivery (UK mainland)"
+            ].map((item) => (
+              <div key={item} className="flex items-start gap-3 bg-paper border-2 border-sage-200 rounded-xl px-4 py-3 md:px-5 md:py-4 shadow-soft hover:shadow-card hover:border-sage-300 transition-all">
+                <svg className="w-5 h-5 mt-0.5 text-cta flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24" aria-hidden>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.6 4a8 8 0 11-16 0 8 8 0 0116 0z" />
+                </svg>
+                <span className="text-ink-900 text-[15px] font-medium leading-snug" dangerouslySetInnerHTML={{ __html: item }} />
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
