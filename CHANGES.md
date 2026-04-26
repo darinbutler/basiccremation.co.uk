@@ -1,76 +1,40 @@
-# Batch 7 — Migration redirects (preserve indexed legacy URLs)
+# Batch 8 — Mobile hamburger menu
 
-## What this bundle does
-Sets up 301 redirects for the ~6,000 legacy URLs on the existing WordPress basiccremation.co.uk so that when you point the custom domain at this Vercel deployment, **search rankings and existing inbound traffic transfer to the new site**.
+## What was missing
+Mobile and tablet users had no navigation. The desktop nav was `hidden lg:flex` (only visible at ≥1024px), but no mobile fallback was ever built. The bottom-of-page phone bar (`mobile-call-bar.tsx`) gave users a way to call but no way to navigate to /prices, /faqs, /locations, etc.
 
-## What we found in the old sitemap
-6 sitemap files, **5,977 unique indexed URLs**, mostly pattern × location combinations:
-- ~75 SEO-pattern variants (`affordable-cremation-*`, `cheap-cremation-*`, `low-cost-cremation-*`, `direct-cremation-*`, `simple-funeral-*`, etc.)
-- ~119 UK locations (counties, regions, cities)
-- Plus ~10 high-value info pages (`/cremation-prices/`, `/what-is-basic-cremation/`, etc.)
+## What this bundle adds
 
-## Strategy
+### New file: `src/components/mobile-menu.tsx` ("use client")
+A slide-in-from-right overlay menu containing:
+- **Sticky top bar** with "Menu" title and close (X) button
+- **Phone CTA at the top** (sage-700 dark band, big serif phone number, "Call any time, day or night")
+- **Main nav items**: What is, Prices, What's included, Help & advice, Locations, FAQs, Contact
+- **Help & advice subitems**: When someone dies, Registering a death (E&W), Registering a death (Scotland), Coroner & PF
+- **Top locations**: 8 most-searched cities + "View all 73 locations" link
 
-### Tier 1 — Static redirects in `next.config.js`
-~25 explicit redirects for the high-value info pages and category-style landing pages:
-- `/what-is-basic-cremation/` → `/what-is-a-basic-cremation`
-- `/cremation-prices/` → `/prices`
-- `/unattended-cremation/` → `/what-is-a-basic-cremation`
-- `/prepaid-cremations/` → `/prices`
-- `/privacy-policy/` → `/privacy`
-- `/quote/` → `/contact`
-- `/sitemap_index.xml` → `/sitemap.xml`
-- `/page-sitemap[1-6].xml` → `/sitemap.xml`
-- `/affordable-cremation-near-me/` → `/locations`
-- `/cheap-cremation/` → `/locations`
-- `/direct-cremation/` → `/what-is-a-basic-cremation`
-- ...and 14 more
-- WordPress assets (`/wp-content/*`, `/wp-admin/*`) → `/`
+UX details:
+- Hamburger button is 44×44px (Apple's recommended minimum touch target)
+- Body scroll locked while menu open
+- Closes on Escape key
+- Closes when any nav link is tapped
+- Backdrop is dimmed + blurred; tapping it closes the menu
+- Smooth slide-in animation (250ms ease-out) — added to globals.css
 
-### Tier 2 — Middleware pattern matching
-**`src/middleware.ts`** runs on every request and:
-1. Checks if the URL ends with any of ~190 known legacy location slugs (counties, regions, cities) — uses LONGEST match first so `west-yorkshire` matches before `yorkshire`
-2. If matched → 301 to `/locations/<closest-city>` (English/Welsh) or `/locations` (Scottish/NI)
-3. If unmatched but slug starts with a legacy SEO prefix (`affordable-`, `cheap-`, `low-cost-`, etc.) → 301 to `/locations`
-4. Otherwise → passes through to Next.js routing (returns 404 if the route doesn't exist)
+### Updated: `src/components/site-header.tsx`
+Wraps the right-side header content in a flex container so the desktop phone CTA (visible from md) sits next to the new hamburger button (visible up to lg-1). Right-side composition by breakpoint:
 
-### `src/lib/legacy-redirects.ts`
-The location-to-city mapping. ~140 English/Welsh counties + cities mapped to the closest of our 73 city pages, plus ~50 Scottish/NI locations sent to `/locations` index.
+| Breakpoint | Logo | Desktop nav | Phone CTA | Hamburger |
+|---|---|---|---|---|
+| Mobile (<768px) | ✓ | hidden | hidden | ✓ |
+| Tablet (768-1023px) | ✓ | hidden | ✓ | ✓ |
+| Desktop (≥1024px) | ✓ | ✓ | ✓ | hidden |
 
-## Sample redirects (verified by simulation)
-| Legacy URL | New target |
-|---|---|
-| `/affordable-cremation-yorkshire/` | `/locations/leeds` |
-| `/affordable-cremation-west-yorkshire/` | `/locations/leeds` |
-| `/affordable-burial-and-cremation-london/` | `/locations/london` |
-| `/cheap-cremation-essex/` | `/locations/chelmsford` |
-| `/low-cost-cremation-services-aberdeen/` | `/locations` (Scotland) |
-| `/affordable-cremation-near-me-cardiff/` | `/locations/cardiff` |
-| `/cheap-funeral-services-near-me-tyne-wear/` | `/locations/newcastle` |
-| `/affordable-cremation-isle-of-wight/` | `/locations/portsmouth` |
-| `/affordable-funerals-anglesey/` | `/locations/wrexham` |
-| `/affordable-cremation-vale-of-glamorgan/` | `/locations/cardiff` |
-| `/affordable-cremation/` | `/locations` |
-| `/cheap-funeral-packages-near-me/` | `/locations` |
+### Updated: `src/app/globals.css`
+Added `slideInRight` keyframe + `.animate-slide-in-right` utility class for the menu panel animation.
 
-## After you flip the domain — Search Console steps
-
-1. **Verify the new site in Google Search Console** at the same property URL (basiccremation.co.uk).
-2. **Submit the new sitemap**: `https://basiccremation.co.uk/sitemap.xml`
-3. **Use the URL Inspection tool** for a few key new pages and click "Request indexing".
-4. **Monitor 404s**: in GSC → Settings → Crawl stats → look at "Not found" errors over the first 1-2 weeks. Anything not redirecting can be added to next.config.js or the middleware location map.
-5. **Redirect chains**: confirm with the Chrome dev tools Network tab that legacy URLs return one 301 → final URL (no chains).
-6. **Bing Webmaster Tools**: submit the same sitemap.
-
-## Important — DNS-level considerations
-
-When you change the DNS in your registrar to point at Vercel:
-- Cloudflare on the OLD site will be out of the picture (since DNS goes elsewhere)
-- The Vercel HTTPS cert provisions automatically — give it a few minutes
-- The old WordPress hosting can stay running for a few weeks as a safety net (its URL won't be reachable by users since DNS now points at Vercel, but the files exist if you ever need them)
-
-## Sanity checks
-- 5,977 legacy URLs covered: explicit static redirects + middleware pattern matching
-- All 73 new city pages preserved
-- Legacy WordPress sitemaps redirect to new sitemap
-- Middleware matcher excludes static assets and Next.js internals to avoid latency
+## Mobile journey is now complete
+- Top of page: branded sticky header with hamburger
+- Tap hamburger → menu slides in with phone CTA prominent at top
+- Bottom of page: persistent phone bar (existing `mobile-call-bar.tsx`)
+- Mobile users can either call directly (one tap from the bottom bar) or navigate via the menu

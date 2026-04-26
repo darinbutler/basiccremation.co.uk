@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { siteConfig } from "@/lib/site-config";
 import { Logo } from "@/components/logo";
+import { MobileMenu } from "@/components/mobile-menu";
 
 export function SiteHeader() {
   return (
@@ -95,16 +96,20 @@ export function SiteHeader() {
             </div>
           </nav>
 
-          <a
-            href={`tel:${siteConfig.phoneTel}`}
-            className="hidden md:inline-flex items-center gap-2 bg-cta hover:bg-cta-hover text-paper px-5 py-3 rounded-md no-underline hover:no-underline transition-all shadow-soft hover:shadow-card"
-            aria-label={`Call ${siteConfig.phone}`}
-          >
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24" aria-hidden>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 0 1 2-2h2.28a2 2 0 0 1 1.94 1.515l.7 2.808a2 2 0 0 1-.45 1.9L8.09 10.91a16 16 0 0 0 6 6l1.687-1.38a2 2 0 0 1 1.9-.45l2.808.7A2 2 0 0 1 22 17.72V20a2 2 0 0 1-2 2h-1C9.954 22 2 14.046 2 4V3z"/>
-            </svg>
-            <span className="font-serif text-lg leading-none">{siteConfig.phone}</span>
-          </a>
+          <div className="flex items-center gap-2">
+            <a
+              href={`tel:${siteConfig.phoneTel}`}
+              className="hidden md:inline-flex items-center gap-2 bg-cta hover:bg-cta-hover text-paper px-5 py-3 rounded-md no-underline hover:no-underline transition-all shadow-soft hover:shadow-card"
+              aria-label={`Call ${siteConfig.phone}`}
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2.2" viewBox="0 0 24 24" aria-hidden>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 0 1 2-2h2.28a2 2 0 0 1 1.94 1.515l.7 2.808a2 2 0 0 1-.45 1.9L8.09 10.91a16 16 0 0 0 6 6l1.687-1.38a2 2 0 0 1 1.9-.45l2.808.7A2 2 0 0 1 22 17.72V20a2 2 0 0 1-2 2h-1C9.954 22 2 14.046 2 4V3z"/>
+              </svg>
+              <span className="font-serif text-lg leading-none">{siteConfig.phone}</span>
+            </a>
+            {/* Hamburger menu — mobile + tablet (hidden on lg+) */}
+            <MobileMenu />
+          </div>
         </div>
       </header>
     </>
