@@ -131,6 +131,6 @@ export const wrexhamLocation: LocationData = {
   transitNote:
     "Collection from Wrexham hospitals, care homes and private addresses across Wrexham & North East Wales typically happens within hours of your call, day or night. The local funeral director arrives in their own vehicle and brings your loved one into care at their funeral home — never into a centralised facility hundreds of miles away.",
   cityImage:
-    "https://images.unsplash.com/photo-1499002238440-d264edd596ec?auto=format&fit=crop&w=1800&q=75",
-  cityImageAlt: "Wrexham — North East Wales landscape"
+    "/images/cities/wrexham.jpg",
+  cityImageAlt: "Wrexham — North Wales atmosphere"
 };

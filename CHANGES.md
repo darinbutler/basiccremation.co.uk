@@ -1,33 +1,31 @@
-# Batch 10.2 — /prices trust badges + image bg fixes (consolidated)
+# Batch 11 — Bespoke per-city images (27 cities)
 
-## What's in this bundle
+## What's new
+You provided AI-generated city imagery for 27 of the 73 cities. This bundle wires them into the site replacing the rotating thematic Unsplash photos.
 
-### 1) /prices 'What's covered' — completely redesigned trust badges
-The section was hard to read on a clashing image, and the small green ticks made it ambiguous what was actually being communicated. Full redesign:
+### Cities now using bespoke images
+bolton, bournemouth, brighton, cambridge, coventry, derby, hull, leicester, luton, milton-keynes, newport, northampton, norwich, oxford, peterborough, plymouth, portsmouth, reading, southampton, southend, stoke-on-trent, sunderland, swansea, swindon, wolverhampton, wrexham, york.
 
-- **Section background**: image gone, clean `bg-paper-warm`
-- **Section title**: changed from "What you won't be asked to pay" → **"What's covered — no surprise charges"** with H2 "Everything you won't be charged extra for" — clearer messaging
-- **Each card now has**:
-  - **Large 48×48px coral-filled circle** with a bold paper-coloured tick (was 5×5 small icon)
-  - **"COVERED" eyebrow** in coral above each item — unambiguous about what the card is saying
-  - **Bigger bolder text** with `font-medium`
-  - `border-2` thicker borders, `shadow-card` baseline + hover lift
-  - Cards re-worded slightly to read as positive inclusions (e.g. "A simple coffin (no 'premium' upgrade fee)" instead of just "Coffin upgrade or 'premium' coffin fees")
-- **Reinforcing footer line** below the grid: "That's the whole list. No coffin upgrades, no chapel fees, no documentation surcharges — ever."
+The remaining 46 cities (London, Manchester, Birmingham, Liverpool, Leeds, Sheffield, Bristol, Cardiff, Newcastle, Nottingham, etc.) still use the thematic Unsplash mapping from Batch 9. You can swap those in later by adding more files to `~/Documents/Claude/Projects/BEST/BEST/city-images/`.
 
-The visual hierarchy is now: 48px coral circle → "COVERED" tag → bold item name. No ambiguity about what each card means.
+## Image processing pipeline
+- **Source**: 27 PNGs in `~/Documents/Claude/Projects/BEST/BEST/city-images/`, totalling 56 MB
+- **Processed to**: optimized JPGs in `public/images/cities/`, totalling 5 MB (10× reduction with no visible quality loss)
+- **Specs**: max 1800px wide, JPG quality 85, EXIF stripped
+- **Naming**: `{slug}.jpg` (auto-fixed `miltonkeynes.png` → `milton-keynes.jpg` to match the slug convention)
 
-### 2) Homepage 'Why families choose us' — `bg-sage-50` (preserved from 10.1)
-### 3) /help-and-advice 'Four guides' — `bg-sage-50` (preserved from 10.1)
-### 4) Brighton + South Coast cities — beach-specific photos (preserved from 10.1)
+## Layout fix — consistent portrait aspect
+The pricing block previously used `aspect-[4/3]` on mobile and `aspect-[3/4]` on desktop. Your portrait images would have been awkwardly cropped on mobile. Changed to `aspect-[3/4]` everywhere with `max-w-md` on mobile so portrait images render naturally at any screen size.
 
-## Files changed
-- `src/app/prices/page.tsx` — redesigned no-surprise/covered section
-- `src/app/page.tsx` — homepage trust card section bg (10.1)
-- `src/app/help-and-advice/page.tsx` — four-guides bg (10.1)
-- `src/lib/locations/{brighton,bournemouth,eastbourne,worthing,hastings,southend}.ts` — coastal photos (10.1)
+Brighton + Reading + Luton + Plymouth + Southampton arrived as landscape (you mentioned for Brighton/Reading you "saved them differently"). Centre-cropped to portrait 3:4 so they fit the layout consistently with the rest.
 
-## Sanity verified
-- All 3 affected JSX files have div balance = 0
-- Coastal city Unsplash IDs all return HTTP 200
-- No invalid PhoneCTA variants
+## Files in the bundle
+- `src/components/location-page.tsx` — aspect ratio change
+- `src/lib/locations/{27 city files}.ts` — `cityImage` and `cityImageAlt` updated to point to local files
+- `public/images/cities/{27}.jpg` — the optimized images themselves
+
+## After deploy
+Each of those 27 city pages will now show your bespoke imagery in the pricing block. Visit a few to spot-check — Oxford, Brighton, Reading, York, Cambridge.
+
+## When you're ready for more cities
+Drop more files into `~/Documents/Claude/Projects/BEST/BEST/city-images/` (named `{slug}.jpg` or `.png`) and tell me. I'll re-run the pipeline for the new ones.

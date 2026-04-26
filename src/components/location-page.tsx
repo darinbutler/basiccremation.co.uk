@@ -171,7 +171,7 @@ export function LocationPage({ data }: LocationPageProps) {
       <section id="pricing" className="bg-paper-warm border-y border-ink-100 scroll-mt-24">
         <div className="container-page py-14 md:py-20">
           <div className="grid md:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-center">
-            <div className="relative aspect-[4/3] md:aspect-[3/4] rounded-2xl overflow-hidden shadow-card order-2 md:order-1">
+            <div className="relative aspect-[3/4] rounded-2xl overflow-hidden shadow-card order-2 md:order-1 max-w-md mx-auto md:mx-0 md:max-w-none w-full">
               <Image
                 src={pricingImage}
                 alt={pricingImageAlt}

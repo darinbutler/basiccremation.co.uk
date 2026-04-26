@@ -132,6 +132,6 @@ export const boltonLocation: LocationData = {
   transitNote:
     "Collection from Bolton hospitals, care homes and private addresses across Greater Manchester typically happens within hours of your call, day or night. The local funeral director arrives in their own vehicle and brings your loved one into care at their funeral home — never into a centralised facility hundreds of miles away.",
   cityImage:
-    "https://images.unsplash.com/photo-1500964757637-c85e8a162699?auto=format&fit=crop&w=1800&q=75",
-  cityImageAlt: "Bolton — North West countryside"
+    "/images/cities/bolton.jpg",
+  cityImageAlt: "Bolton — local landscape"
 };
