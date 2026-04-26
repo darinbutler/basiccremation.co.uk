@@ -128,5 +128,5 @@ export const telfordLocation: LocationData = {
 
   cityImage:
     "https://images.unsplash.com/photo-1486299267070-83823f5448dd?auto=format&fit=crop&w=1800&q=75",
-  cityImageAlt: "Telford — peaceful local scene"
+  cityImageAlt: "Telford — town skyline"
 };

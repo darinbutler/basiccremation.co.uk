@@ -133,6 +133,6 @@ export const exeterLocation: LocationData = {
     "Collection from Exeter hospitals, care homes and private addresses across Devon typically happens within hours of your call, day or night. The local funeral director arrives in their own vehicle and brings your loved one into care at their funeral home — never into a centralised facility hundreds of miles away.",
 
   cityImage:
-    "https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&fit=crop&w=1800&q=75",
-  cityImageAlt: "Exeter — peaceful local scene"
+    "https://images.unsplash.com/photo-1444459094717-a39f1e3e0903?auto=format&fit=crop&w=1800&q=75",
+  cityImageAlt: "Exeter — historic city"
 };

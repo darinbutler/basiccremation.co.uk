@@ -127,6 +127,6 @@ export const carlisleLocation: LocationData = {
     "Collection from Carlisle hospitals, care homes and private addresses across Cumbria typically happens within hours of your call, day or night. The local funeral director arrives in their own vehicle and brings your loved one into care at their funeral home — never into a centralised facility hundreds of miles away.",
 
   cityImage:
-    "https://images.unsplash.com/photo-1500964757637-c85e8a162699?auto=format&fit=crop&w=1800&q=75",
-  cityImageAlt: "Carlisle — peaceful local scene"
+    "https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?auto=format&fit=crop&w=1800&q=75",
+  cityImageAlt: "Carlisle — Pennine landscape"
 };

@@ -149,6 +149,6 @@ export const leicesterLocation: LocationData = {
   transitNote:
     "Collection from Leicester hospitals, care homes and private addresses across Leicestershire typically happens within hours of your call, day or night. The local funeral director arrives in their own vehicle and brings your loved one into care at their funeral home — never into a centralised facility hundreds of miles away.",
   cityImage:
-    "https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?auto=format&fit=crop&w=1800&q=75",
-  cityImageAlt: "Leicester — peaceful local scene"
+    "https://images.unsplash.com/photo-1486299267070-83823f5448dd?auto=format&fit=crop&w=1800&q=75",
+  cityImageAlt: "Leicester — UK city skyline"
 };

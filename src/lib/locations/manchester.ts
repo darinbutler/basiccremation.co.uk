@@ -151,7 +151,7 @@ export const manchesterLocation: LocationData = {
 
   cityImage:
     "https://images.unsplash.com/photo-1440870322374-5ca64e56ecba?auto=format&fit=crop&w=1800&q=75",
-  cityImageAlt: "Manchester city centre — view across the rooftops",
+  cityImageAlt: "Manchester city rooftops",
 
   faqs: [
     {

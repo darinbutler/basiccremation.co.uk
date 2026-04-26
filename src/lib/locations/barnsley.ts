@@ -122,5 +122,5 @@ export const barnsleyLocation: LocationData = {
 
   cityImage:
     "https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?auto=format&fit=crop&w=1800&q=75",
-  cityImageAlt: "Barnsley — peaceful local scene"
+  cityImageAlt: "Barnsley — Pennine landscape"
 };

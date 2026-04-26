@@ -238,5 +238,5 @@ export const londonLocation: LocationData = {
 
   cityImage:
     "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=1800&q=75",
-  cityImageAlt: "London — view across the rooftops"
+  cityImageAlt: "London — Tower Bridge skyline"
 };

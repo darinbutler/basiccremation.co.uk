@@ -164,6 +164,6 @@ export const bristolLocation: LocationData = {
   transitNote:
     "Collection from Bristol hospitals, care homes and private addresses across the city and the West typically happens within hours of your call, day or night. The local funeral director brings your loved one into care at their own funeral home — never into a centralised facility hundreds of miles away.",
   cityImage:
-    "https://images.unsplash.com/photo-1473773508845-188df298d2d1?auto=format&fit=crop&w=1800&q=75",
-  cityImageAlt: "Bristol — peaceful local scene"
+    "https://images.unsplash.com/photo-1486299267070-83823f5448dd?auto=format&fit=crop&w=1800&q=75",
+  cityImageAlt: "Bristol — UK city skyline"
 };
