@@ -12,8 +12,7 @@ const HERO_IMAGE =
 const PRICING_IMAGE_FALLBACK =
   "https://images.unsplash.com/photo-1455156218388-5e61b526818b?auto=format&fit=crop&w=1800&q=75";
 
-const ADVICE_IMAGE =
-  "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=2400&q=75";
+const ADVICE_IMAGE = "/images/local-support.jpg";
 
 // Background image for the crematoria section — soft, atmospheric
 const CREMATORIA_BG =
