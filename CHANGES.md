@@ -1,40 +1,25 @@
-# Batch 8 — Mobile hamburger menu
+# Batch 8.1 — Mobile menu hotfix (portal to document.body)
 
-## What was missing
-Mobile and tablet users had no navigation. The desktop nav was `hidden lg:flex` (only visible at ≥1024px), but no mobile fallback was ever built. The bottom-of-page phone bar (`mobile-call-bar.tsx`) gave users a way to call but no way to navigate to /prices, /faqs, /locations, etc.
+## What broke in Batch 8
+The mobile menu rendered, but only the top "Menu" / X bar showed. The page content bled through where the menu body should be. Cause:
 
-## What this bundle adds
+The MobileMenu component was rendered inside `<SiteHeader>`, which is a `sticky top-0 z-40` element. Inside that sticky parent's stacking context, the menu's `fixed inset-0 z-[60]` couldn't escape — `position: fixed` inside a sticky/transformed parent gets constrained to the parent's stacking context. Result: the menu rendered as a 384px-wide right-side strip but its z-stack was capped at the header's level, so trust strip and page content sat above it visually.
 
-### New file: `src/components/mobile-menu.tsx` ("use client")
-A slide-in-from-right overlay menu containing:
-- **Sticky top bar** with "Menu" title and close (X) button
-- **Phone CTA at the top** (sage-700 dark band, big serif phone number, "Call any time, day or night")
-- **Main nav items**: What is, Prices, What's included, Help & advice, Locations, FAQs, Contact
-- **Help & advice subitems**: When someone dies, Registering a death (E&W), Registering a death (Scotland), Coroner & PF
-- **Top locations**: 8 most-searched cities + "View all 73 locations" link
+## Fix
+Use `React.createPortal` to render the overlay directly to `document.body` — bypasses the sticky header's stacking context entirely. The overlay is now a true top-level fixed-position element on the page with `z-index: 9999`.
 
-UX details:
-- Hamburger button is 44×44px (Apple's recommended minimum touch target)
-- Body scroll locked while menu open
-- Closes on Escape key
-- Closes when any nav link is tapped
-- Backdrop is dimmed + blurred; tapping it closes the menu
-- Smooth slide-in animation (250ms ease-out) — added to globals.css
+### Other improvements while in there
+- Inline `style={{ zIndex: 9999 }}` instead of arbitrary Tailwind `z-[60]` — guaranteed to compile
+- Inline `backdropFilter: blur(4px)` with `WebkitBackdropFilter` for iOS Safari compatibility
+- Panel width changed from `w-full max-w-sm` to `w-[88vw] max-w-sm` so on very wide phones (>440px) you still see a sliver of dark backdrop on the left, making it visually clear the menu is an overlay (not a full-screen replacement)
+- Bottom padding `<div className="h-8"></div>` after the last nav item
 
-### Updated: `src/components/site-header.tsx`
-Wraps the right-side header content in a flex container so the desktop phone CTA (visible from md) sits next to the new hamburger button (visible up to lg-1). Right-side composition by breakpoint:
+### Files changed
+- `src/components/mobile-menu.tsx` — rewritten with createPortal
 
-| Breakpoint | Logo | Desktop nav | Phone CTA | Hamburger |
-|---|---|---|---|---|
-| Mobile (<768px) | ✓ | hidden | hidden | ✓ |
-| Tablet (768-1023px) | ✓ | hidden | ✓ | ✓ |
-| Desktop (≥1024px) | ✓ | ✓ | ✓ | hidden |
-
-### Updated: `src/app/globals.css`
-Added `slideInRight` keyframe + `.animate-slide-in-right` utility class for the menu panel animation.
-
-## Mobile journey is now complete
-- Top of page: branded sticky header with hamburger
-- Tap hamburger → menu slides in with phone CTA prominent at top
-- Bottom of page: persistent phone bar (existing `mobile-call-bar.tsx`)
-- Mobile users can either call directly (one tap from the bottom bar) or navigate via the menu
+## After deploying
+The mobile menu will:
+1. Slide in from right (existing animation in globals.css)
+2. Cover the page with a blurred dark backdrop
+3. Be properly above ALL other content (header, mobile-call-bar, page hero)
+4. Close on: backdrop tap / Escape key / X button / any nav link tap
