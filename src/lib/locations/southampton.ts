@@ -112,35 +112,38 @@ export const southamptonLocation: LocationData = {
     {
       question: "Which Southampton crematorium will be used?",
       answer:
-        "It depends on where you are. Your local funeral director picks the appropriate facility based on availability and your area, and tells you the date and time in advance."
+        "Hollybrook Cemetery and Crematorium (Southampton's principal facility since 1956, set in 30 acres of parkland) handles most of the city. Wessex Vale (Eastleigh/Fareham) and Test Valley serve the wider Hampshire region."
     },
     {
-      question: "How quickly can you collect from a Southampton hospital?",
+      question: "How quickly can you collect from Southampton General Hospital?",
       answer:
-        "Once the bereavement office and Medical Examiner have released the paperwork, collection is typically within hours, day or night. We work with the local NHS trust regularly."
+        "Once the SGH or Princess Anne bereavement office and the Medical Examiner have released the paperwork, collection is typically within hours, day or night."
+    },
+    {
+      question: "Do you cover Eastleigh, Romsey, Totton, Hythe and the New Forest fringe?",
+      answer:
+        "Yes — we work with funeral directors across Southampton and Hampshire. The £1,499 price applies everywhere; the register office differs by district."
+    },
+    {
+      question: "Can ashes be scattered in the New Forest or on the Solent?",
+      answer:
+        "Solent / sea scattering by hand needs no permit. New Forest scattering is generally permitted with care — Forestry England has guidance on appropriate sites. We return the ashes and the choice is yours."
     },
     {
       question: "What if my loved one died at home in Southampton?",
       answer:
-        "If the death was expected, call the GP or out-of-hours GP service first; they verify death and start the Medical Certificate of Cause of Death. Then call us. If unexpected, call 999 — paramedic and police attendance is routine, which triggers a coroner referral. Either way, we coordinate from the moment you’re ready to call."
+        "If expected, call the GP or out-of-hours service to verify death. Then call us. If unexpected, 999 first — paramedic and police attendance triggers a coroner referral."
     },
     {
-      question: "Do you cover the wider Hampshire region?",
+      question: "Can the funeral director collect from a care home or hospice across Hampshire?",
       answer:
-        "Yes — we work with funeral directors and crematoria right across Hampshire. The £1,499 price is the same wherever you are."
-    },
-    {
-      question: "How long does the whole process usually take?",
-      answer:
-        "Most basic cremations complete within 1–3 weeks of the call. The variables are how quickly the death is registered and the coroner’s timeline if they’re involved. We keep you informed at each step."
-    },
-    {
-      question: "Can ashes be returned in person or by post?",
-      answer:
-        "Either. Most families collect from the funeral home; ashes can also be sent by tracked courier to a UK mainland address at no extra charge. Standard return is in a simple urn or scatter tube."
+        "Yes. We coordinate directly with the care home, hospice or hospital — you don't need to be present. Mountbatten Hospice and the local hospital trusts are well known to the funeral directors we work with."
     }
   ],
 
   transitNote:
-    "Collection from Southampton hospitals, care homes and private addresses across Hampshire typically happens within hours of your call, day or night. The local funeral director arrives in their own vehicle and brings your loved one into care at their funeral home — never into a centralised facility hundreds of miles away."
+    "Collection from Southampton hospitals, care homes and private addresses across Hampshire typically happens within hours of your call, day or night. The local funeral director arrives in their own vehicle and brings your loved one into care at their funeral home — never into a centralised facility hundreds of miles away.",
+  cityImage:
+    "https://images.unsplash.com/photo-1500964757637-c85e8a162699?auto=format&fit=crop&w=1800&q=75",
+  cityImageAlt: "Southampton — peaceful local scene"
 };

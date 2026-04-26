@@ -160,5 +160,8 @@ export const sheffieldLocation: LocationData = {
   ],
 
   transitNote:
-    "Collection from Sheffield hospitals, care homes and private addresses across the city and South Yorkshire typically happens within hours of your call, day or night. The local funeral director brings your loved one into care at their own funeral home — never into a centralised facility hundreds of miles away."
+    "Collection from Sheffield hospitals, care homes and private addresses across the city and South Yorkshire typically happens within hours of your call, day or night. The local funeral director brings your loved one into care at their own funeral home — never into a centralised facility hundreds of miles away.",
+  cityImage:
+    "https://images.unsplash.com/photo-1454942901704-3c44c11b2ad1?auto=format&fit=crop&w=1800&q=75",
+  cityImageAlt: "Sheffield — peaceful local scene"
 };

@@ -178,5 +178,8 @@ export const liverpoolLocation: LocationData = {
   ],
 
   transitNote:
-    "Collection from Liverpool hospitals, care homes and private addresses across Merseyside typically happens within hours of your call, day or night. The local funeral director brings your loved one into care at their own funeral home — never into a centralised facility hundreds of miles away."
+    "Collection from Liverpool hospitals, care homes and private addresses across Merseyside typically happens within hours of your call, day or night. The local funeral director brings your loved one into care at their own funeral home — never into a centralised facility hundreds of miles away.",
+  cityImage:
+    "https://images.unsplash.com/photo-1565538810643-b5bdb714032a?auto=format&fit=crop&w=1800&q=75",
+  cityImageAlt: "Liverpool — peaceful local scene"
 };

@@ -104,35 +104,38 @@ export const cambridgeLocation: LocationData = {
     {
       question: "Which Cambridge crematorium will be used?",
       answer:
-        "It depends on where you are. Your local funeral director picks the appropriate facility based on availability and your area, and tells you the date and time in advance."
+        "Cambridge Crematorium on Huntingdon Road (the City of Cambridge facility, set in landscaped grounds) handles most of the city. Peterborough Crematorium serves the northern Cambridgeshire and Fenland fringe."
     },
     {
-      question: "How quickly can you collect from a Cambridge hospital?",
+      question: "How quickly can you collect from Addenbrooke's or Royal Papworth?",
       answer:
-        "Once the bereavement office and Medical Examiner have released the paperwork, collection is typically within hours, day or night. We work with the local NHS trust regularly."
+        "Once the Addenbrooke's or Papworth bereavement office and the Medical Examiner have released the paperwork, collection is typically within hours, day or night."
+    },
+    {
+      question: "Do you cover Histon, Milton, Waterbeach, Ely, Newmarket and the wider area?",
+      answer:
+        "Yes — we work with funeral directors across Cambridge and Cambridgeshire. The £1,499 price applies everywhere. Deaths register through Cambridgeshire County Council Register Office."
+    },
+    {
+      question: "Can ashes be scattered along the Cam or in a college garden?",
+      answer:
+        "Cam scattering by hand needs no permit. College Fellows' Gardens require permission. Many Cambridge families choose Wandlebury, the Gog Magog Hills, a private garden, or a meaningful local site. We return the ashes and the choice is yours."
     },
     {
       question: "What if my loved one died at home in Cambridge?",
       answer:
-        "If the death was expected, call the GP or out-of-hours GP service first; they verify death and start the Medical Certificate of Cause of Death. Then call us. If unexpected, call 999 — paramedic and police attendance is routine, which triggers a coroner referral. Either way, we coordinate from the moment you’re ready to call."
+        "If expected, call the GP or out-of-hours service first. Then call us. If unexpected, 999 first — paramedic and police attendance triggers a coroner referral."
     },
     {
-      question: "Do you cover the wider Cambridgeshire region?",
+      question: "Can a memorial be held later at a college chapel or in town?",
       answer:
-        "Yes — we work with funeral directors and crematoria right across Cambridgeshire. The £1,499 price is the same wherever you are."
-    },
-    {
-      question: "How long does the whole process usually take?",
-      answer:
-        "Most basic cremations complete within 1–3 weeks of the call. The variables are how quickly the death is registered and the coroner’s timeline if they’re involved. We keep you informed at each step."
-    },
-    {
-      question: "Can ashes be returned in person or by post?",
-      answer:
-        "Either. Most families collect from the funeral home; ashes can also be sent by tracked courier to a UK mainland address at no extra charge. Standard return is in a simple urn or scatter tube."
+        "Yes — many Cambridge families hold a separate memorial at a college chapel, the parish church, or a private function room weeks or months later. Because the cremation is already done, you have full control over the timing and form."
     }
   ],
 
   transitNote:
-    "Collection from Cambridge hospitals, care homes and private addresses across Cambridgeshire typically happens within hours of your call, day or night. The local funeral director arrives in their own vehicle and brings your loved one into care at their funeral home — never into a centralised facility hundreds of miles away."
+    "Collection from Cambridge hospitals, care homes and private addresses across Cambridgeshire typically happens within hours of your call, day or night. The local funeral director arrives in their own vehicle and brings your loved one into care at their funeral home — never into a centralised facility hundreds of miles away.",
+  cityImage:
+    "https://images.unsplash.com/photo-1518173946687-a4c8892bbd9f?auto=format&fit=crop&w=1800&q=75",
+  cityImageAlt: "Cambridge — peaceful local scene"
 };

@@ -101,37 +101,40 @@ export const swanseaLocation: LocationData = {
 
   faqs: [
     {
-      question: "Which Swansea crematorium will be used?",
+      question: "Which crematorium will be used for a Swansea cremation?",
       answer:
-        "It depends on where you are. Your local funeral director picks the appropriate facility based on availability and your area, and tells you the date and time in advance."
+        "Swansea Crematorium at Morriston (Swansea Council's facility, set in extensive grounds in the north of the city) handles most of the area. Parc Gwyn Crematorium near Narberth serves Pembrokeshire and the wider west Welsh coast."
     },
     {
-      question: "How quickly can you collect from a Swansea hospital?",
+      question: "How quickly can you collect from Morriston or Singleton Hospital?",
       answer:
-        "Once the bereavement office and Medical Examiner have released the paperwork, collection is typically within hours, day or night. We work with the local NHS trust regularly."
+        "Once the Morriston or Singleton bereavement office and the Medical Examiner have released the paperwork, collection is typically within hours, day or night."
+    },
+    {
+      question: "Do you cover Sketty, Mumbles, Gowerton, Neath, Port Talbot and Llanelli?",
+      answer:
+        "Yes — we work with funeral directors across Swansea and South West Wales. The £1,499 price applies everywhere; the register office differs by county borough."
+    },
+    {
+      question: "Can ashes be scattered on the Gower coast or in the Brecon Beacons?",
+      answer:
+        "Sea scattering off the Gower coast (an AONB) needs no permit. Brecon Beacons National Park scattering is permitted with care. Many Welsh families choose a meaningful coastal or upland location. We return the ashes and the choice is yours."
+    },
+    {
+      question: "Can the funeral director provide service in Welsh / Cymraeg?",
+      answer:
+        "Where possible, yes — we can arrange a Welsh-speaking local funeral director on request. Welsh-language paperwork is available from the registrar; the registration appointment can be conducted in Welsh."
     },
     {
       question: "What if my loved one died at home in Swansea?",
       answer:
-        "If the death was expected, call the GP or out-of-hours GP service first; they verify death and start the Medical Certificate of Cause of Death. Then call us. If unexpected, call 999 — paramedic and police attendance is routine, which triggers a coroner referral. Either way, we coordinate from the moment you’re ready to call."
-    },
-    {
-      question: "Do you cover the wider Swansea & South West Wales region?",
-      answer:
-        "Yes — we work with funeral directors and crematoria right across Swansea & South West Wales. The £1,499 price is the same wherever you are."
-    },
-    {
-      question: "How long does the whole process usually take?",
-      answer:
-        "Most basic cremations complete within 1–3 weeks of the call. The variables are how quickly the death is registered and the coroner’s timeline if they’re involved. We keep you informed at each step."
-    },
-    {
-      question: "Can ashes be returned in person or by post?",
-      answer:
-        "Either. Most families collect from the funeral home; ashes can also be sent by tracked courier to a UK mainland address at no extra charge. Standard return is in a simple urn or scatter tube."
+        "If expected, call the GP or out-of-hours service first. Then call us. If unexpected, 999 first — paramedic and police attendance triggers a coroner referral."
     }
   ],
 
   transitNote:
-    "Collection from Swansea hospitals, care homes and private addresses across Swansea & South West Wales typically happens within hours of your call, day or night. The local funeral director arrives in their own vehicle and brings your loved one into care at their funeral home — never into a centralised facility hundreds of miles away."
+    "Collection from Swansea hospitals, care homes and private addresses across Swansea & South West Wales typically happens within hours of your call, day or night. The local funeral director arrives in their own vehicle and brings your loved one into care at their funeral home — never into a centralised facility hundreds of miles away.",
+  cityImage:
+    "https://images.unsplash.com/photo-1500964757637-c85e8a162699?auto=format&fit=crop&w=1800&q=75",
+  cityImageAlt: "Swansea — peaceful local scene"
 };

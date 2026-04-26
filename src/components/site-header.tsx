@@ -35,9 +35,64 @@ export function SiteHeader() {
             <Link href="/help-and-advice" className="text-ink-700 no-underline hover:text-cta transition-colors">
               Help &amp; advice
             </Link>
-            <Link href="/locations" className="text-ink-700 no-underline hover:text-cta transition-colors">
-              Locations
-            </Link>
+            {/* Locations — pure-CSS hover mega menu */}
+            <div className="relative group">
+              <Link href="/locations" className="text-ink-700 no-underline hover:text-cta transition-colors inline-flex items-center gap-1">
+                Locations
+                <svg className="w-3 h-3 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24" aria-hidden>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                </svg>
+              </Link>
+              {/* Mega menu panel */}
+              <div className="invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-all duration-150 absolute right-0 lg:left-1/2 lg:-translate-x-1/2 top-full pt-3 z-50">
+                <div className="bg-paper border border-sage-200 rounded-xl shadow-cardHover w-[min(960px,90vw)] p-6 md:p-8">
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-1">
+                    {[
+                      { region: "Top 10", cities: [
+                        ["London", "london"], ["Birmingham", "birmingham"], ["Manchester", "manchester"],
+                        ["Leeds", "leeds"], ["Liverpool", "liverpool"], ["Sheffield", "sheffield"],
+                        ["Bristol", "bristol"], ["Cardiff", "cardiff"], ["Newcastle", "newcastle"], ["Nottingham", "nottingham"]
+                      ]},
+                      { region: "Midlands & North", cities: [
+                        ["Leicester", "leicester"], ["Coventry", "coventry"], ["Wolverhampton", "wolverhampton"],
+                        ["Derby", "derby"], ["Stoke-on-Trent", "stoke-on-trent"], ["Northampton", "northampton"],
+                        ["Bolton", "bolton"], ["Sunderland", "sunderland"], ["Hull", "hull"], ["York", "york"]
+                      ]},
+                      { region: "South & East", cities: [
+                        ["Reading", "reading"], ["Brighton", "brighton"], ["Southampton", "southampton"],
+                        ["Plymouth", "plymouth"], ["Milton Keynes", "milton-keynes"], ["Luton", "luton"],
+                        ["Swindon", "swindon"], ["Norwich", "norwich"], ["Portsmouth", "portsmouth"], ["Peterborough", "peterborough"]
+                      ]},
+                      { region: "South Coast & Wales", cities: [
+                        ["Bournemouth", "bournemouth"], ["Southend", "southend"], ["Oxford", "oxford"],
+                        ["Cambridge", "cambridge"], ["Swansea", "swansea"], ["Newport", "newport"], ["Wrexham", "wrexham"]
+                      ]}
+                    ].map((column) => (
+                      <div key={column.region}>
+                        <p className="text-xs uppercase tracking-wider text-ink-500 font-semibold mb-3">
+                          {column.region}
+                        </p>
+                        <ul className="space-y-1.5">
+                          {column.cities.map(([label, slug]) => (
+                            <li key={slug}>
+                              <Link href={`/locations/${slug}`} className="text-sm text-ink-700 no-underline hover:text-cta hover:underline transition-colors">
+                                {label}
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="mt-6 pt-5 border-t border-sage-200 flex items-center justify-between">
+                    <p className="text-sm text-ink-500">Don&rsquo;t see your area? We cover the wider UK — call us.</p>
+                    <Link href="/locations" className="text-sm text-cta font-semibold no-underline hover:underline">
+                      View all locations →
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
           </nav>
 
           <a

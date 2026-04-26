@@ -189,5 +189,8 @@ export const birminghamLocation: LocationData = {
   ],
 
   transitNote:
-    "Collection from Birmingham hospitals, care homes and private addresses across the city and West Midlands typically happens within hours of your call, day or night. The local funeral director arrives in their own vehicle and brings your loved one into care at their funeral home — never into a centralised facility hundreds of miles away. Birmingham’s ring-road geography is well understood by the local funeral directors we work with."
+    "Collection from Birmingham hospitals, care homes and private addresses across the city and West Midlands typically happens within hours of your call, day or night. The local funeral director arrives in their own vehicle and brings your loved one into care at their funeral home — never into a centralised facility hundreds of miles away. Birmingham’s ring-road geography is well understood by the local funeral directors we work with.",
+  cityImage:
+    "https://images.unsplash.com/photo-1486299267070-83823f5448dd?auto=format&fit=crop&w=1800&q=75",
+  cityImageAlt: "Birmingham — peaceful local scene"
 };

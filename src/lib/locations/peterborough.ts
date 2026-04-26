@@ -99,35 +99,38 @@ export const peterboroughLocation: LocationData = {
     {
       question: "Which Peterborough crematorium will be used?",
       answer:
-        "It depends on where you are. Your local funeral director picks the appropriate facility based on availability and your area, and tells you the date and time in advance."
+        "Peterborough Crematorium on Mowbray Road (Peterborough City Council's facility since 1958) handles most of the city. Marholm Crematorium serves south Lincolnshire and the Soke of Peterborough."
     },
     {
-      question: "How quickly can you collect from a Peterborough hospital?",
+      question: "How quickly can you collect from Peterborough City Hospital?",
       answer:
-        "Once the bereavement office and Medical Examiner have released the paperwork, collection is typically within hours, day or night. We work with the local NHS trust regularly."
+        "Once the PCH bereavement office and Medical Examiner have released the paperwork, collection is typically within hours, day or night."
+    },
+    {
+      question: "Do you cover Whittlesey, Crowland, Stamford, March and Wisbech?",
+      answer:
+        "Yes — we work with funeral directors across Peterborough, the Fens and south Lincolnshire. The £1,499 price applies everywhere; the register office differs by district."
+    },
+    {
+      question: "Can ashes be scattered on the Fens or in a Cambridgeshire spot?",
+      answer:
+        "Yes — Fenland scattering, the Nene Valley, family gardens, and local Gardens of Remembrance are all common choices. We return the ashes and the choice is yours."
     },
     {
       question: "What if my loved one died at home in Peterborough?",
       answer:
-        "If the death was expected, call the GP or out-of-hours GP service first; they verify death and start the Medical Certificate of Cause of Death. Then call us. If unexpected, call 999 — paramedic and police attendance is routine, which triggers a coroner referral. Either way, we coordinate from the moment you’re ready to call."
+        "If expected, call the GP or out-of-hours service first. Then call us. If unexpected, 999 first — paramedic and police attendance triggers a coroner referral."
     },
     {
-      question: "Do you cover the wider Cambridgeshire region?",
+      question: "How does the wider Cambridgeshire system work?",
       answer:
-        "Yes — we work with funeral directors and crematoria right across Cambridgeshire. The £1,499 price is the same wherever you are."
-    },
-    {
-      question: "How long does the whole process usually take?",
-      answer:
-        "Most basic cremations complete within 1–3 weeks of the call. The variables are how quickly the death is registered and the coroner’s timeline if they’re involved. We keep you informed at each step."
-    },
-    {
-      question: "Can ashes be returned in person or by post?",
-      answer:
-        "Either. Most families collect from the funeral home; ashes can also be sent by tracked courier to a UK mainland address at no extra charge. Standard return is in a simple urn or scatter tube."
+        "Peterborough is a unitary authority and operates its own register office. Cambridge and the rest of Cambridgeshire come under Cambridgeshire County Council. The cremation arrangement and £1,499 price are the same in either system."
     }
   ],
 
   transitNote:
-    "Collection from Peterborough hospitals, care homes and private addresses across Cambridgeshire typically happens within hours of your call, day or night. The local funeral director arrives in their own vehicle and brings your loved one into care at their funeral home — never into a centralised facility hundreds of miles away."
+    "Collection from Peterborough hospitals, care homes and private addresses across Cambridgeshire typically happens within hours of your call, day or night. The local funeral director arrives in their own vehicle and brings your loved one into care at their funeral home — never into a centralised facility hundreds of miles away.",
+  cityImage:
+    "https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1800&q=75",
+  cityImageAlt: "Peterborough — peaceful local scene"
 };

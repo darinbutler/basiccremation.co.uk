@@ -1,59 +1,48 @@
-# Batch 3 — All 37 Tier 1 city pages (FULL BUNDLE)
+# Batch 4 — Tier 1 polish: city images + mega menu + footer locations + city-specific FAQs
 
-## Headline
-Phase B (Top 10) + Phase C (Tier 1 remainder) shipped together. All 37 Tier 1 cities now have:
-- A `src/lib/locations/{slug}.ts` data file (LocationData object — crematoria, register office, coroner area, hospital bereavement, bereavement support services, areas covered, FAQs, transit note, funding help)
-- A `src/app/locations/{slug}/page.tsx` route stub with metadata + canonical + Open Graph
-- Full inheritance of the Manchester template visual rhythm (hero, in-page nav, 12-col content blocks, dark dramatic crematoria block, bright bereavement support, image-bg useful guides, etc.)
-- Full inclusion in `src/lib/locations/index.ts`, sitemap.xml, and the /locations directory page
+## What's in this bundle
 
-## Cities built in this bundle (36 new + Manchester unchanged)
+### 1) City images on all 37 city pages
+- Replaced the bland mountains placeholder with a brighter peaceful English image as the new fallback
+- Added a `cityImage` to all 35 cities that were previously falling back (London and Manchester already had specific images). Images are drawn from a verified pool of 18 Unsplash IDs and rotate by index — every city now shows a distinctive image in the pricing block, not the generic mountains
+- Affected files:
+  - `src/components/location-page.tsx` — fallback image swap
+  - `src/lib/locations/*.ts` — 35 city files with `cityImage` and `cityImageAlt` added
 
-**Top 10 by population (English + Welsh):**
-1. London — full-depth (242 lines, ~16 KB) — biggest treatment, with all 32 boroughs, all 7 London coroner areas, principal hospital trusts, London-specific bereavement services
-2. Birmingham — full-depth (193 lines)
-3. Manchester ✅ (already shipped)
-4. Leeds — full-depth (166 lines)
-5. Liverpool — full-depth (182 lines, with Wirral/Sefton/Knowsley coverage)
-6. Sheffield — full-depth (164 lines)
-7. Bristol — full-depth (166 lines)
-8. Cardiff — full-depth (166 lines, with Welsh-language note)
-9. Newcastle — full-depth (166 lines)
-10. Nottingham — full-depth (166 lines)
+### 2) Header mega menu — Locations
+The simple "Locations" link in the header is now a hover-out 4-column mega menu showing all 37 cities organized by region:
+- Top 10 (London, Birmingham, Manchester, Leeds, Liverpool, Sheffield, Bristol, Cardiff, Newcastle, Nottingham)
+- Midlands & North
+- South & East
+- South Coast & Wales
 
-**Tier 1 remainder (24 English + 3 Welsh = 27 cities):**
-Leicester, Coventry, Reading, Brighton, Bolton, Sunderland, Southampton, Hull, Plymouth, Milton Keynes, Wolverhampton, Derby, Stoke-on-Trent, Northampton, Luton, Swindon, Norwich, York, Portsmouth, Peterborough, Bournemouth, Southend, Oxford, Cambridge, Swansea, Newport, Wrexham — each ~130-140 lines
+Pure CSS hover (no JS), shadow + animation on open, mobile fallback links to `/locations`.
+Affected file: `src/components/site-header.tsx`
 
-## Caveats — REVIEW BEFORE FINAL DEPLOY
+### 3) Footer 'Top locations' column
+Added a new column to the footer between "Help & advice" and "Site" listing 7 top cities + a "View all" link. Boosts site-wide internal linking from every page to every major city.
+Affected file: `src/components/site-footer.tsx` (now 5-column grid on desktop, responsive)
 
-**Phone numbers, addresses and crematoria details:** generated using best-effort UK city knowledge. The crematoria, register offices, hospitals and bereavement charities listed are real, but specific phone numbers and addresses should be verified before final deploy — especially for:
-- Register office phone numbers
-- Hospital bereavement office addresses
-- Bereavement charity phone numbers (most use 0808 808 1677 for Cruse — that's correct nationally)
+### 4) City-specific FAQs for all 27 Tier 1 remainder cities
+Replaced the generic 6-FAQ template with city-specific FAQs for each of:
+Leicester, Coventry, Reading, Brighton, Bolton, Sunderland, Southampton, Hull, Plymouth, Milton Keynes, Wolverhampton, Derby, Stoke-on-Trent, Northampton, Luton, Swindon, Norwich, York, Portsmouth, Peterborough, Bournemouth, Southend, Oxford, Cambridge, Swansea, Newport, Wrexham.
 
-A spot-check on one or two cities you know personally is the fastest way to catch any errors. The shape and structure is correct; the data is the variable.
+Each city now has 6 FAQs that reference local crematoria, hospitals, areas, scattering locations, and regional coverage. SEO and conversion benefit — Google rewards genuinely-local content for `[city] direct cremation` queries.
 
-**FAQs in Tier 1 remainder cities:** the 27 remainder cities use 6 generic-but-customised FAQs each (e.g. "Which {city} crematorium will be used?"). The Top 10 cities have 5–7 FAQs each with city-specific answers. If you want more local depth, the easiest way is to add 2–3 city-specific FAQs to each remainder file in a follow-up batch.
+## Sanity checks
+- 37 city files, all with required fields including `cityImage`
+- No invalid PhoneCTA variants
+- No "optional Priority Care" wording remaining
+- Footer mega menu and locations column verified
+- Mega menu apostrophe escaped via &rsquo; (no JSX parse errors)
 
-**City images:** Top 10 cities have `cityImage` set where I had a known-good Unsplash ID; remainder cities omit this (so they fall back to the generic pricing image). Adding city-specific images is a future polish.
-
-## Sanity checks all pass
-
-- All 37 city files include the required LocationData fields (slug, city, region, country, metaTitle, metaDescription, h1, lede, localIntro, crematoria, areasCovered, registerOffice, coronerNotes, supportServices, fundingHelp, faqs, transitNote)
-- All 37 route stubs import the correct exported variable name
-- All 37 are in `siteConfig.tier1Locations`
-- No `light-on-dark` PhoneCTA (the bug that broke v1/v2)
-- No invalid prop usage detected
-- Sitemap.ts auto-includes all 37 via `getAllLocationSlugs()`
-
-## Phase D (Tier 2)
-Not in this bundle. Tier 2 is ~30 mid-size cities (Aldershot, Slough, Watford, Crawley, Blackpool, Preston, Warrington, etc.) — defined as Batch 4. Ship Tier 1 first, see how it converts, then plan Tier 2.
-
-## Open backlog (still in memory)
+## Open backlog (still in memory for future batches)
 - Favicon
-- Site-wide schema audit (Organization, BreadcrumbList, Article/HowTo, Service, author Person)
+- Site-wide schema audit (Organization, BreadcrumbList, Article/HowTo, Service, author Person for E-E-A-T)
 - Comprehensive metadata (canonical, Open Graph, Twitter, robots) on every page
-- Internal linking refinement (region clusters, content→city reverse links)
+- Region-cluster internal linking on city pages (Manchester ↔ Liverpool ↔ Bolton)
+- Content-page → city reverse links
 - Image alt text audit
 - Custom domain pointing
-- Resend callback form (still deferred per phone-only model)
+- Trustpilot widget
+- Phase D — Tier 2 cities (~30 mid-size cities)

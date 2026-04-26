@@ -31,7 +31,7 @@ export function SiteFooter() {
 
       {/* Main footer columns */}
       <div className="container-page py-12 md:py-14">
-        <div className="grid md:grid-cols-4 gap-8 md:gap-10 mb-12">
+        <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-8 md:gap-10 mb-12">
           <div className="md:col-span-1">
             <div className="mb-3">
               <Logo variant="light" size="md" />
@@ -61,9 +61,21 @@ export function SiteFooter() {
               ]
             },
             {
+              heading: "Top locations",
+              links: [
+                ["London", "/locations/london"],
+                ["Birmingham", "/locations/birmingham"],
+                ["Manchester", "/locations/manchester"],
+                ["Leeds", "/locations/leeds"],
+                ["Liverpool", "/locations/liverpool"],
+                ["Bristol", "/locations/bristol"],
+                ["Cardiff", "/locations/cardiff"],
+                ["All locations →", "/locations"]
+              ]
+            },
+            {
               heading: "Site",
               links: [
-                ["All locations", "/locations"],
                 ["Contact", "/contact"],
                 ["Privacy", "/privacy"],
                 ["Terms", "/terms"]

@@ -112,35 +112,38 @@ export const brightonLocation: LocationData = {
     {
       question: "Which Brighton crematorium will be used?",
       answer:
-        "It depends on where you are. Your local funeral director picks the appropriate facility based on availability and your area, and tells you the date and time in advance."
+        "Woodvale Cemetery and Crematorium (Brighton's principal facility, opened 1930) and the Downs Crematorium (opposite Woodvale on Bear Road) handle most of the city. Worthing Crematorium serves the west, and Eastbourne the east of East Sussex. Your local funeral director picks based on your area."
     },
     {
-      question: "How quickly can you collect from a Brighton hospital?",
+      question: "How quickly can you collect from the Royal Sussex County Hospital?",
       answer:
-        "Once the bereavement office and Medical Examiner have released the paperwork, collection is typically within hours, day or night. We work with the local NHS trust regularly."
+        "Once the RSCH bereavement office and Medical Examiner have released the paperwork, collection is typically within hours, day or night. The Princess Royal in Haywards Heath follows the same process."
+    },
+    {
+      question: "Do you cover Hove, Lewes, Eastbourne and the South Downs?",
+      answer:
+        "Yes — we work with funeral directors across Brighton & Hove and East Sussex. The £1,499 price applies everywhere; the register office differs by district."
+    },
+    {
+      question: "Can ashes be scattered on the seafront or the Sussex Downs?",
+      answer:
+        "Sea scattering off the Brighton coast is straightforward — no permit needed for ashes scattered by hand. South Downs National Park scattering is generally permitted with care. We return the ashes and the choice is yours."
     },
     {
       question: "What if my loved one died at home in Brighton?",
       answer:
-        "If the death was expected, call the GP or out-of-hours GP service first; they verify death and start the Medical Certificate of Cause of Death. Then call us. If unexpected, call 999 — paramedic and police attendance is routine, which triggers a coroner referral. Either way, we coordinate from the moment you’re ready to call."
+        "If expected, call the GP or out-of-hours service first to verify death. Then call us. If unexpected, 999 — paramedic and police attendance triggers a coroner referral, common for any home death."
     },
     {
-      question: "Do you cover the wider East Sussex & the South Coast region?",
+      question: "Will my loved one be looked after locally in Brighton until the cremation?",
       answer:
-        "Yes — we work with funeral directors and crematoria right across East Sussex & the South Coast. The £1,499 price is the same wherever you are."
-    },
-    {
-      question: "How long does the whole process usually take?",
-      answer:
-        "Most basic cremations complete within 1–3 weeks of the call. The variables are how quickly the death is registered and the coroner’s timeline if they’re involved. We keep you informed at each step."
-    },
-    {
-      question: "Can ashes be returned in person or by post?",
-      answer:
-        "Either. Most families collect from the funeral home; ashes can also be sent by tracked courier to a UK mainland address at no extra charge. Standard return is in a simple urn or scatter tube."
+        "Yes. The independent local funeral director keeps your loved one in their own funeral home in Brighton or the surrounding area — never transported to a centralised facility hundreds of miles away. Local care, local crematorium, local price."
     }
   ],
 
   transitNote:
-    "Collection from Brighton hospitals, care homes and private addresses across East Sussex & the South Coast typically happens within hours of your call, day or night. The local funeral director arrives in their own vehicle and brings your loved one into care at their funeral home — never into a centralised facility hundreds of miles away."
+    "Collection from Brighton hospitals, care homes and private addresses across East Sussex & the South Coast typically happens within hours of your call, day or night. The local funeral director arrives in their own vehicle and brings your loved one into care at their funeral home — never into a centralised facility hundreds of miles away.",
+  cityImage:
+    "https://images.unsplash.com/photo-1559136555-9303baea8ebd?auto=format&fit=crop&w=1800&q=75",
+  cityImageAlt: "Brighton — peaceful local scene"
 };

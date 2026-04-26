@@ -97,37 +97,40 @@ export const lutonLocation: LocationData = {
 
   faqs: [
     {
-      question: "Which Luton crematorium will be used?",
+      question: "Which crematorium will be used for a Luton cremation?",
       answer:
-        "It depends on where you are. Your local funeral director picks the appropriate facility based on availability and your area, and tells you the date and time in advance."
+        "The Vale Crematorium at Stopsley (Luton Council's facility, set in 18 acres of countryside in the north of the town) handles most of the borough. West Hertfordshire Crematorium (Garston, Watford) serves the southern Bedfordshire fringe."
     },
     {
-      question: "How quickly can you collect from a Luton hospital?",
+      question: "How quickly can you collect from Luton and Dunstable Hospital?",
       answer:
-        "Once the bereavement office and Medical Examiner have released the paperwork, collection is typically within hours, day or night. We work with the local NHS trust regularly."
+        "Once the L&D bereavement office and Medical Examiner have released the paperwork, collection is typically within hours, day or night."
+    },
+    {
+      question: "Do you cover Dunstable, Houghton Regis, Harpenden, Hitchin and the wider area?",
+      answer:
+        "Yes — we work with funeral directors across Luton and into Bedfordshire and Hertfordshire. The £1,499 price applies everywhere; the register office differs by district."
+    },
+    {
+      question: "Can ashes be scattered in the Chilterns or Dunstable Downs?",
+      answer:
+        "Yes — Dunstable Downs and the Chilterns AONB are popular family scattering locations. We return the ashes and the choice is yours."
     },
     {
       question: "What if my loved one died at home in Luton?",
       answer:
-        "If the death was expected, call the GP or out-of-hours GP service first; they verify death and start the Medical Certificate of Cause of Death. Then call us. If unexpected, call 999 — paramedic and police attendance is routine, which triggers a coroner referral. Either way, we coordinate from the moment you’re ready to call."
+        "If expected, call the GP or out-of-hours service first. Then call us. If unexpected, 999 first — paramedic and police attendance triggers a coroner referral."
     },
     {
-      question: "Do you cover the wider Bedfordshire region?",
+      question: "Will my loved one be looked after locally in Luton?",
       answer:
-        "Yes — we work with funeral directors and crematoria right across Bedfordshire. The £1,499 price is the same wherever you are."
-    },
-    {
-      question: "How long does the whole process usually take?",
-      answer:
-        "Most basic cremations complete within 1–3 weeks of the call. The variables are how quickly the death is registered and the coroner’s timeline if they’re involved. We keep you informed at each step."
-    },
-    {
-      question: "Can ashes be returned in person or by post?",
-      answer:
-        "Either. Most families collect from the funeral home; ashes can also be sent by tracked courier to a UK mainland address at no extra charge. Standard return is in a simple urn or scatter tube."
+        "Yes. The independent local funeral director keeps your loved one in their own funeral home in Luton or the surrounding area — never transported to a centralised facility hundreds of miles away."
     }
   ],
 
   transitNote:
-    "Collection from Luton hospitals, care homes and private addresses across Bedfordshire typically happens within hours of your call, day or night. The local funeral director arrives in their own vehicle and brings your loved one into care at their funeral home — never into a centralised facility hundreds of miles away."
+    "Collection from Luton hospitals, care homes and private addresses across Bedfordshire typically happens within hours of your call, day or night. The local funeral director arrives in their own vehicle and brings your loved one into care at their funeral home — never into a centralised facility hundreds of miles away.",
+  cityImage:
+    "https://images.unsplash.com/photo-1473773508845-188df298d2d1?auto=format&fit=crop&w=1800&q=75",
+  cityImageAlt: "Luton — peaceful local scene"
 };

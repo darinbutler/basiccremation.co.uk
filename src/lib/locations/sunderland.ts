@@ -98,37 +98,40 @@ export const sunderlandLocation: LocationData = {
 
   faqs: [
     {
-      question: "Which Sunderland crematorium will be used?",
+      question: "Which crematorium will be used for a Sunderland cremation?",
       answer:
-        "It depends on where you are. Your local funeral director picks the appropriate facility based on availability and your area, and tells you the date and time in advance."
+        "Sunderland Crematorium on Chester Road serves the city. South Shields Crematorium handles South Tyneside; Newcastle's West Road, Whitley Bay and Tynemouth crematoria are accessible for the wider region."
     },
     {
-      question: "How quickly can you collect from a Sunderland hospital?",
+      question: "How quickly can you collect from Sunderland Royal Hospital?",
       answer:
-        "Once the bereavement office and Medical Examiner have released the paperwork, collection is typically within hours, day or night. We work with the local NHS trust regularly."
+        "Once the bereavement office and Medical Examiner have released the paperwork, collection is typically within hours, day or night."
+    },
+    {
+      question: "Do you cover Washington, Houghton-le-Spring, Hetton and Seaham?",
+      answer:
+        "Yes — we work across Sunderland city and into the wider Wearside and County Durham fringe. The £1,499 price is the same wherever you are."
+    },
+    {
+      question: "Can ashes be scattered on Roker beach or the Durham coast?",
+      answer:
+        "Sea scattering off the Sunderland coast or the Durham Heritage Coast is straightforward — no permit is needed for ashes scattered by hand. We return the ashes and the choice is yours."
     },
     {
       question: "What if my loved one died at home in Sunderland?",
       answer:
-        "If the death was expected, call the GP or out-of-hours GP service first; they verify death and start the Medical Certificate of Cause of Death. Then call us. If unexpected, call 999 — paramedic and police attendance is routine, which triggers a coroner referral. Either way, we coordinate from the moment you’re ready to call."
-    },
-    {
-      question: "Do you cover the wider Tyne and Wear region?",
-      answer:
-        "Yes — we work with funeral directors and crematoria right across Tyne and Wear. The £1,499 price is the same wherever you are."
+        "If expected, call the GP or out-of-hours GP service to verify death. Then call us. If unexpected, 999 first — paramedic and police attendance triggers a coroner referral."
     },
     {
       question: "How long does the whole process usually take?",
       answer:
-        "Most basic cremations complete within 1–3 weeks of the call. The variables are how quickly the death is registered and the coroner’s timeline if they’re involved. We keep you informed at each step."
-    },
-    {
-      question: "Can ashes be returned in person or by post?",
-      answer:
-        "Either. Most families collect from the funeral home; ashes can also be sent by tracked courier to a UK mainland address at no extra charge. Standard return is in a simple urn or scatter tube."
+        "Most basic cremations in Sunderland complete within 1–3 weeks. Variables are how quickly the death is registered and the coroner's timeline if they're involved. We keep you informed at each step."
     }
   ],
 
   transitNote:
-    "Collection from Sunderland hospitals, care homes and private addresses across Tyne and Wear typically happens within hours of your call, day or night. The local funeral director arrives in their own vehicle and brings your loved one into care at their funeral home — never into a centralised facility hundreds of miles away."
+    "Collection from Sunderland hospitals, care homes and private addresses across Tyne and Wear typically happens within hours of your call, day or night. The local funeral director arrives in their own vehicle and brings your loved one into care at their funeral home — never into a centralised facility hundreds of miles away.",
+  cityImage:
+    "https://images.unsplash.com/photo-1518173946687-a4c8892bbd9f?auto=format&fit=crop&w=1800&q=75",
+  cityImageAlt: "Sunderland — peaceful local scene"
 };

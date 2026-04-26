@@ -7,9 +7,9 @@ import type { LocationData } from "@/lib/location-types";
 const HERO_IMAGE =
   "https://images.unsplash.com/photo-1518173946687-a4c8892bbd9f?auto=format&fit=crop&w=2400&q=75";
 
-// Generic fallback if a location doesn't supply its own city image
+// Generic fallback if a location doesn't supply its own city image — bright, peaceful, age-agnostic
 const PRICING_IMAGE_FALLBACK =
-  "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1800&q=75";
+  "https://images.unsplash.com/photo-1455156218388-5e61b526818b?auto=format&fit=crop&w=1800&q=75";
 
 const ADVICE_IMAGE =
   "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=2400&q=75";

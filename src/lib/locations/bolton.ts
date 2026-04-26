@@ -98,37 +98,40 @@ export const boltonLocation: LocationData = {
 
   faqs: [
     {
-      question: "Which Bolton crematorium will be used?",
+      question: "Which crematorium will be used for a Bolton cremation?",
       answer:
-        "It depends on where you are. Your local funeral director picks the appropriate facility based on availability and your area, and tells you the date and time in advance."
+        "Overdale Crematorium (set in landscaped grounds south of Bolton town centre) handles most of the borough. The wider Greater Manchester network — Manchester Crematorium, Agecroft (Salford), Howe Bridge (Wigan) — is also accessible if needed."
     },
     {
-      question: "How quickly can you collect from a Bolton hospital?",
+      question: "How quickly can you collect from the Royal Bolton Hospital?",
       answer:
-        "Once the bereavement office and Medical Examiner have released the paperwork, collection is typically within hours, day or night. We work with the local NHS trust regularly."
+        "Once the Royal Bolton bereavement office and Medical Examiner have released the paperwork, collection is typically within hours, day or night."
+    },
+    {
+      question: "Do you cover Westhoughton, Horwich, Farnworth and the wider borough?",
+      answer:
+        "Yes — we work with funeral directors across Bolton borough and into Bury, Wigan and the western Greater Manchester fringe. The £1,499 price applies everywhere."
+    },
+    {
+      question: "Can ashes be scattered at Rivington or on the West Pennine Moors?",
+      answer:
+        "Rivington scattering is generally permitted with care; the West Pennine Moors are popular family scattering locations. We return the ashes and you choose what to do, when, with whom."
     },
     {
       question: "What if my loved one died at home in Bolton?",
       answer:
-        "If the death was expected, call the GP or out-of-hours GP service first; they verify death and start the Medical Certificate of Cause of Death. Then call us. If unexpected, call 999 — paramedic and police attendance is routine, which triggers a coroner referral. Either way, we coordinate from the moment you’re ready to call."
+        "If expected, call the GP or out-of-hours GP service first. Then call us. If unexpected, 999 first — paramedic and police attendance triggers a coroner referral."
     },
     {
-      question: "Do you cover the wider Greater Manchester region?",
+      question: "How does Bolton's coroner area work?",
       answer:
-        "Yes — we work with funeral directors and crematoria right across Greater Manchester. The £1,499 price is the same wherever you are."
-    },
-    {
-      question: "How long does the whole process usually take?",
-      answer:
-        "Most basic cremations complete within 1–3 weeks of the call. The variables are how quickly the death is registered and the coroner’s timeline if they’re involved. We keep you informed at each step."
-    },
-    {
-      question: "Can ashes be returned in person or by post?",
-      answer:
-        "Either. Most families collect from the funeral home; ashes can also be sent by tracked courier to a UK mainland address at no extra charge. Standard return is in a simple urn or scatter tube."
+        "Bolton sits within the HM Senior Coroner area for Manchester West, which also covers Bury, Salford and Wigan. About 40% of deaths are referred to a coroner — it's routine. We coordinate with the coroner's office on your behalf."
     }
   ],
 
   transitNote:
-    "Collection from Bolton hospitals, care homes and private addresses across Greater Manchester typically happens within hours of your call, day or night. The local funeral director arrives in their own vehicle and brings your loved one into care at their funeral home — never into a centralised facility hundreds of miles away."
+    "Collection from Bolton hospitals, care homes and private addresses across Greater Manchester typically happens within hours of your call, day or night. The local funeral director arrives in their own vehicle and brings your loved one into care at their funeral home — never into a centralised facility hundreds of miles away.",
+  cityImage:
+    "https://images.unsplash.com/photo-1543946207-39bd91e70ca7?auto=format&fit=crop&w=1800&q=75",
+  cityImageAlt: "Bolton — peaceful local scene"
 };
