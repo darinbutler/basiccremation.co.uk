@@ -22,7 +22,7 @@ export function SiteHeader() {
 
       {/* Main header */}
       <header className="border-b border-ink-100 bg-paper sticky top-0 z-40 backdrop-blur-sm bg-paper/95 shadow-soft">
-        <div className="container-page py-4 flex items-center justify-between gap-4">
+        <div className="container-page py-4 flex items-center justify-between gap-4 relative">
           <Logo size="md" />
 
           <nav className="hidden lg:flex items-center gap-7 text-[15px]">
@@ -36,7 +36,7 @@ export function SiteHeader() {
               Help &amp; advice
             </Link>
             {/* Locations — pure-CSS hover mega menu */}
-            <div className="relative group">
+            <div className="group">
               <Link href="/locations" className="text-ink-700 no-underline hover:text-cta transition-colors inline-flex items-center gap-1">
                 Locations
                 <svg className="w-3 h-3 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24" aria-hidden>
@@ -44,7 +44,7 @@ export function SiteHeader() {
                 </svg>
               </Link>
               {/* Mega menu panel */}
-              <div className="invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-all duration-150 absolute right-0 lg:left-1/2 lg:-translate-x-1/2 top-full pt-3 z-50">
+              <div className="invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-all duration-150 absolute left-1/2 -translate-x-1/2 top-full pt-3 z-50">
                 <div className="bg-paper border border-sage-200 rounded-xl shadow-cardHover w-[min(960px,90vw)] p-6 md:p-8">
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-1">
                     {[

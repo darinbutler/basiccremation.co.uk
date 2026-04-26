@@ -3,6 +3,7 @@ import Image from "next/image";
 import type { Metadata } from "next";
 import { siteConfig } from "@/lib/site-config";
 import { PhoneCTA } from "@/components/phone-cta";
+import { BreadcrumbSchema } from "@/components/breadcrumb-schema";
 
 export const metadata: Metadata = {
   title: `Basic Cremation Prices | £${siteConfig.basePrice.toLocaleString()} all-inclusive`,
@@ -12,9 +13,43 @@ export const metadata: Metadata = {
 const PRICE_HERO =
   "https://images.unsplash.com/photo-1500964757637-c85e8a162699?auto=format&fit=crop&w=2000&q=75";
 
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "@id": `${siteConfig.url}/prices#service`,
+  serviceType: "Direct Cremation",
+  name: "Basic Cremation Service",
+  description: `An all-inclusive direct cremation in England, Scotland or Wales for £${siteConfig.basePrice.toLocaleString()}. Local funeral director, local crematorium, no service, no procession, no hidden costs.`,
+  provider: { "@id": `${siteConfig.url}/#organization` },
+  areaServed: [
+    { "@type": "Country", name: "England" },
+    { "@type": "Country", name: "Scotland" },
+    { "@type": "Country", name: "Wales" }
+  ],
+  offers: {
+    "@type": "Offer",
+    name: "Basic Cremation",
+    description: "All-inclusive basic cremation: funeral director fees, collection, coffin, cremation fee, and paperwork.",
+    price: siteConfig.basePrice,
+    priceCurrency: "GBP",
+    availability: "https://schema.org/InStock",
+    priceValidUntil: "2026-12-31"
+  }
+};
+
 export default function PricesPage() {
   return (
     <>
+      <BreadcrumbSchema
+        items={[
+          { name: "Home", url: "/" },
+          { name: "Prices", url: "/prices" }
+        ]}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+      />
       <section className="relative bg-hero-fallback">
         <div className="absolute inset-0 z-0">
           <Image src={PRICE_HERO} alt="" fill sizes="100vw" priority className="object-cover" />

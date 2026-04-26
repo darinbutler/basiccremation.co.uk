@@ -3,6 +3,7 @@ import Image from "next/image";
 import type { Metadata } from "next";
 import { siteConfig } from "@/lib/site-config";
 import { PhoneCTA } from "@/components/phone-cta";
+import { BreadcrumbSchema } from "@/components/breadcrumb-schema";
 
 export const metadata: Metadata = {
   title: "Help & advice when someone has died | Basic Cremation",
@@ -22,6 +23,12 @@ const SECTIONS = [
 export default function HelpAndAdvicePage() {
   return (
     <>
+      <BreadcrumbSchema
+        items={[
+          { name: "Home", url: "/" },
+          { name: "Help & advice", url: "/help-and-advice" }
+        ]}
+      />
       {/* HERO — image background, scrim, large heading */}
       <section className="relative bg-hero-fallback">
         <div className="absolute inset-0 z-0">

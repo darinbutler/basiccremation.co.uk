@@ -49,5 +49,29 @@ export const siteConfig = {
     "swansea",
     "newport",
     "wrexham"
+  ],
+  // Tier 2 — mid-size cities (Phase D, added 2026-04-26)
+  tier2Locations: [
+    "bradford",
+    "wakefield",
+    "doncaster",
+    "rotherham",
+    "bath",
+    "cheltenham",
+    "gloucester",
+    "exeter",
+    "lincoln",
+    "ipswich",
+    "colchester",
+    "chelmsford",
+    "maidstone",
+    "crawley",
+    "guildford",
+    "slough",
+    "watford",
+    "blackpool",
+    "preston",
+    "warrington",
+    "chester"
   ]
 };

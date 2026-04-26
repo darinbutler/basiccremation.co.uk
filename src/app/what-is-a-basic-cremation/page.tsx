@@ -3,6 +3,7 @@ import Image from "next/image";
 import type { Metadata } from "next";
 import { siteConfig } from "@/lib/site-config";
 import { PhoneCTA } from "@/components/phone-cta";
+import { BreadcrumbSchema } from "@/components/breadcrumb-schema";
 
 export const metadata: Metadata = {
   title: "What is a basic cremation? | Basic Cremation",
@@ -14,6 +15,12 @@ const ABOUT_IMAGE = "https://images.unsplash.com/photo-1500964757637-c85e8a16269
 export default function WhatIsBasicCremationPage() {
   return (
     <>
+      <BreadcrumbSchema
+        items={[
+          { name: "Home", url: "/" },
+          { name: "What is a basic cremation", url: "/what-is-a-basic-cremation" }
+        ]}
+      />
       <section className="relative bg-hero-fallback">
         <div className="absolute inset-0 z-0">
           <Image src={ABOUT_IMAGE} alt="" fill sizes="100vw" priority className="object-cover" />

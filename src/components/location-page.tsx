@@ -3,6 +3,7 @@ import Image from "next/image";
 import { siteConfig } from "@/lib/site-config";
 import { PhoneCTA } from "@/components/phone-cta";
 import type { LocationData } from "@/lib/location-types";
+import { getRegionalSiblings } from "@/lib/locations";
 
 const HERO_IMAGE =
   "https://images.unsplash.com/photo-1518173946687-a4c8892bbd9f?auto=format&fit=crop&w=2400&q=75";
@@ -643,6 +644,51 @@ export function LocationPage({ data }: LocationPageProps) {
           </div>
         </div>
       </section>
+
+      {/* OTHER LOCATIONS — regional cluster internal links */}
+      {(() => {
+        const siblings = getRegionalSiblings(data.slug, 8);
+        if (siblings.length === 0) return null;
+        return (
+          <section className="bg-paper-warm border-y border-ink-100">
+            <div className="container-page py-14 md:py-20">
+              <div className="max-w-narrow mb-8">
+                <p className="text-sm uppercase tracking-[0.2em] text-cta mb-4 font-semibold">
+                  Other locations
+                </p>
+                <h2 className="mb-4 balance">
+                  We also cover {data.country === "Wales" ? "the wider South Wales region" : `cities near ${data.city}`}
+                </h2>
+                <p className="text-lg text-ink-700 leading-relaxed pretty">
+                  The same simple, dignified £{siteConfig.basePrice.toLocaleString()} basic cremation is available across the wider region.
+                  If your loved one died outside {data.city} itself, the appropriate local funeral director and crematorium will be used.
+                </p>
+              </div>
+
+              <ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+                {siblings.map((s) => (
+                  <li key={s.slug}>
+                    <Link
+                      href={`/locations/${s.slug}`}
+                      className="block bg-paper border border-sage-200 rounded-lg px-4 py-3 hover:shadow-card hover:-translate-y-0.5 hover:border-sage-300 transition-all no-underline group"
+                    >
+                      <p className="font-serif text-lg text-ink-900 leading-snug group-hover:text-cta transition-colors">
+                        Basic Cremation in {s.city}
+                      </p>
+                      <p className="text-xs text-ink-500 mt-1">{s.region}</p>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+
+              <p className="text-sm text-ink-500 mt-8 italic">
+                Don&rsquo;t see your area? We cover the wider UK &mdash; <Link href="/locations" className="text-cta underline">view all locations</Link> or call us on{" "}
+                <a href={`tel:${siteConfig.phoneTel}`} className="text-cta">{siteConfig.phone}</a>.
+              </p>
+            </div>
+          </section>
+        );
+      })()}
 
       {/* FINAL CTA */}
       <section className="container-page py-14 md:py-20">

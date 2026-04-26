@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { allLocations } from "@/lib/locations";
 import { PhoneCTA } from "@/components/phone-cta";
+import { BreadcrumbSchema } from "@/components/breadcrumb-schema";
 
 export const metadata: Metadata = {
   title: "Locations We Cover | Basic Cremation Across the UK",
@@ -17,6 +18,12 @@ export default function LocationsIndex() {
 
   return (
     <>
+      <BreadcrumbSchema
+        items={[
+          { name: "Home", url: "/" },
+          { name: "Locations", url: "/locations" }
+        ]}
+      />
       {/* Header */}
       <section className="bg-paper-warm border-b border-ink-100">
         <div className="container-page py-14 md:py-20">

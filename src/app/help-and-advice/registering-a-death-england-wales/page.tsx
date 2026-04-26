@@ -3,6 +3,7 @@ import Image from "next/image";
 import type { Metadata } from "next";
 import { siteConfig } from "@/lib/site-config";
 import { PhoneCTA } from "@/components/phone-cta";
+import { BreadcrumbSchema } from "@/components/breadcrumb-schema";
 
 export const metadata: Metadata = {
   title: "Registering a death in England or Wales | Basic Cremation",
@@ -15,6 +16,32 @@ const HERO_IMAGE =
 export default function RegisterEWPage() {
   return (
     <>
+      <BreadcrumbSchema
+        items={[
+          { name: "Home", url: "/" },
+          { name: "Help & advice", url: "/help-and-advice" },
+          { name: "Registering a death (E&W)", url: "/help-and-advice/registering-a-death-england-wales" }
+        ]}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Article",
+            headline: "Registering a death in England or Wales",
+            description: "Step-by-step guide to registering a death in England or Wales — who registers, when, what to bring, and what documents you receive.",
+            author: { "@type": "Organization", name: "Basic Cremation" },
+            publisher: {
+              "@type": "Organization",
+              name: "Basic Cremation",
+              logo: { "@type": "ImageObject", url: "https://basiccremation.co.uk/logo.png" }
+            },
+            inLanguage: "en-GB"
+          })
+        }}
+      />
+
       {/* HERO */}
       <section className="relative bg-hero-fallback">
         <div className="absolute inset-0 z-0">

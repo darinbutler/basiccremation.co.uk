@@ -3,6 +3,7 @@ import Image from "next/image";
 import type { Metadata } from "next";
 import { siteConfig } from "@/lib/site-config";
 import { PhoneCTA } from "@/components/phone-cta";
+import { BreadcrumbSchema } from "@/components/breadcrumb-schema";
 
 export const metadata: Metadata = {
   title: "What to do when someone has died | Basic Cremation",
@@ -15,6 +16,32 @@ const HERO_IMAGE =
 export default function WhatToDoPage() {
   return (
     <>
+      <BreadcrumbSchema
+        items={[
+          { name: "Home", url: "/" },
+          { name: "Help & advice", url: "/help-and-advice" },
+          { name: "When someone dies", url: "/help-and-advice/what-to-do-when-someone-dies" }
+        ]}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Article",
+            headline: "What to do when someone has died",
+            description: "Step-by-step guidance for the first 24 to 72 hours after someone has died — at home, in hospital, in a care home, or unexpectedly.",
+            author: { "@type": "Organization", name: "Basic Cremation" },
+            publisher: {
+              "@type": "Organization",
+              name: "Basic Cremation",
+              logo: { "@type": "ImageObject", url: "https://basiccremation.co.uk/logo.png" }
+            },
+            inLanguage: "en-GB"
+          })
+        }}
+      />
+
       {/* HERO */}
       <section className="relative bg-hero-fallback">
         <div className="absolute inset-0 z-0">

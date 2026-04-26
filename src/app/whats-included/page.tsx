@@ -3,6 +3,7 @@ import Image from "next/image";
 import type { Metadata } from "next";
 import { siteConfig } from "@/lib/site-config";
 import { PhoneCTA } from "@/components/phone-cta";
+import { BreadcrumbSchema } from "@/components/breadcrumb-schema";
 
 const HERO_IMAGE =
   "https://images.unsplash.com/photo-1518173946687-a4c8892bbd9f?auto=format&fit=crop&w=2400&q=75";
@@ -34,6 +35,12 @@ const NOT_INCLUDED = [
 export default function WhatsIncludedPage() {
   return (
     <>
+      <BreadcrumbSchema
+        items={[
+          { name: "Home", url: "/" },
+          { name: "What's included", url: "/whats-included" }
+        ]}
+      />
       <section className="relative bg-hero-fallback">
         <div className="absolute inset-0 z-0">
           <Image src={HERO_IMAGE} alt="" fill sizes="100vw" priority className="object-cover" />

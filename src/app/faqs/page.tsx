@@ -3,6 +3,7 @@ import Image from "next/image";
 import type { Metadata } from "next";
 import { siteConfig } from "@/lib/site-config";
 import { PhoneCTA } from "@/components/phone-cta";
+import { BreadcrumbSchema } from "@/components/breadcrumb-schema";
 
 const HERO_IMAGE =
   "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=2400&q=75";
@@ -48,6 +49,12 @@ const FAQS: { q: string; a: string }[] = [
 export default function FaqsPage() {
   return (
     <>
+      <BreadcrumbSchema
+        items={[
+          { name: "Home", url: "/" },
+          { name: "FAQs", url: "/faqs" }
+        ]}
+      />
       <section className="relative bg-hero-fallback">
         <div className="absolute inset-0 z-0">
           <Image src={HERO_IMAGE} alt="" fill sizes="100vw" priority className="object-cover" />
