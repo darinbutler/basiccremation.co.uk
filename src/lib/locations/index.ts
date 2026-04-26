@@ -43,6 +43,29 @@ import { swanseaLocation } from "@/lib/locations/swansea";
 import { newportLocation } from "@/lib/locations/newport";
 import { wrexhamLocation } from "@/lib/locations/wrexham";
 
+// Tier 2 — mid-size cities (Phase D)
+import { bradfordLocation } from "@/lib/locations/bradford";
+import { wakefieldLocation } from "@/lib/locations/wakefield";
+import { doncasterLocation } from "@/lib/locations/doncaster";
+import { rotherhamLocation } from "@/lib/locations/rotherham";
+import { bathLocation } from "@/lib/locations/bath";
+import { cheltenhamLocation } from "@/lib/locations/cheltenham";
+import { gloucesterLocation } from "@/lib/locations/gloucester";
+import { exeterLocation } from "@/lib/locations/exeter";
+import { lincolnLocation } from "@/lib/locations/lincoln";
+import { ipswichLocation } from "@/lib/locations/ipswich";
+import { colchesterLocation } from "@/lib/locations/colchester";
+import { chelmsfordLocation } from "@/lib/locations/chelmsford";
+import { maidstoneLocation } from "@/lib/locations/maidstone";
+import { crawleyLocation } from "@/lib/locations/crawley";
+import { guildfordLocation } from "@/lib/locations/guildford";
+import { sloughLocation } from "@/lib/locations/slough";
+import { watfordLocation } from "@/lib/locations/watford";
+import { blackpoolLocation } from "@/lib/locations/blackpool";
+import { prestonLocation } from "@/lib/locations/preston";
+import { warringtonLocation } from "@/lib/locations/warrington";
+import { chesterLocation } from "@/lib/locations/chester";
+
 export const allLocations: Record<string, LocationData> = {
   // Top 10 by population
   london: londonLocation,
