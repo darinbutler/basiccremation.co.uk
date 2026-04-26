@@ -280,31 +280,56 @@ export function LocationPage({ data }: LocationPageProps) {
         </div>
       </section>
 
-      {/* AREAS COVERED */}
-      <section id="areas" className="bg-paper-warm border-y border-ink-100 scroll-mt-24">
-        <div className="container-page py-14 md:py-20">
-          <div className="max-w-prose mx-auto mb-10 text-center">
+      {/* AREAS COVERED — image-bg with card grid, mobile-first 2-col, desktop 3-4 col */}
+      <section id="areas" className="relative scroll-mt-24 overflow-hidden border-y border-ink-100">
+        {/* Background image with paper-warm gradient overlay for legibility */}
+        <div className="absolute inset-0 z-0">
+          <Image src={ADVICE_IMAGE} alt="" fill sizes="100vw" className="object-cover" />
+          <div className="absolute inset-0 bg-gradient-to-b from-paper-warm/95 via-paper-warm/90 to-paper-warm/95"></div>
+        </div>
+
+        <div className="relative z-10 container-page py-14 md:py-20">
+          <div className="max-w-2xl mx-auto mb-10 md:mb-12 text-center">
             <p className="text-sm uppercase tracking-[0.2em] text-cta mb-4 font-semibold">
               Areas covered
             </p>
             <h2 className="mb-4 balance">{data.region} and surrounding areas</h2>
             <p className="text-lg text-ink-700 leading-relaxed pretty">
-              We arrange basic cremations across the whole of {data.region}. The price is the same in every area.
+              We arrange basic cremations across the whole of {data.region}. The £{siteConfig.basePrice.toLocaleString()} price is the same in every area.
             </p>
           </div>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 max-w-4xl mx-auto">
-            {data.areasCovered.map((area) => (
+
+          {/* Card grid — mobile-first, 2-col by default, scales up. Each card prepped for future per-area page links. */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4 max-w-5xl mx-auto">
+            {data.areasCovered.map((area, idx) => (
               <div
                 key={area}
-                className="bg-paper border border-ink-100 rounded-lg px-4 py-3 text-center text-sm text-ink-700 shadow-soft"
+                className="bg-paper border border-sage-200 rounded-xl px-4 py-4 md:px-5 md:py-5 shadow-soft hover:shadow-card hover:border-sage-300 hover:-translate-y-0.5 transition-all duration-200 group"
+                style={{ animationDelay: `${idx * 0.02}s` }}
               >
-                {area}
+                <div className="flex items-start gap-2.5">
+                  <svg className="w-4 h-4 mt-1 text-cta flex-shrink-0 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" aria-hidden>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M17.7 14.7A8 8 0 1 0 6.3 14.7l5.7 6.3 5.7-6.3z" />
+                    <circle cx="12" cy="11" r="2.5" />
+                  </svg>
+                  <span className="text-sm md:text-[15px] font-medium text-ink-900 leading-snug">
+                    {area}
+                  </span>
+                </div>
               </div>
             ))}
           </div>
-          <p className="text-center text-sm text-ink-500 mt-8">
-            Don&rsquo;t see your area? We almost certainly cover it &mdash; call us to check.
-          </p>
+
+          {/* Closing message */}
+          <div className="text-center mt-10 md:mt-12 max-w-prose mx-auto">
+            <p className="text-base text-ink-700">
+              Don&rsquo;t see your area? We almost certainly cover it &mdash; call us on{" "}
+              <a href={`tel:${siteConfig.phoneTel}`} className="text-cta font-semibold no-underline hover:underline">
+                {siteConfig.phone}
+              </a>{" "}
+              to check.
+            </p>
+          </div>
         </div>
       </section>
 

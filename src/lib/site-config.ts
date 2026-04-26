@@ -73,5 +73,23 @@ export const siteConfig = {
     "preston",
     "warrington",
     "chester"
+  ],
+  // Tier 3 — fill the gaps (Phase E, added 2026-04-26)
+  tier3Locations: [
+    "telford",
+    "huddersfield",
+    "stockport",
+    "salford",
+    "oldham",
+    "blackburn",
+    "burnley",
+    "halifax",
+    "barnsley",
+    "worcester",
+    "salisbury",
+    "eastbourne",
+    "worthing",
+    "hastings",
+    "carlisle"
   ]
 };

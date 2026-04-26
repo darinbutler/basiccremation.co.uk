@@ -66,6 +66,23 @@ import { prestonLocation } from "@/lib/locations/preston";
 import { warringtonLocation } from "@/lib/locations/warrington";
 import { chesterLocation } from "@/lib/locations/chester";
 
+// Tier 3 — fill the gaps (Phase E)
+import { telfordLocation } from "@/lib/locations/telford";
+import { huddersfieldLocation } from "@/lib/locations/huddersfield";
+import { stockportLocation } from "@/lib/locations/stockport";
+import { salfordLocation } from "@/lib/locations/salford";
+import { oldhamLocation } from "@/lib/locations/oldham";
+import { blackburnLocation } from "@/lib/locations/blackburn";
+import { burnleyLocation } from "@/lib/locations/burnley";
+import { halifaxLocation } from "@/lib/locations/halifax";
+import { barnsleyLocation } from "@/lib/locations/barnsley";
+import { worcesterLocation } from "@/lib/locations/worcester";
+import { salisburyLocation } from "@/lib/locations/salisbury";
+import { eastbourneLocation } from "@/lib/locations/eastbourne";
+import { worthingLocation } from "@/lib/locations/worthing";
+import { hastingsLocation } from "@/lib/locations/hastings";
+import { carlisleLocation } from "@/lib/locations/carlisle";
+
 export const allLocations: Record<string, LocationData> = {
   // Top 10 by population
   london: londonLocation,
@@ -128,7 +145,23 @@ export const allLocations: Record<string, LocationData> = {
   blackpool: blackpoolLocation,
   preston: prestonLocation,
   warrington: warringtonLocation,
-  chester: chesterLocation
+  chester: chesterLocation,
+  // Tier 3 — fill the gaps (Phase E)
+  telford: telfordLocation,
+  huddersfield: huddersfieldLocation,
+  stockport: stockportLocation,
+  salford: salfordLocation,
+  oldham: oldhamLocation,
+  blackburn: blackburnLocation,
+  burnley: burnleyLocation,
+  halifax: halifaxLocation,
+  barnsley: barnsleyLocation,
+  worcester: worcesterLocation,
+  salisbury: salisburyLocation,
+  eastbourne: eastbourneLocation,
+  worthing: worthingLocation,
+  hastings: hastingsLocation,
+  carlisle: carlisleLocation
 };
 
 export function getLocationBySlug(slug: string): LocationData | null {
@@ -139,50 +172,140 @@ export function getAllLocationSlugs(): string[] {
   return Object.keys(allLocations);
 }
 
-/**
- * Returns up to `max` other locations whose `region` overlaps with the given location's region,
- * excluding the current location itself. Powers the "Other locations in {region}" block.
+/* ──────────────────────────────────────────────────────────────────
+ * REGIONAL CLUSTERS — geographic groupings used by getRegionalSiblings
+ * to surface genuinely-nearby cities on each city page.
  *
- * Region matching is loose — we use word-overlap so "Greater Manchester" matches "Manchester",
- * "South Yorkshire" matches "South Yorkshire", "Cardiff & South Wales" matches "Newport & South East Wales".
- * Falls back to country if no in-region match.
+ * Each city slug maps to a single cluster_id; clusters are grouped
+ * geographically (not by formal county or region — by what's actually
+ * driveable / nearby for a family choosing where to arrange a cremation).
+ * Adjacent clusters provide fallback siblings if the primary cluster is small.
+ * ────────────────────────────────────────────────────────────────── */
+
+type ClusterId =
+  | "north-west"
+  | "yorkshire"
+  | "north-east"
+  | "west-midlands"
+  | "east-midlands"
+  | "east-anglia"
+  | "south-west"
+  | "south-coast"
+  | "south-east"
+  | "london"
+  | "wales-south"
+  | "wales-north"
+  | "north-wales-borders";
+
+const CLUSTER_MEMBERS: Record<ClusterId, string[]> = {
+  "north-west": [
+    "manchester", "liverpool", "bolton", "warrington", "preston", "blackpool",
+    "chester", "stockport", "salford", "oldham", "blackburn", "burnley",
+    "lancaster", "carlisle", "st-helens"
+  ],
+  "yorkshire": [
+    "leeds", "bradford", "sheffield", "wakefield", "doncaster", "rotherham",
+    "york", "hull", "huddersfield", "halifax", "barnsley"
+  ],
+  "north-east": ["newcastle", "sunderland", "durham"],
+  "west-midlands": [
+    "birmingham", "coventry", "wolverhampton", "telford", "worcester",
+    "stoke-on-trent"
+  ],
+  "east-midlands": [
+    "leicester", "nottingham", "derby", "northampton", "lincoln"
+  ],
+  "east-anglia": [
+    "norwich", "ipswich", "colchester", "chelmsford", "peterborough",
+    "cambridge", "southend"
+  ],
+  "south-west": [
+    "bristol", "bath", "gloucester", "cheltenham", "exeter", "plymouth",
+    "bournemouth", "swindon", "salisbury"
+  ],
+  "south-coast": [
+    "brighton", "southampton", "portsmouth", "worthing", "eastbourne",
+    "hastings"
+  ],
+  "south-east": [
+    "reading", "oxford", "slough", "watford", "guildford", "crawley",
+    "maidstone", "luton", "milton-keynes"
+  ],
+  "london": ["london"],
+  "wales-south": ["cardiff", "swansea", "newport"],
+  "wales-north": ["wrexham"],
+  "north-wales-borders": []
+};
+
+const CLUSTER_ADJACENCY: Record<ClusterId, ClusterId[]> = {
+  "north-west": ["yorkshire", "north-east", "west-midlands", "wales-north"],
+  "yorkshire": ["north-west", "north-east", "east-midlands"],
+  "north-east": ["yorkshire", "north-west"],
+  "west-midlands": ["east-midlands", "south-west", "wales-south", "north-west"],
+  "east-midlands": ["yorkshire", "west-midlands", "east-anglia"],
+  "east-anglia": ["east-midlands", "south-east", "london"],
+  "south-west": ["wales-south", "south-coast", "south-east", "west-midlands"],
+  "south-coast": ["south-east", "south-west"],
+  "south-east": ["london", "south-coast", "south-west", "east-anglia"],
+  "london": ["south-east", "east-anglia"],
+  "wales-south": ["south-west", "west-midlands", "wales-north"],
+  "wales-north": ["north-west", "west-midlands", "wales-south"],
+  "north-wales-borders": ["wales-north", "north-west"]
+};
+
+// Reverse-lookup: slug → cluster_id
+const SLUG_TO_CLUSTER: Record<string, ClusterId> = (() => {
+  const map: Record<string, ClusterId> = {};
+  (Object.keys(CLUSTER_MEMBERS) as ClusterId[]).forEach((cluster) => {
+    CLUSTER_MEMBERS[cluster].forEach((slug) => {
+      map[slug] = cluster;
+    });
+  });
+  return map;
+})();
+
+/**
+ * Returns up to `max` other locations that are GEOGRAPHICALLY NEARBY to the
+ * given city. Uses explicit cluster membership; falls back to adjacent
+ * clusters if the primary cluster has fewer than `max` other members.
  */
 export function getRegionalSiblings(
   currentSlug: string,
-  max = 6
+  max = 8
 ): LocationData[] {
-  const current = allLocations[currentSlug];
-  if (!current) return [];
+  const cluster = SLUG_TO_CLUSTER[currentSlug];
+  if (!cluster) {
+    // Fallback for unmapped cities — return same-country alphabetical
+    const current = allLocations[currentSlug];
+    if (!current) return [];
+    return Object.values(allLocations)
+      .filter((l) => l.slug !== currentSlug && l.country === current.country)
+      .sort((a, b) => a.city.localeCompare(b.city))
+      .slice(0, max);
+  }
 
-  const currentRegionWords = current.region
-    .toLowerCase()
-    .replace(/[^a-z\s]/g, " ")
-    .split(/\s+/)
-    .filter((w) => w.length > 3); // ignore "and", "the", etc.
+  // Same-cluster siblings (excluding self), only those that exist in allLocations
+  const sameCluster = CLUSTER_MEMBERS[cluster]
+    .filter((s) => s !== currentSlug && allLocations[s])
+    .map((s) => allLocations[s]);
 
-  const all = Object.values(allLocations);
-  const others = all.filter((l) => l.slug !== currentSlug);
+  if (sameCluster.length >= max) return sameCluster.slice(0, max);
 
-  // Score by word overlap with currentRegionWords
-  const scored = others.map((l) => {
-    const lWords = l.region
-      .toLowerCase()
-      .replace(/[^a-z\s]/g, " ")
-      .split(/\s+/);
-    const overlap = currentRegionWords.filter((w) => lWords.includes(w)).length;
-    return { loc: l, overlap };
-  });
+  // Pad with adjacent clusters
+  const adjacent = CLUSTER_ADJACENCY[cluster] || [];
+  const padding: LocationData[] = [];
+  const seen = new Set<string>([currentSlug, ...sameCluster.map((l) => l.slug)]);
 
-  // Cities in the same exact region
-  const sameRegion = scored.filter((s) => s.overlap >= 1).map((s) => s.loc);
-  if (sameRegion.length >= max) return sameRegion.slice(0, max);
+  for (const adjCluster of adjacent) {
+    for (const slug of CLUSTER_MEMBERS[adjCluster]) {
+      if (seen.has(slug) || !allLocations[slug]) continue;
+      padding.push(allLocations[slug]);
+      seen.add(slug);
+      if (sameCluster.length + padding.length >= max) break;
+    }
+    if (sameCluster.length + padding.length >= max) break;
+  }
 
-  // Pad out with same-country cities (sorted alphabetically) until we hit max
-  const padding = others
-    .filter((l) => l.country === current.country && !sameRegion.includes(l))
-    .sort((a, b) => a.city.localeCompare(b.city))
-    .slice(0, max - sameRegion.length);
-
-  return [...sameRegion, ...padding];
+  return [...sameCluster, ...padding].slice(0, max);
 }
 
