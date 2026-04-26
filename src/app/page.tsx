@@ -91,13 +91,9 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* WHY FAMILIES CHOOSE US — image bg + dark sage-700 cards for contrast */}
-      <section className="relative overflow-hidden border-y border-ink-100">
-        <div className="absolute inset-0 z-0">
-          <Image src={ABOUT_IMAGE} alt="" fill sizes="100vw" className="object-cover" />
-          <div className="absolute inset-0 bg-paper-warm/92"></div>
-        </div>
-        <div className="relative z-10 container-page py-16 md:py-20">
+      {/* WHY FAMILIES CHOOSE US — soft sage-50 bg, dark sage-700 cards for contrast */}
+      <section className="bg-sage-50 border-y border-ink-100">
+        <div className="container-page py-16 md:py-20">
           <div className="max-w-2xl mx-auto text-center mb-12 md:mb-16">
             <p className="text-sm uppercase tracking-[0.2em] text-cta mb-4 font-semibold">
               Why families choose us

@@ -75,12 +75,8 @@ export default function HelpAndAdvicePage() {
         </div>
       </section>
 
-      <section className="relative overflow-hidden border-y border-ink-100">
-        <div className="absolute inset-0 z-0">
-          <Image src="https://images.unsplash.com/photo-1500964757637-c85e8a162699?auto=format&fit=crop&w=2400&q=75" alt="" fill sizes="100vw" className="object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-b from-paper-warm/96 via-paper-warm/92 to-paper-warm/96"></div>
-        </div>
-        <div className="relative z-10 container-page py-14 md:py-20">
+      <section className="bg-sage-50 border-y border-ink-100">
+        <div className="container-page py-14 md:py-20">
           <div className="max-w-3xl mb-10">
             <p className="text-sm uppercase tracking-[0.2em] text-cta mb-4 font-semibold">The four guides</p>
             <h2 className="mb-4 balance">Where would you like to start?</h2>

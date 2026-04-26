@@ -1,50 +1,37 @@
-# Batch 10 — Design polish + memory commit
+# Batch 10.1 — Image fixes
 
 ## What's in this bundle
 
-### 1) Homepage 'Why families choose us' — high-contrast dark cards on image bg
-The 3 trust cards were `bg-paper border-2 border-sage-200` (white on paper) — visually flat against the surrounding paper page. Now:
-- Wrapped section in image background (using ABOUT_IMAGE) with paper-warm/92 overlay
-- Cards changed to `bg-sage-700 text-paper` (dark forest green with white text)
-- Icon container: sage-800 rounded circle with coral-300 icon (warm accent)
-- Cards lift on hover, `shadow-cardHover`
-Visual impact: the 3 cards now POP off the page. Strong contrast, brand-aligned.
+### 1) Homepage 'Why families choose us' — replaced clashing image with bg-sage-50
+The bright English countryside image behind the dark sage-700 cards didn't work with the site's colour scheme. Replaced with a soft `bg-sage-50` (very light sage tint) that complements the sage-700 cards without competing.
 
-### 2) /prices — added a 5-stat USP badges strip + image bg on 'No surprise charges' section
-- **NEW: dark sage-700 USP strip** between the pricing tiers and the no-surprise list, with 5 prominent stats:
-  - £1,499 — All-inclusive price
-  - 24/7 — Phone support
-  - NAFD & SAIF — Accredited network
-  - 0 — Hidden fees ever
-  - Local — Funeral directors
-- "What you won't be asked to pay" section now has misty-path image bg with paper-warm gradient overlay
-- Each "no charges" card upgraded: `bg-paper border-2 border-sage-200` (was border-1), with `font-medium` darker text + hover lift
+### 2) /prices 'What you won't be asked to pay' — text now readable
+Removed the misty-path image background that was making text difficult to read. Section now uses a clean `bg-paper-warm` so the cards and bullet text are crisply legible.
 
-### 3) /help-and-advice — 'The four guides' on image bg with numbered cards
-- Section wrapped in English-hillside image bg with paper-warm gradient overlay
-- Each guide card now has a numbered icon (1, 2, 3, 4) in a sage-100 rounded square
-- `border-2` thicker borders, `shadow-card` baseline + `shadow-cardHover` on hover, `-translate-y-1` lift
-- Card title becomes coral on hover (was just CTA underline)
+### 3) /help-and-advice 'The four guides' — replaced clashing image
+Same image as elsewhere on the site, didn't work with the colour scheme. Replaced with `bg-sage-50` matching the homepage trust card section.
 
-### 4) /whats-included — 'Included in the price' on image bg with boxed-icon cards
-- Section wrapped in image bg with paper-warm gradient overlay
-- "EVERYTHING COVERED" eyebrow added above the H2
-- Each included-item card: icon now sits in a sage-100 rounded box (instead of bare icon)
-- `border-2` thicker borders, stronger shadow, hover lift
+### 4) Brighton + South Coast cities — proper beach photos
+Brighton was using a Blackpool seafront photo (shared coastal image). Now each South Coast city has its own beach/seaside shot:
 
-## Memory committed
-All current state captured in 9 memory files:
-- MEMORY.md (index)
-- project_basiccremation_overview.md (state, paths, stack)
-- project_basiccremation_progress.md (Batches 1-10)
-- project_basiccremation_design_patterns.md (visual rhythm, build pitfalls)
-- project_basiccremation_location_schema.md (LocationData fields)
-- project_basiccremation_tier1_cities.md (37 Tier 1)
-- project_basiccremation_tier2_tier3_cities.md (NEW — 21 + 15 cities)
-- project_basiccremation_clusters.md (NEW — 13 geographic clusters)
-- project_basiccremation_legacy_redirects.md (NEW — migration system)
-- project_basiccremation_image_strategy.md (NEW — Unsplash IDs in use)
-- project_basiccremation_open_work.md (current backlog)
+| City | New photo |
+|---|---|
+| Brighton | photo-1505228395891 |
+| Bournemouth | photo-1507525428034 |
+| Eastbourne | photo-1591084728795 |
+| Worthing | photo-1583511655826 |
+| Hastings | photo-1515562141207 |
+| Southend | photo-1565884280295 |
 
-## Notes
-The Vercel build failure you noticed was Batch 5 (`11a34e0` — Tier 2 imports missing). It was resolved by Batch 5.1 (`bfe23a2`). All deploys since then (Batches 6, 7, 8, 8.1, 9) have been Ready. Current deploy is Batch 9 (`cc22976`).
+(All verified HTTP 200 on Unsplash before assigning.)
+
+## Files changed
+- `src/app/page.tsx` — homepage trust card section bg
+- `src/app/prices/page.tsx` — no-surprise section bg
+- `src/app/help-and-advice/page.tsx` — four-guides section bg
+- `src/lib/locations/{brighton,bournemouth,eastbourne,worthing,hastings,southend}.ts` — cityImage updated
+
+## Sanity
+- Div structure verified — no unclosed tags after the image-wrapper removals
+- All Unsplash photo IDs verified working
+- Other Batch 10 changes (sage-700 trust cards, USP strip on /prices, numbered guide cards, /whats-included image bg) are PRESERVED — only the bgs the user flagged were swapped
