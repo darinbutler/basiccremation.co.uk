@@ -1,37 +1,33 @@
-# Batch 10.1 — Image fixes
+# Batch 10.2 — /prices trust badges + image bg fixes (consolidated)
 
 ## What's in this bundle
 
-### 1) Homepage 'Why families choose us' — replaced clashing image with bg-sage-50
-The bright English countryside image behind the dark sage-700 cards didn't work with the site's colour scheme. Replaced with a soft `bg-sage-50` (very light sage tint) that complements the sage-700 cards without competing.
+### 1) /prices 'What's covered' — completely redesigned trust badges
+The section was hard to read on a clashing image, and the small green ticks made it ambiguous what was actually being communicated. Full redesign:
 
-### 2) /prices 'What you won't be asked to pay' — text now readable
-Removed the misty-path image background that was making text difficult to read. Section now uses a clean `bg-paper-warm` so the cards and bullet text are crisply legible.
+- **Section background**: image gone, clean `bg-paper-warm`
+- **Section title**: changed from "What you won't be asked to pay" → **"What's covered — no surprise charges"** with H2 "Everything you won't be charged extra for" — clearer messaging
+- **Each card now has**:
+  - **Large 48×48px coral-filled circle** with a bold paper-coloured tick (was 5×5 small icon)
+  - **"COVERED" eyebrow** in coral above each item — unambiguous about what the card is saying
+  - **Bigger bolder text** with `font-medium`
+  - `border-2` thicker borders, `shadow-card` baseline + hover lift
+  - Cards re-worded slightly to read as positive inclusions (e.g. "A simple coffin (no 'premium' upgrade fee)" instead of just "Coffin upgrade or 'premium' coffin fees")
+- **Reinforcing footer line** below the grid: "That's the whole list. No coffin upgrades, no chapel fees, no documentation surcharges — ever."
 
-### 3) /help-and-advice 'The four guides' — replaced clashing image
-Same image as elsewhere on the site, didn't work with the colour scheme. Replaced with `bg-sage-50` matching the homepage trust card section.
+The visual hierarchy is now: 48px coral circle → "COVERED" tag → bold item name. No ambiguity about what each card means.
 
-### 4) Brighton + South Coast cities — proper beach photos
-Brighton was using a Blackpool seafront photo (shared coastal image). Now each South Coast city has its own beach/seaside shot:
-
-| City | New photo |
-|---|---|
-| Brighton | photo-1505228395891 |
-| Bournemouth | photo-1507525428034 |
-| Eastbourne | photo-1591084728795 |
-| Worthing | photo-1583511655826 |
-| Hastings | photo-1515562141207 |
-| Southend | photo-1565884280295 |
-
-(All verified HTTP 200 on Unsplash before assigning.)
+### 2) Homepage 'Why families choose us' — `bg-sage-50` (preserved from 10.1)
+### 3) /help-and-advice 'Four guides' — `bg-sage-50` (preserved from 10.1)
+### 4) Brighton + South Coast cities — beach-specific photos (preserved from 10.1)
 
 ## Files changed
-- `src/app/page.tsx` — homepage trust card section bg
-- `src/app/prices/page.tsx` — no-surprise section bg
-- `src/app/help-and-advice/page.tsx` — four-guides section bg
-- `src/lib/locations/{brighton,bournemouth,eastbourne,worthing,hastings,southend}.ts` — cityImage updated
+- `src/app/prices/page.tsx` — redesigned no-surprise/covered section
+- `src/app/page.tsx` — homepage trust card section bg (10.1)
+- `src/app/help-and-advice/page.tsx` — four-guides bg (10.1)
+- `src/lib/locations/{brighton,bournemouth,eastbourne,worthing,hastings,southend}.ts` — coastal photos (10.1)
 
-## Sanity
-- Div structure verified — no unclosed tags after the image-wrapper removals
-- All Unsplash photo IDs verified working
-- Other Batch 10 changes (sage-700 trust cards, USP strip on /prices, numbered guide cards, /whats-included image bg) are PRESERVED — only the bgs the user flagged were swapped
+## Sanity verified
+- All 3 affected JSX files have div balance = 0
+- Coastal city Unsplash IDs all return HTTP 200
+- No invalid PhoneCTA variants

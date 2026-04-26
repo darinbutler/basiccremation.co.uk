@@ -187,42 +187,53 @@ export default function PricesPage() {
         </div>
       </section>
 
-      {/* NO SURPRISE CHARGES — image bg + prominent paper-warm cards on a peaceful overlay */}
-      <section className="relative overflow-hidden border-y border-ink-100">
-        <div className="absolute inset-0 z-0">
-          <Image src="https://images.unsplash.com/photo-1518173946687-a4c8892bbd9f?auto=format&fit=crop&w=2400&q=75" alt="" fill sizes="100vw" className="object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-b from-paper-warm/96 via-paper-warm/93 to-paper-warm/96"></div>
-        </div>
-        <div className="relative z-10 container-page py-12 md:py-20">
-          <div className="max-w-2xl mb-8 md:mb-10">
+      {/* NO SURPRISE CHARGES — clean paper-warm bg + prominent trust badges */}
+      <section className="bg-paper-warm border-y border-ink-100">
+        <div className="container-page py-14 md:py-20">
+          <div className="max-w-2xl mx-auto text-center mb-10 md:mb-14">
             <p className="text-sm uppercase tracking-[0.2em] text-cta mb-3 font-semibold">
-              What you won&rsquo;t be asked to pay
+              What&rsquo;s covered &mdash; no surprise charges
             </p>
-            <h2 className="mb-4 balance">No surprise charges. No upselling.</h2>
+            <h2 className="mb-4 balance">Everything you won&rsquo;t be charged extra for.</h2>
             <p className="prose-content">
-              When families call us, they often ask what gets added on later. Here&rsquo;s the honest answer: nothing. There is no &ldquo;coffin upgrade&rdquo;, no embalming charge, no chapel fee, no documentation surcharge.
+              When families call us, they often ask what gets added on later. Here&rsquo;s the honest answer:
+              <strong className="text-ink-900"> nothing.</strong> Each item below is part of the &pound;{siteConfig.basePrice.toLocaleString()} price &mdash; never an extra invoice.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4 max-w-3xl">
+          {/* Big prominent badge cards — large coral check icon, bold text, clear "covered" framing */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-5 max-w-4xl mx-auto">
             {[
-              "Hidden funeral director fees",
+              "Funeral director fees",
               "Collection from hospital or coroner&rsquo;s mortuary",
-              "Coffin upgrade or &lsquo;premium&rsquo; coffin fees",
-              "Embalming or preparation charges",
+              "A simple coffin (no &lsquo;premium&rsquo; upgrade fee)",
+              "Care &amp; preparation (no embalming charge)",
               "Chapel of rest, viewing or service fees",
-              "Cremation authority fees or paperwork charges",
+              "All cremation authority &amp; paperwork fees",
               "Doctors&rsquo; medical certificate fees",
               "Ashes return delivery (UK mainland)"
             ].map((item) => (
-              <div key={item} className="flex items-start gap-3 bg-paper border-2 border-sage-200 rounded-xl px-4 py-3 md:px-5 md:py-4 shadow-soft hover:shadow-card hover:border-sage-300 transition-all">
-                <svg className="w-5 h-5 mt-0.5 text-cta flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24" aria-hidden>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.6 4a8 8 0 11-16 0 8 8 0 0116 0z" />
-                </svg>
-                <span className="text-ink-900 text-[15px] font-medium leading-snug" dangerouslySetInnerHTML={{ __html: item }} />
+              <div
+                key={item}
+                className="flex items-start gap-4 bg-paper border-2 border-sage-200 rounded-xl px-5 py-5 md:px-6 md:py-6 shadow-card hover:shadow-cardHover hover:-translate-y-0.5 hover:border-sage-300 transition-all"
+              >
+                <div className="w-12 h-12 rounded-full bg-cta flex items-center justify-center flex-shrink-0 shadow-md">
+                  <svg className="w-6 h-6 text-paper" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24" aria-hidden>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <div className="pt-1">
+                  <p className="text-xs uppercase tracking-wider text-cta font-bold mb-0.5">Covered</p>
+                  <p className="text-ink-900 text-[16px] md:text-base font-medium leading-snug" dangerouslySetInnerHTML={{ __html: item }} />
+                </div>
               </div>
             ))}
           </div>
+
+          {/* Reinforcing message under the grid */}
+          <p className="text-center text-base md:text-lg text-ink-700 mt-8 md:mt-10 max-w-2xl mx-auto leading-relaxed">
+            That&rsquo;s the whole list. <strong className="text-ink-900">No coffin upgrades, no chapel fees, no documentation surcharges</strong> &mdash; ever.
+          </p>
         </div>
       </section>
 
